@@ -44,28 +44,28 @@ getGenreList();
 
 
 /* ------Top-rated movies by genre------*/
-var topRatedListUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&
-                        include_adult=false&include_video=false&page=2&with_genres=${genreIdList[1]}&with_watch_monetization_types=flatrate`
-var topRatedNameList = [];
+// var topRatedListUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&
+//                         include_adult=false&include_video=false&page=2&with_genres=${genreIdList[1]}&with_watch_monetization_types=flatrate`
+// var topRatedNameList = [];
 
 
 
 
-function getGenreTopRated() { //Grabs top rated movies by genre. Requirement: genre ID 
-    fetch(topRatedListUrl) //Creates a fetch request
+// function getGenreTopRated() { //Grabs top rated movies by genre. Requirement: genre ID 
+//     fetch(topRatedListUrl) //Creates a fetch request
 
-        .then(function (response) {//Checks the response of the request
-            console.log(response);
-            return response.json();//Reformats API request response
+//         .then(function (response) {//Checks the response of the request
+//             console.log(response);
+//             return response.json();//Reformats API request response
         
-      }) //Requests the data from the API
-        .then(function (data) {
-            console.log(data);
-            for (i=0; i<data.results.length; i++) {
-                topRatedNameList.push(data.results[i].original_title);           
-            }
-        console.log(topRatedNameList);
-    })
-    };
+//       }) //Requests the data from the API
+//         .then(function (data) {
+//             console.log(data);
+//             for (i=0; i<data.results.length; i++) {
+//                 topRatedNameList.push(data.results[i].original_title);           
+//             }
+//         console.log(topRatedNameList);
+//     })
+//     };
 
-getGenreTopRated();
+// getGenreTopRated();
