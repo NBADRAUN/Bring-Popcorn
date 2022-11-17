@@ -1,0 +1,15 @@
+body {
+    background-image: url("./images/391696-1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header {
+    width: 300px;
+    margin: 0 auto;
+    
+}
+
+h1 {
+    color: #780116;
+}
