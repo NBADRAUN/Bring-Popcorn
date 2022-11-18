@@ -18,14 +18,20 @@
 
 //Personal Api Key
 var apiKey = 'd31ccc62253ac4e1f5fdf6fba2c7305e';
-
+var favoritesList = [];
 //Event Listener for genre selection
 var genreSelection = '';
+
 document.addEventListener('click', function(event) {
-    if (event.target.id !== 'none') {
+    if (event.target.id === 'none') {
+        return;
+    } else if (event.target.classList.contains('dropdown-item')) {
         genreSelection = event.target.id
         getGenreTopRated();
-    }
+    } else if (!isNaN(event.target.id) && event.target.classList.contains('btn')) {
+        favoritesList.push(event.target.id);
+        localStorage.setItem('favorites', favoritesList);
+    };
 });
 
 
