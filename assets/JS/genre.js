@@ -18,22 +18,69 @@
 
 //Personal Api Key
 var apiKey = 'd31ccc62253ac4e1f5fdf6fba2c7305e';
+
+//Favorites Storage
 var favoritesList = [];
+
 //Event Listener for genre selection
 var genreSelection = '';
+var page = 1;
+//Calls function to collect favorites from localStorage
 
+function init() {
+    var historyList = JSON.parse(localStorage.getItem('favorites'));
+    if (historyList !== null) {
+        for (i=0; i<historyList.length; i++) {
+            favoritesList.push(historyList[i]);
+        };
+    };
+};
+init();
+
+
+
+//Event listener for all buttons
 document.addEventListener('click', function(event) {
-    if (event.target.id === 'none') {
+    if (event.target.id === 'none') { //Genre dropdown list button
         return;
-    } else if (event.target.classList.contains('dropdown-item')) {
-        genreSelection = event.target.id
+
+    } else if (event.target.classList.contains('dropdown-item')) { //Genre selection button
+        genreSelection = event.target.id;
+        page = 1;
         getGenreTopRated();
-    } else if (!isNaN(event.target.id) && event.target.classList.contains('btn')) {
+
+    } else if (event.target.classList.contains('favorites-button')) { //Favorites button storage
         favoritesList.push(event.target.id);
         localStorage.setItem('favorites', favoritesList);
-    };
-});
 
+    } else if (event.target.innerHTML === 'More' && page === 1) { //If first page of movies create back button and remove current more button
+        page ++;
+        var previousMovies = document.createElement('button');
+        previousMovies.id = 'back-button';
+        previousMovies.innerHTML = 'Back';
+        event.target.remove();
+        document.body.appendChild(previousMovies);
+        getGenreTopRated();
+
+    } else if (event.target.innerHTML === 'More' && page > 1) { //If on 2nd page, call for next page and remove current more button
+        page ++;
+        event.target.remove();
+        getGenreTopRated();
+
+    } else if (event.target.innerHTML === 'Back' && page > 2) {  //If on page 3+, remove more button and decrease page by 1
+        page --;
+        var moreButton = document.getElementById('more-button');
+        moreButton.remove();
+        getGenreTopRated();
+
+    } else if (event.target.innerHTML === 'Back' && page === 2) { //If on page 2 and back button is click, remove back button and current more button
+        page --;
+        var moreButton = document.getElementById('more-button');
+        moreButton.remove();
+        event.target.remove();
+        getGenreTopRated();
+    }
+});
 
 /* ------Genre Id/Name List ------ */
 var genreListUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
@@ -47,6 +94,7 @@ function getGenreTopRated() { //Grabs top rated movies by genre. Requirement: ge
     //Selects the card collection body
     var cardsContainer = document.getElementById('formContainer');
 
+
     //Gets rid of previous cards when selecting new genre
     if (cardsContainer.hasChildNodes()) {
     while (cardsContainer.firstChild) {
@@ -56,10 +104,10 @@ function getGenreTopRated() { //Grabs top rated movies by genre. Requirement: ge
     
     //API url to fetch top rated movies by genre
     var topRatedListUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&
-                        include_adult=false&include_video=false&page=2&with_genres=${genreSelection}&with_watch_monetization_types=flatrate`;
+                        include_adult=false&include_video=false&page=${page}&with_genres=${genreSelection}&with_watch_monetization_types=flatrate`;
 
     fetch(topRatedListUrl) //Creates a fetch request
-
+    
         //Checks the response of the request
         .then(function (response) {
             return response.json();//Reformats API request response
@@ -127,18 +175,39 @@ function getGenreTopRated() { //Grabs top rated movies by genre. Requirement: ge
                 var liButton = document.createElement('li');
                 liButton.classList.add('list-group-item');
                 var button = document.createElement('button');
-                button.classList.add('btn', 'btn-dark');
+                button.classList.add('btn', 'btn-dark', 'favorites-button');
                 button.type = 'button';
                 button.id = id;
                 button.innerHTML = 'Add to favorites';
                 liButton.appendChild(button);
                 ul.appendChild(liButton);
                 
+                //More movies button
+                var moreMovies = document.createElement('button');
+                moreMovies.classList.add('text-center', );
+                moreMovies.innerHTML = 'More';
+
                 //Appends card information into card then into card container
                 card.appendChild(cardBody);
                 card.appendChild(ul);
                 cardsContainer.appendChild(card);
 
             };
+
+                // //Previous movies button
+                // var previousMovies = document.createElement('button');
+                // previousMovies.classList.add('justify-content-center');
+                // previousMovies.id = 'back-button';
+                // previousMovies.innerHTML = 'Back';
+                // document.body.appendChild(previousMovies);
+
+                //More movies button
+                var moreMovies = document.createElement('button');
+                moreMovies.classList.add('text-center', );
+                moreMovies.id = 'more-button';
+                moreMovies.innerHTML = 'More';
+                document.body.appendChild(moreMovies);
+
+
     })
 };
