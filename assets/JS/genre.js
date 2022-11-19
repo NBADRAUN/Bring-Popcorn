@@ -14,66 +14,76 @@
 
 //Steps to create genrePage functionality
 //1: Create event Listeners for genre selection
-//2: Plug in 
+//2: Plug in
 
 //Personal Api Key
 var apiKey = 'd31ccc62253ac4e1f5fdf6fba2c7305e';
 
 //Favorites Storage
-var favoritesList = [];
+var favoriteStorage = [];
 
 //Event Listener for genre selection
 var genreSelection = '';
 var page = 1;
-//Calls function to collect favorites from localStorage
 
+//Calls function to collect favorites from localStorage
 function init() {
-    var historyList = JSON.parse(localStorage.getItem('favorites'));
-    if (historyList !== null) {
-        for (i=0; i<historyList.length; i++) {
-            favoritesList.push(historyList[i]);
-        };
+    //Grabs data from localStorage via key
+    favoriteData = localStorage.getItem('favorite');
+
+    //Checks if localStorage is empty
+    if (favoriteData !== null) {
+        console.log(favoriteData);
+
+        //Splits localStorage into array of numbers and saves as global variable
+        favoriteStorage = favoriteData.split(",");
+        console.log(favoriteStorage);
     };
 };
+
+//Calls function to pull localStorage
 init();
-
-
 
 //Event listener for all buttons
 document.addEventListener('click', function(event) {
-    if (event.target.id === 'none') { //Genre dropdown list button
+
+        //Genre dropdown list button
+    if (event.target.id == 'genreToggle') { 
         return;
 
+        //Genre selection
     } else if (event.target.classList.contains('dropdown-item')) { //Genre selection button
         genreSelection = event.target.id;
-        page = 1;
         getGenreTopRated();
 
-    } else if (event.target.classList.contains('favorites-button')) { //Favorites button storage
-        favoritesList.push(event.target.id);
-        localStorage.setItem('favorites', favoritesList);
+        //If favorites button is clicked, add movie-id to localStorage
+    } else if (event.target.classList.contains('favorites-button')) {
 
-    } else if (event.target.innerHTML === 'More' && page === 1) { //If first page of movies create back button and remove current more button
-        page ++;
-        var previousMovies = document.createElement('button');
-        previousMovies.id = 'back-button';
-        previousMovies.innerHTML = 'Back';
+            //Checks if movie is already in favorites
+        if (!favoriteStorage.includes(event.target.id)) {
+            favoriteStorage.push(event.target.id);
+            localStorage.setItem('favorite', favoriteStorage);
+
+        } else {
+            return;
+        }
+
+        //If first page remove More button
+    } else if (event.target.id == 'more-button' && page == 1) {
+        page ++; 
         event.target.remove();
-        document.body.appendChild(previousMovies);
         getGenreTopRated();
 
-    } else if (event.target.innerHTML === 'More' && page > 1) { //If on 2nd page, call for next page and remove current more button
-        page ++;
+        //If page > 1 remove the back-button
+    } else if (event.target.id == 'more-button' && page > 1) {
+        page++;
+        var backButton = document.getElementById('back-button');
+        backButton.remove();
         event.target.remove();
         getGenreTopRated();
 
-    } else if (event.target.innerHTML === 'Back' && page > 2) {  //If on page 3+, remove more button and decrease page by 1
-        page --;
-        var moreButton = document.getElementById('more-button');
-        moreButton.remove();
-        getGenreTopRated();
-
-    } else if (event.target.innerHTML === 'Back' && page === 2) { //If on page 2 and back button is click, remove back button and current more button
+        //If page > 1 remove both Back nad More buttons
+    } else if (event.target.innerHTML == 'Back' && page > 1) {
         page --;
         var moreButton = document.getElementById('more-button');
         moreButton.remove();
@@ -82,18 +92,14 @@ document.addEventListener('click', function(event) {
     }
 });
 
-/* ------Genre Id/Name List ------ */
+/* ------ API for genre IDS ------ */
 var genreListUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
-var genreIdList = [];
-var genreNameList = [];
-
 
 /* ------Top-rated movies by genre------*/
-function getGenreTopRated() { //Grabs top rated movies by genre. Requirement: genre ID 
+function getGenreTopRated() {
 
     //Selects the card collection body
     var cardsContainer = document.getElementById('formContainer');
-
 
     //Gets rid of previous cards when selecting new genre
     if (cardsContainer.hasChildNodes()) {
@@ -116,7 +122,7 @@ function getGenreTopRated() { //Grabs top rated movies by genre. Requirement: ge
         .then(function (data) {
             console.log(data);
 
-            //Loops through top rated movies in specific genre
+            //Grabs information and builds cards for each movie
             for (i=0; i<data.results.length; i++) {
 
                 //Creates information variables to plug into cards
@@ -129,85 +135,79 @@ function getGenreTopRated() { //Grabs top rated movies by genre. Requirement: ge
 
                 //Creates Card form container
                 var card = document.createElement('div');
-                card.classList.add('card', 'text-center', 'mx-3', 'my-3');
-                card.style.width = '18rem';
+                    card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'cardBox');
+                    card.style.width = '18rem';
 
                 //Creates Image element
                 var image = document.createElement('img');
-                image.classList.add('card-img-top', 'mt-3');
-                image.src = `https://image.tmdb.org/t/p/original/${posterCode}`
-                card.appendChild(image);
-
+                    image.classList.add('card-img-top', 'mt-3');
+                    image.src = `https://image.tmdb.org/t/p/original/${posterCode}`
+                
                 //Creates Card body
                 var cardBody = document.createElement('div');
-                cardBody.classList.add('card-body');
+                    cardBody.classList.add('card-body');
 
                 //Creates title
                 var cardTitle = document.createElement('h5');
-                cardTitle.classList.add('card-title');
-                cardTitle.innerHTML = title;
-                cardBody.appendChild(cardTitle);
-
+                    cardTitle.classList.add('card-title');
+                    cardTitle.innerHTML = title;
+                    
                 //Creates description
                 var cardDescription = document.createElement('p');
-                cardDescription.classList.add('card-text');
-                cardDescription.innerHTML = description;
-                cardBody.appendChild(cardDescription);
-                
-
+                    cardDescription.classList.add('card-text');
+                    cardDescription.innerHTML = description;
+                    
                 //Creates list form
                 var ul = document.createElement('ul');
-                ul.classList.add('list-group', 'list-group-flush');
+                    ul.classList.add('list-group', 'list-group-flush');
 
                 //Creates list elements
                 var liDate = document.createElement('li');
-                liDate.classList.add('list-group-item');
-                liDate.innerHTML = `Date Released: ${date}`;
-                ul.appendChild(liDate);
-                
+                    liDate.classList.add('list-group-item');
+                    liDate.innerHTML = `Date Released: ${date}`;
+                    
                 //Rating
                 var liRating = document.createElement('li');
-                liRating.classList.add('list-group-item');
-                liRating.innerHTML = `Rating: ${rating}/10`;
-                ul.appendChild(liRating);
-
+                    liRating.classList.add('list-group-item');
+                    liRating.innerHTML = `Rating: ${rating}/10`;
+                    
                 //Favorites Button
                 var liButton = document.createElement('li');
-                liButton.classList.add('list-group-item');
+                    liButton.classList.add('list-group-item');
                 var button = document.createElement('button');
-                button.classList.add('btn', 'btn-dark', 'favorites-button');
-                button.type = 'button';
-                button.id = id;
-                button.innerHTML = 'Add to favorites';
+                    button.classList.add('btn', 'btn-dark', 'favorites-button');
+                    button.type = 'button';
+                    button.id = id;
+                    button.innerHTML = 'Add to favorites';
+                    
+                //Appends information into cards
+                card.appendChild(image);
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardDescription);
+                ul.appendChild(liDate);
+                ul.appendChild(liRating);
                 liButton.appendChild(button);
                 ul.appendChild(liButton);
-                
-                //More movies button
-                var moreMovies = document.createElement('button');
-                moreMovies.classList.add('text-center', );
-                moreMovies.innerHTML = 'More';
-
-                //Appends card information into card then into card container
                 card.appendChild(cardBody);
                 card.appendChild(ul);
                 cardsContainer.appendChild(card);
 
             };
 
-                // //Previous movies button
-                // var previousMovies = document.createElement('button');
-                // previousMovies.classList.add('justify-content-center');
-                // previousMovies.id = 'back-button';
-                // previousMovies.innerHTML = 'Back';
-                // document.body.appendChild(previousMovies);
+            if (page > 1) {
+                var previousMovies = document.createElement('button');
+                previousMovies.classList.add('justify-content-center');
+                previousMovies.id = 'back-button';
+                previousMovies.innerHTML = 'Back';
+                document.body.appendChild(previousMovies);
+        }
 
                 //More movies button
                 var moreMovies = document.createElement('button');
-                moreMovies.classList.add('text-center', );
+                moreMovies.classList.add('text-center');
                 moreMovies.id = 'more-button';
                 moreMovies.innerHTML = 'More';
                 document.body.appendChild(moreMovies);
-
 
     })
 };
