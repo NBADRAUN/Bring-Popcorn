@@ -33,8 +33,6 @@ function init() {
 
     //Checks if localStorage is empty
     if (favoriteData !== null) {
-        console.log(favoriteData);
-
         //Splits localStorage into array of numbers and saves as global variable
         favoriteStorage = favoriteData.split(",");
         console.log(favoriteStorage);
@@ -53,8 +51,20 @@ document.addEventListener('click', function(event) {
 
         //Genre selection
     } else if (event.target.classList.contains('dropdown-item')) { //Genre selection button
+        page = 1;
         genreSelection = event.target.id;
-        getGenreTopRated();
+        var more = document.getElementById('more-button');
+        var back = document.getElementById('back-button')
+        if (more != null && back != null) {
+            more.remove();
+            back.remove();
+            getGenreTopRated();
+        } else if (more !=null && back == null) {
+            more.remove();
+            getGenreTopRated();
+        } else {
+            getGenreTopRated();
+        };
 
         //If favorites button is clicked, add movie-id to localStorage
     } else if (event.target.classList.contains('favorites-button')) {
@@ -66,7 +76,7 @@ document.addEventListener('click', function(event) {
 
         } else {
             return;
-        }
+        };
 
         //If first page remove More button
     } else if (event.target.id == 'more-button' && page == 1) {
@@ -89,6 +99,23 @@ document.addEventListener('click', function(event) {
         moreButton.remove();
         event.target.remove();
         getGenreTopRated();
+
+        //Display favorited movies button
+    } else if (event.target.id == 'display-favorites') {
+        page = 1;
+        var more = document.getElementById('more-button');
+        var back = document.getElementById('back-button');
+        //Checks and deletes more and back buttons
+        if (more != null && back != null) {
+            more.remove();
+            back.remove();
+            getFavorites();
+        } else if (more !=null && back == null) {
+            more.remove();
+            getFavorites();
+        } else {
+            getFavorites();
+        }
     }
 });
 
@@ -130,7 +157,7 @@ function getGenreTopRated() {
                 var title = data.results[i].title;
                 var description = data.results[i].overview;
                 var date = data.results[i].release_date;
-                var rating = data.results[i].vote_average;
+                var rating = Math.floor(data.results[i].vote_average);
                 var id = data.results[i].id;
 
                 //Creates Card form container
@@ -170,6 +197,31 @@ function getGenreTopRated() {
                 var liRating = document.createElement('li');
                     liRating.classList.add('list-group-item');
                     liRating.innerHTML = `Rating: ${rating}/10`;
+
+                    //Stars, Stars, Stars!
+                    // if (rating === 10) {
+                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
+                    // } else if (rating === 9) {
+                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
+                    // } else if (rating === 8) {
+                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
+                    // } else if (rating === 7) {
+                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
+                    // } else if (rating === 6) {
+                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
+                    // } else if (rating === 5) {
+                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    // } else if (rating === 4) {
+                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    // } else if (rating === 3) {
+                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    // } else if (rating === 2) {
+                    //     liRating.innerHTML = '&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    // } else if (rating === 1) {
+                    //     liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    // } else {
+                    //     return;
+                    // }
                     
                 //Favorites Button
                 var liButton = document.createElement('li');
@@ -194,20 +246,138 @@ function getGenreTopRated() {
 
             };
 
+            var pageNumContainer = document.getElementById('page-dir');
+
             if (page > 1) {
                 var previousMovies = document.createElement('button');
-                previousMovies.classList.add('justify-content-center');
+                previousMovies.classList.add('btn', 'btn-danger')
                 previousMovies.id = 'back-button';
                 previousMovies.innerHTML = 'Back';
-                document.body.appendChild(previousMovies);
+                pageNumContainer.appendChild(previousMovies);
         }
 
                 //More movies button
                 var moreMovies = document.createElement('button');
-                moreMovies.classList.add('text-center');
+                moreMovies.classList.add('btn', 'btn-danger');
                 moreMovies.id = 'more-button';
                 moreMovies.innerHTML = 'More';
-                document.body.appendChild(moreMovies);
+                pageNumContainer.appendChild(moreMovies);
 
     })
 };
+
+function getFavorites() {
+
+    var cardsContainer = document.getElementById('formContainer');
+    if (cardsContainer.hasChildNodes()) {
+        while (cardsContainer.firstChild) {
+            cardsContainer.removeChild(cardsContainer.firstChild);
+          }
+        };
+        console.log(favoriteStorage);
+    for (i=0; i<favoriteStorage.length; i++) {
+
+        movieId = favoriteStorage[i];
+        var movieSearchUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`;
+        
+        fetch(movieSearchUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+
+            
+                //Creates information variables to plug into cards
+                var posterCode = data.poster_path;
+                var title = data.title;
+                var description = data.overview;
+                var date = data.release_date;
+                var rating = Math.floor(data.vote_average);
+                var id = data.id;
+            
+                //Creates Card form container
+                var card = document.createElement('div');
+                    card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'cardBox');
+                    card.style.width = '18rem';
+            
+                //Creates Image element
+                var image = document.createElement('img');
+                    image.classList.add('card-img-top', 'mt-3');
+                    image.src = `https://image.tmdb.org/t/p/original/${posterCode}`
+                            
+                //Creates Card body
+                var cardBody = document.createElement('div');
+                    cardBody.classList.add('card-body');
+            
+                //Creates title
+                var cardTitle = document.createElement('h5');
+                    cardTitle.classList.add('card-title');
+                    cardTitle.innerHTML = title;
+                                
+                //Creates description
+                var cardDescription = document.createElement('p');
+                    cardDescription.classList.add('card-text');
+                    cardDescription.innerHTML = description;
+                                
+                //Creates list form
+                var ul = document.createElement('ul');
+                    ul.classList.add('list-group', 'list-group-flush');
+            
+                //Creates list elements
+                var liDate = document.createElement('li');
+                    liDate.classList.add('list-group-item');
+                    liDate.innerHTML = `Date Released: ${date}`;
+                                
+                //Rating
+                var liRating = document.createElement('li');
+                    liRating.classList.add('list-group-item');
+                    liRating.innerHTML = `Rating: ${rating}/10`;
+                                
+                //Favorites Button
+                var liButton = document.createElement('li');
+                    liButton.classList.add('list-group-item');
+                var button = document.createElement('button');
+                    button.classList.add('btn', 'btn-dark', 'favorites-button');
+                    button.type = 'button';
+                    button.id = id;
+                    button.innerHTML = 'Add to favorites';
+                                
+                //Appends information into cards
+                card.appendChild(image);
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardDescription);
+                ul.appendChild(liDate);
+                ul.appendChild(liRating);
+                liButton.appendChild(button);
+                ul.appendChild(liButton);
+                card.appendChild(cardBody);
+                card.appendChild(ul);
+                cardsContainer.appendChild(card);
+
+        })
+    }
+};
+
+
+// var descriptionP = document.createElement('p');
+// var descriptionBtn = document.createElement('button');
+// descriptionBtn.classList.add('btn', 'btn-primary');
+// descriptionBtn.type = 'button';
+// descriptionBtn.setAttribute('data-bs-toggle', 'collapse');
+// descriptionBtn.setAttribute('data-bs-target', '#collapseExample');
+// descriptionBtn.setAttribute('aria-expanded', 'false');
+// descriptionBtn.setAttribute('aria-controls', 'collapseExample');
+// descriptionBtn.innerHTML = 'Description';
+
+// var descriptionBox = document.createElement('div');
+// descriptionBox.classList.add('collapse');
+// descriptionBox.id = 'collapseExample';
+
+// var descriptionText = document.createElement('div');
+// descriptionText.classList.add('card', 'card-body');
+// descriptionText.innerHTML(description);
+
+// descriptionP.appendChild(descriptionBtn);
+// descriptionBox.appendChild(descriptionText);
+// cardBody.appendChild(descriptionP);
+// cardBody.appendChild(descriptionBox)
