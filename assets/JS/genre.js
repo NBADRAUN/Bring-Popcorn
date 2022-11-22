@@ -121,7 +121,8 @@ function getGenreTopRated() {
 
     //Selects the card collection body
     var cardsContainer = document.getElementById('formContainer');
-
+    cardsContainer.classList.add('mx-2', 'mx-2');
+    
     //Gets rid of previous cards when selecting new genre
     if (cardsContainer.hasChildNodes()) {
     while (cardsContainer.firstChild) {
@@ -156,7 +157,7 @@ function getGenreTopRated() {
 
                 //Creates Card form container
                 var card = document.createElement('div');
-                    card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'bg-warning');
+                    card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'rounded');
                     card.style.width = '15rem';
                     card.style.border = '0.1rem solid black';
 
@@ -168,7 +169,7 @@ function getGenreTopRated() {
                 
                 //Creates Card body
                 var cardBody = document.createElement('div');
-                    cardBody.classList.add('card-body');
+                    cardBody.classList.add('card-body', 'rounded');
 
                 //Creates title
                 var cardTitle = document.createElement('h5');
@@ -176,15 +177,15 @@ function getGenreTopRated() {
                     cardTitle.innerHTML = title;
                     
                 //Creates description
-                var cardDescription = document.createElement('p');
-                    cardDescription.classList.add('card-text');
-                    cardDescription.innerHTML = description;
-                    cardDescription.style.fontSize = '0.8rem'
+                // var cardDescription = document.createElement('p');
+                //     cardDescription.classList.add('card-text');
+                //     cardDescription.innerHTML = description;
+                //     cardDescription.style.fontSize = '0.8rem';
                     
                 //Creates list form
                 var ul = document.createElement('ul');
-                    ul.classList.add('list-group', 'list-group-flush', 'mb-2', 'bg-light');
-                    ul.style.border = '0.1rem solid black';
+                    ul.classList.add('list-group', 'list-group-flush', 'mb-2');
+                    // ul.style.border = '0.1rem solid black';
                     
 
                 //Creates list elements
@@ -234,7 +235,7 @@ function getGenreTopRated() {
                 //Appends information into cards
                 card.appendChild(image);
                 cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardDescription);
+                // cardBody.appendChild(cardDescription);
                 ul.appendChild(liDate);
                 ul.appendChild(liRating);
                 liButton.appendChild(button);
@@ -268,7 +269,8 @@ function getGenreTopRated() {
 function getFavorites() {
 
     var cardsContainer = document.getElementById('formContainer');
-    if (cardsContainer.hasChildNodes()) {
+    cardsContainer.classList.add('mx-2', 'mx-2');
+        if (cardsContainer.hasChildNodes()) {
         while (cardsContainer.firstChild) {
             cardsContainer.removeChild(cardsContainer.firstChild);
           }
@@ -296,7 +298,7 @@ function getFavorites() {
             
                 //Creates Card form container
                 var card = document.createElement('div');
-                    card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'cardBox', 'bg-warning');
+                    card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'cardBox');
                     card.style.width = '15rem';
                     card.style.border = '0.1rem solid black';
 
@@ -316,15 +318,14 @@ function getFavorites() {
                     cardTitle.innerHTML = title;
                                 
                 //Creates description
-                var cardDescription = document.createElement('p');
-                    cardDescription.classList.add('card-text');
-                    cardDescription.innerHTML = description;
-                    cardDescription.style.fontSize = '0.8rem'
+                // var cardDescription = document.createElement('p');
+                //     cardDescription.classList.add('card-text');
+                //     cardDescription.innerHTML = description;
+                //     cardDescription.style.fontSize = '0.8rem'
                                 
                 //Creates list form
                 var ul = document.createElement('ul');
                     ul.classList.add('list-group', 'list-group-flush', 'mb-2', 'bg-light');
-                    ul.style.border = '0.1rem solid black';
             
                 //Creates list elements
                 var liDate = document.createElement('li');
@@ -348,7 +349,7 @@ function getFavorites() {
                 //Appends information into cards
                 card.appendChild(image);
                 cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardDescription);
+                // cardBody.appendChild(cardDescription);
                 ul.appendChild(liDate);
                 ul.appendChild(liRating);
                 liButton.appendChild(button);
