@@ -18,6 +18,7 @@ var genreListUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiK
 
 //Favorites Storage
 var favoriteStorage = [];
+var favoriteData;
 
 //Event Listener for genre selection
 var genreSelection = '';
@@ -26,8 +27,9 @@ var page = 1;
 //Calls function to collect favorites from localStorage
 function init() {
     //Grabs data from localStorage via key
+    console.log(favoriteData);
     favoriteData = localStorage.getItem('favorite');
-
+    console.log(favoriteData);
     //Checks if localStorage is empty
     if (favoriteData !== null) {
         //Splits localStorage into array of numbers and saves as global variable
@@ -38,6 +40,13 @@ function init() {
 
 //Calls function to pull localStorage
 init();
+
+//Reloads the page
+function pageReload() {
+    clearBtn = document.getElementById('clear-movies');
+    clearBtn.remove();
+    location.reload();
+}
 
 //Event listener for all buttons
 document.addEventListener('click', function(event) {
@@ -70,10 +79,27 @@ document.addEventListener('click', function(event) {
         if (!favoriteStorage.includes(event.target.id)) {
             favoriteStorage.push(event.target.id);
             localStorage.setItem('favorite', favoriteStorage);
+            event.target.classList.add('bg-success');
+            event.target.innerHTML = 'Saved!'
 
         } else {
+            event.target.classList.add('bg-danger')
+            event.target.innerHTML = 'Already saved!'
             return;
         };
+
+        //Deletes saved movies
+    } else if (event.target.classList.contains('remove-button')) {
+        localStorage.removeItem('favorite');
+        event.target.classList.add('bg-success');
+        event.target.innerHTML = 'Abbra Cadabra!'
+        var cardsContainer = document.getElementById('formContainer');
+        if (cardsContainer.hasChildNodes()) {
+            while (cardsContainer.firstChild) {
+                cardsContainer.removeChild(cardsContainer.firstChild);
+              }
+            };
+        setTimeout(pageReload, 1000);
 
         //If first page remove More button
     } else if (event.target.id == 'more-button' && page == 1) {
@@ -99,6 +125,10 @@ document.addEventListener('click', function(event) {
 
         //Display favorited movies button
     } else if (event.target.id == 'display-favorites') {
+        favoriteData = localStorage.getItem('favorite');
+        if (favoriteData == null) {
+            return;
+        } else {
         page = 1;
         var more = document.getElementById('more-button');
         var back = document.getElementById('back-button');
@@ -113,7 +143,7 @@ document.addEventListener('click', function(event) {
         } else {
             getFavorites();
         }
-    }
+    }}
 });
 
 /* ------Top-rated movies by genre------*/
@@ -121,7 +151,7 @@ function getGenreTopRated() {
 
     //Selects the card collection body
     var cardsContainer = document.getElementById('formContainer');
-    cardsContainer.classList.add('mx-2', 'mx-2');
+    cardsContainer.classList.add('mx-2');
     
     //Gets rid of previous cards when selecting new genre
     if (cardsContainer.hasChildNodes()) {
@@ -157,7 +187,7 @@ function getGenreTopRated() {
 
                 //Creates Card form container
                 var card = document.createElement('div');
-                    card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'rounded');
+                    card.classList.add('card', 'text-center', 'mx-2', 'my-2');
                     card.style.width = '15rem';
                     card.style.border = '0.1rem solid black';
 
@@ -169,7 +199,7 @@ function getGenreTopRated() {
                 
                 //Creates Card body
                 var cardBody = document.createElement('div');
-                    cardBody.classList.add('card-body', 'rounded');
+                    cardBody.classList.add('card-body');
 
                 //Creates title
                 var cardTitle = document.createElement('h5');
@@ -177,10 +207,10 @@ function getGenreTopRated() {
                     cardTitle.innerHTML = title;
                     
                 //Creates description
-                // var cardDescription = document.createElement('p');
-                //     cardDescription.classList.add('card-text');
-                //     cardDescription.innerHTML = description;
-                //     cardDescription.style.fontSize = '0.8rem';
+                var cardDescription = document.createElement('p');
+                    cardDescription.classList.add('card-text');
+                    cardDescription.innerHTML = description;
+                    cardDescription.style.fontSize = '0.8rem';
                     
                 //Creates list form
                 var ul = document.createElement('ul');
@@ -195,33 +225,33 @@ function getGenreTopRated() {
                     
                 //Rating
                 var liRating = document.createElement('li');
-                    liRating.classList.add('list-group-item');
-                    liRating.innerHTML = `Rating: ${rating}/10`;
+                    liRating.classList.add('list-group-item', 'text-warning');
+                    // liRating.innerHTML = `Rating: ${rating}/10`;
 
                     //Stars, Stars, Stars!
-                    // if (rating === 10) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
-                    // } else if (rating === 9) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
-                    // } else if (rating === 8) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
-                    // } else if (rating === 7) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
-                    // } else if (rating === 6) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
-                    // } else if (rating === 5) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    // } else if (rating === 4) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    // } else if (rating === 3) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    // } else if (rating === 2) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    // } else if (rating === 1) {
-                    //     liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    // } else {
-                    //     return;
-                    // }
+                    if (rating === 10) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
+                    } else if (rating === 9) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
+                    } else if (rating === 8) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
+                    } else if (rating === 7) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
+                    } else if (rating === 6) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 5) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 4) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 3) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 2) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 1) {
+                        liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else {
+                        
+                    }
                     
                 //Favorites Button
                 var liButton = document.createElement('li');
@@ -235,7 +265,7 @@ function getGenreTopRated() {
                 //Appends information into cards
                 card.appendChild(image);
                 cardBody.appendChild(cardTitle);
-                // cardBody.appendChild(cardDescription);
+                cardBody.appendChild(cardDescription);
                 ul.appendChild(liDate);
                 ul.appendChild(liRating);
                 liButton.appendChild(button);
@@ -250,7 +280,7 @@ function getGenreTopRated() {
 
             if (page > 1) {
                 var previousMovies = document.createElement('button');
-                previousMovies.classList.add('btn', 'btn-danger')
+                previousMovies.classList.add('btn', 'btn-danger');
                 previousMovies.id = 'back-button';
                 previousMovies.innerHTML = 'Back';
                 pageNumContainer.appendChild(previousMovies);
@@ -267,7 +297,7 @@ function getGenreTopRated() {
 };
 
 function getFavorites() {
-
+    var body = document.querySelector('body');
     var cardsContainer = document.getElementById('formContainer');
     cardsContainer.classList.add('mx-2', 'mx-2');
         if (cardsContainer.hasChildNodes()) {
@@ -318,10 +348,10 @@ function getFavorites() {
                     cardTitle.innerHTML = title;
                                 
                 //Creates description
-                // var cardDescription = document.createElement('p');
-                //     cardDescription.classList.add('card-text');
-                //     cardDescription.innerHTML = description;
-                //     cardDescription.style.fontSize = '0.8rem'
+                var cardDescription = document.createElement('p');
+                    cardDescription.classList.add('card-text');
+                    cardDescription.innerHTML = description;
+                    cardDescription.style.fontSize = '0.8rem'
                                 
                 //Creates list form
                 var ul = document.createElement('ul');
@@ -334,32 +364,52 @@ function getFavorites() {
                                 
                 //Rating
                 var liRating = document.createElement('li');
-                    liRating.classList.add('list-group-item');
-                    liRating.innerHTML = `Rating: ${rating}/10`;
-                                
-                //Favorites Button
-                var liButton = document.createElement('li');
-                    liButton.classList.add('list-group-item');
-                var button = document.createElement('button');
-                    button.classList.add('btn', 'btn-dark', 'favorites-button');
-                    button.type = 'button';
-                    button.id = id;
-                    button.innerHTML = 'Add to favorites';
+                    liRating.classList.add('list-group-item', 'text-warning');
+                    
+                    //Stars, Stars, Stars!
+                    if (rating === 10) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
+                    } else if (rating === 9) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
+                    } else if (rating === 8) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
+                    } else if (rating === 7) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
+                    } else if (rating === 6) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 5) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 4) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 3) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 2) {
+                        liRating.innerHTML = '&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 1) {
+                        liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else {
+                        return;
+                    }
                                 
                 //Appends information into cards
                 card.appendChild(image);
                 cardBody.appendChild(cardTitle);
-                // cardBody.appendChild(cardDescription);
+                cardBody.appendChild(cardDescription);
                 ul.appendChild(liDate);
                 ul.appendChild(liRating);
-                liButton.appendChild(button);
-                ul.appendChild(liButton);
                 card.appendChild(cardBody);
                 card.appendChild(ul);
                 cardsContainer.appendChild(card);
-
+                
         })
     }
+
+        var button = document.createElement('button');
+        var removeContainer = document.getElementById('clear-movies');
+            button.classList.add('btn', 'btn-danger', 'remove-button', 'text-center', 'my-2');
+            button.type = 'button';
+            button.innerHTML = 'Clear My Movies';
+            removeContainer.appendChild(button);
 };
 
 
@@ -385,4 +435,4 @@ function getFavorites() {
 // descriptionP.appendChild(descriptionBtn);
 // descriptionBox.appendChild(descriptionText);
 // cardBody.appendChild(descriptionP);
-// cardBody.appendChild(descriptionBox)
+// cardBody.appendChild(descriptionBox);

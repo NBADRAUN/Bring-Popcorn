@@ -1,6 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #genreToggle {
     padding-left: 3rem !important;
     padding-right: 3rem !important;
 };
+
 
 

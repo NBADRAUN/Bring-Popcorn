@@ -11,8 +11,48 @@
     <link href="assets/css/genres.css" rel="stylesheet">
 </head>
 <body>
-  
-      <button class="btn btn-dark" id="display-favorites">Favorites</button>
+
+  <header>
+    <h1 class="d-flex justify-content-center align-items-center">Bring Popcorn!</h1>
+    <h5 class="d-flex justify-content-center align-items-center">a movie search website</h5>
+  </header>
+
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active px-4" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-4" href="#">Genres</a>
+          </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-4" href="#">Movie Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-4" href="#">Trailers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-4" href="#">Find a Theater Near Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-4" href="#" id="display-favorites">My Movies</a>
+          </li>
+      </div>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+    </div>
+  </nav>
 
       <div class="dropdown text-center my-3">
         <button class="btn btn-secondary dropdown-toggle" id="genreToggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,19 +80,21 @@
           <li><button class="dropdown-item" id="37" type="button">Western</button></li>
         </ul>
       </div>
-
+      <div class="d-flex justify-content-center" id="clear-movies"></div>
 <!--Movie Cards with image, title, description, rating, date, and save button-->
   <div class="row d-flex justify-content-center" id="formContainer">
 
   </div>
 
 <!--Back and Next buttons-->
-  <div class="d-flex justify-content-around mx-3" id="page-dir">
+  <div class="d-flex justify-content-center" id="page-dir">
 
   </div>
 
 <!--Add API attribution credits here-->
-
+<!-- <footer class="d-flex justify-content-center">
+  <img src="assets/images/TMDBLogo.png" class="w-25">
+</footer> -->
     <!-- Bootstrap Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
