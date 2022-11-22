@@ -1,5 +1,3 @@
-//MovieDb Api Key: d31ccc62253ac4e1f5fdf6fba2c7305e
-
 //API url to collect genre IDs: Requirement API key
 //https://api.themoviedb.org/3/genre/movie/list?api_key={Api_key}&language=en-US
 
@@ -12,12 +10,11 @@
 //API to request poster image of movie poster. Requirement: Movie ID
 //https://image.tmdb.org/t/p/original/{movie_id}
 
-//Steps to create genrePage functionality
-//1: Create event Listeners for genre selection
-//2: Plug in
-
 //Personal Api Key
 var apiKey = 'd31ccc62253ac4e1f5fdf6fba2c7305e';
+
+/* ------ API for genre IDS ------ */
+var genreListUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
 
 //Favorites Storage
 var favoriteStorage = [];
@@ -119,15 +116,13 @@ document.addEventListener('click', function(event) {
     }
 });
 
-/* ------ API for genre IDS ------ */
-var genreListUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
-
 /* ------Top-rated movies by genre------*/
 function getGenreTopRated() {
 
     //Selects the card collection body
     var cardsContainer = document.getElementById('formContainer');
-
+    cardsContainer.classList.add('mx-2', 'mx-2');
+    
     //Gets rid of previous cards when selecting new genre
     if (cardsContainer.hasChildNodes()) {
     while (cardsContainer.firstChild) {
@@ -162,17 +157,19 @@ function getGenreTopRated() {
 
                 //Creates Card form container
                 var card = document.createElement('div');
-                    card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'cardBox');
-                    card.style.width = '18rem';
+                    card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'rounded');
+                    card.style.width = '15rem';
+                    card.style.border = '0.1rem solid black';
 
                 //Creates Image element
                 var image = document.createElement('img');
                     image.classList.add('card-img-top', 'mt-3');
                     image.src = `https://image.tmdb.org/t/p/original/${posterCode}`
+                    image.style.border = '0.1rem solid black';
                 
                 //Creates Card body
                 var cardBody = document.createElement('div');
-                    cardBody.classList.add('card-body');
+                    cardBody.classList.add('card-body', 'rounded');
 
                 //Creates title
                 var cardTitle = document.createElement('h5');
@@ -180,18 +177,21 @@ function getGenreTopRated() {
                     cardTitle.innerHTML = title;
                     
                 //Creates description
-                var cardDescription = document.createElement('p');
-                    cardDescription.classList.add('card-text');
-                    cardDescription.innerHTML = description;
+                // var cardDescription = document.createElement('p');
+                //     cardDescription.classList.add('card-text');
+                //     cardDescription.innerHTML = description;
+                //     cardDescription.style.fontSize = '0.8rem';
                     
                 //Creates list form
                 var ul = document.createElement('ul');
-                    ul.classList.add('list-group', 'list-group-flush');
+                    ul.classList.add('list-group', 'list-group-flush', 'mb-2');
+                    // ul.style.border = '0.1rem solid black';
+                    
 
                 //Creates list elements
                 var liDate = document.createElement('li');
                     liDate.classList.add('list-group-item');
-                    liDate.innerHTML = `Date Released: ${date}`;
+                    liDate.innerHTML = `${date}`;
                     
                 //Rating
                 var liRating = document.createElement('li');
@@ -235,7 +235,7 @@ function getGenreTopRated() {
                 //Appends information into cards
                 card.appendChild(image);
                 cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardDescription);
+                // cardBody.appendChild(cardDescription);
                 ul.appendChild(liDate);
                 ul.appendChild(liRating);
                 liButton.appendChild(button);
@@ -269,7 +269,8 @@ function getGenreTopRated() {
 function getFavorites() {
 
     var cardsContainer = document.getElementById('formContainer');
-    if (cardsContainer.hasChildNodes()) {
+    cardsContainer.classList.add('mx-2', 'mx-2');
+        if (cardsContainer.hasChildNodes()) {
         while (cardsContainer.firstChild) {
             cardsContainer.removeChild(cardsContainer.firstChild);
           }
@@ -298,12 +299,14 @@ function getFavorites() {
                 //Creates Card form container
                 var card = document.createElement('div');
                     card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'cardBox');
-                    card.style.width = '18rem';
-            
+                    card.style.width = '15rem';
+                    card.style.border = '0.1rem solid black';
+
                 //Creates Image element
                 var image = document.createElement('img');
                     image.classList.add('card-img-top', 'mt-3');
-                    image.src = `https://image.tmdb.org/t/p/original/${posterCode}`
+                    image.src = `https://image.tmdb.org/t/p/original/${posterCode}`;
+                    image.style.border = '0.1rem solid black';
                             
                 //Creates Card body
                 var cardBody = document.createElement('div');
@@ -315,18 +318,19 @@ function getFavorites() {
                     cardTitle.innerHTML = title;
                                 
                 //Creates description
-                var cardDescription = document.createElement('p');
-                    cardDescription.classList.add('card-text');
-                    cardDescription.innerHTML = description;
+                // var cardDescription = document.createElement('p');
+                //     cardDescription.classList.add('card-text');
+                //     cardDescription.innerHTML = description;
+                //     cardDescription.style.fontSize = '0.8rem'
                                 
                 //Creates list form
                 var ul = document.createElement('ul');
-                    ul.classList.add('list-group', 'list-group-flush');
+                    ul.classList.add('list-group', 'list-group-flush', 'mb-2', 'bg-light');
             
                 //Creates list elements
                 var liDate = document.createElement('li');
                     liDate.classList.add('list-group-item');
-                    liDate.innerHTML = `Date Released: ${date}`;
+                    liDate.innerHTML = `${date}`;
                                 
                 //Rating
                 var liRating = document.createElement('li');
@@ -345,7 +349,7 @@ function getFavorites() {
                 //Appends information into cards
                 card.appendChild(image);
                 cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardDescription);
+                // cardBody.appendChild(cardDescription);
                 ul.appendChild(liDate);
                 ul.appendChild(liRating);
                 liButton.appendChild(button);
@@ -357,6 +361,7 @@ function getFavorites() {
         })
     }
 };
+
 
 
 // var descriptionP = document.createElement('p');
