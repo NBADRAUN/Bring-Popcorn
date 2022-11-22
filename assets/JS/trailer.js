@@ -24,7 +24,7 @@ var pickMovie = function () {
 
 var getTrailer = function () {
   var getMovieUrl = {
-    url: "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
+    url: "https://api-gate2.movieglu.com/filmsNowShowing/",
     method: "GET",
     timeout: 0,
     headers: {
