@@ -41,12 +41,12 @@ function init() {
 //Calls function to pull localStorage
 init();
 
-//Reloads the page
-function pageReload() {
-    clearBtn = document.getElementById('clear-movies');
-    clearBtn.remove();
-    location.reload();
-}
+// //Reloads the page
+// function pageReload() {
+//     clearBtn = document.getElementById('clear-movies');
+//     clearBtn.remove();
+//     location.reload();
+// }
 
 //Event listener for all buttons
 document.addEventListener('click', function(event) {
@@ -60,7 +60,7 @@ document.addEventListener('click', function(event) {
         page = 1;
         genreSelection = event.target.id;
         var more = document.getElementById('more-button');
-        var back = document.getElementById('back-button')
+        var back = document.getElementById('back-button');
         if (more != null && back != null) {
             more.remove();
             back.remove();
@@ -88,19 +88,6 @@ document.addEventListener('click', function(event) {
             return;
         };
 
-        //Deletes saved movies
-    } else if (event.target.classList.contains('remove-button')) {
-        localStorage.removeItem('favorite');
-        event.target.classList.add('bg-success');
-        event.target.innerHTML = 'Abbra Cadabra!'
-        var cardsContainer = document.getElementById('formContainer');
-        if (cardsContainer.hasChildNodes()) {
-            while (cardsContainer.firstChild) {
-                cardsContainer.removeChild(cardsContainer.firstChild);
-              }
-            };
-        setTimeout(pageReload, 1000);
-
         //If first page remove More button
     } else if (event.target.id == 'more-button' && page == 1) {
         page ++; 
@@ -122,32 +109,17 @@ document.addEventListener('click', function(event) {
         moreButton.remove();
         event.target.remove();
         getGenreTopRated();
-
-        //Display favorited movies button
-    } else if (event.target.id == 'display-favorites') {
-        favoriteData = localStorage.getItem('favorite');
-        if (favoriteData == null) {
-            return;
-        } else {
-        page = 1;
-        var more = document.getElementById('more-button');
-        var back = document.getElementById('back-button');
-        //Checks and deletes more and back buttons
-        if (more != null && back != null) {
-            more.remove();
-            back.remove();
-            getFavorites();
-        } else if (more !=null && back == null) {
-            more.remove();
-            getFavorites();
-        } else {
-            getFavorites();
-        }
-    }}
+    } 
 });
 
 /* ------Top-rated movies by genre------*/
 function getGenreTopRated() {
+
+    //Clear remove favorites button if it exists
+    var clear = document.getElementById('clear')
+    if (clear != null) {
+        clear.remove();
+    };
 
     //Selects the card collection body
     var cardsContainer = document.getElementById('formContainer');
@@ -280,7 +252,7 @@ function getGenreTopRated() {
 
             if (page > 1) {
                 var previousMovies = document.createElement('button');
-                previousMovies.classList.add('btn', 'btn-danger');
+                previousMovies.classList.add('btn', 'btn-danger', 'mx-3', 'my-3', 'w-25');
                 previousMovies.id = 'back-button';
                 previousMovies.innerHTML = 'Back';
                 pageNumContainer.appendChild(previousMovies);
@@ -288,131 +260,13 @@ function getGenreTopRated() {
 
                 //More movies button
                 var moreMovies = document.createElement('button');
-                moreMovies.classList.add('btn', 'btn-danger');
+                moreMovies.classList.add('btn', 'btn-success', 'mx-3', 'my-3', 'w-25');
                 moreMovies.id = 'more-button';
                 moreMovies.innerHTML = 'More';
                 pageNumContainer.appendChild(moreMovies);
 
     })
 };
-
-function getFavorites() {
-    var body = document.querySelector('body');
-    var cardsContainer = document.getElementById('formContainer');
-    cardsContainer.classList.add('mx-2', 'mx-2');
-        if (cardsContainer.hasChildNodes()) {
-        while (cardsContainer.firstChild) {
-            cardsContainer.removeChild(cardsContainer.firstChild);
-          }
-        };
-        console.log(favoriteStorage);
-    for (i=0; i<favoriteStorage.length; i++) {
-
-        movieId = favoriteStorage[i];
-        var movieSearchUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`;
-        
-        fetch(movieSearchUrl)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-
-            
-                //Creates information variables to plug into cards
-                var posterCode = data.poster_path;
-                var title = data.title;
-                var description = data.overview;
-                var date = data.release_date;
-                var rating = Math.floor(data.vote_average);
-                var id = data.id;
-            
-                //Creates Card form container
-                var card = document.createElement('div');
-                    card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'cardBox');
-                    card.style.width = '15rem';
-                    card.style.border = '0.1rem solid black';
-
-                //Creates Image element
-                var image = document.createElement('img');
-                    image.classList.add('card-img-top', 'mt-3');
-                    image.src = `https://image.tmdb.org/t/p/original/${posterCode}`;
-                    image.style.border = '0.1rem solid black';
-                            
-                //Creates Card body
-                var cardBody = document.createElement('div');
-                    cardBody.classList.add('card-body');
-            
-                //Creates title
-                var cardTitle = document.createElement('h5');
-                    cardTitle.classList.add('card-title');
-                    cardTitle.innerHTML = title;
-                                
-                //Creates description
-                var cardDescription = document.createElement('p');
-                    cardDescription.classList.add('card-text');
-                    cardDescription.innerHTML = description;
-                    cardDescription.style.fontSize = '0.8rem'
-                                
-                //Creates list form
-                var ul = document.createElement('ul');
-                    ul.classList.add('list-group', 'list-group-flush', 'mb-2', 'bg-light');
-            
-                //Creates list elements
-                var liDate = document.createElement('li');
-                    liDate.classList.add('list-group-item');
-                    liDate.innerHTML = `${date}`;
-                                
-                //Rating
-                var liRating = document.createElement('li');
-                    liRating.classList.add('list-group-item', 'text-warning');
-                    
-                    //Stars, Stars, Stars!
-                    if (rating === 10) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
-                    } else if (rating === 9) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
-                    } else if (rating === 8) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
-                    } else if (rating === 7) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
-                    } else if (rating === 6) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
-                    } else if (rating === 5) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    } else if (rating === 4) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    } else if (rating === 3) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    } else if (rating === 2) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    } else if (rating === 1) {
-                        liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    } else {
-                        return;
-                    }
-                                
-                //Appends information into cards
-                card.appendChild(image);
-                cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardDescription);
-                ul.appendChild(liDate);
-                ul.appendChild(liRating);
-                card.appendChild(cardBody);
-                card.appendChild(ul);
-                cardsContainer.appendChild(card);
-                
-        })
-    }
-
-        var button = document.createElement('button');
-        var removeContainer = document.getElementById('clear-movies');
-            button.classList.add('btn', 'btn-danger', 'remove-button', 'text-center', 'my-2');
-            button.type = 'button';
-            button.innerHTML = 'Clear My Movies';
-            removeContainer.appendChild(button);
-};
-
-
 
 // var descriptionP = document.createElement('p');
 // var descriptionBtn = document.createElement('button');
