@@ -27,7 +27,6 @@ searchBtn.addEventListener('click', function(event) {
     event.preventDefault();
     var movieNameInput = document.getElementById('name-search').value;
     var encodedName = encodeURIComponent(movieNameInput);
-    console.log(movieNameInput);
     if (movieNameInput !== '') {
         searchMovies(encodedName);
     }
@@ -39,7 +38,6 @@ document.addEventListener('click', function(event) {
         event.preventDefault();
         var movieNameInput = document.getElementById('name-search').value;
         var encodedName = encodeURIComponent(movieNameInput);
-        console.log(movieNameInput);
         if (movieNameInput !== '') {
         searchMovies(encodedName);
     }
@@ -66,15 +64,19 @@ function searchMovies(nameOfMovie) {
 
     fetch(searchUrl)
     .then( function(response) {
+        if (response.ok) {
         return response.json();
+        } else {
+            window.location.href = 'Name of 404 html file'
+        }
     })
     .then( function(data) {
         console.log(data);
-        
+
     //Selects the card collection body
     var cardsContainer = document.getElementById('formContainer');
     cardsContainer.classList.add('mx-2');
-    
+
     //Gets rid of previous cards when selecting new genre
     if (cardsContainer.hasChildNodes()) {
     while (cardsContainer.firstChild) {
@@ -82,7 +84,7 @@ function searchMovies(nameOfMovie) {
       }
     };
         for (i=0; i<data.results.length; i++) {
-
+            if (posterCode !== null) {
             //Creates information variables to plug into cards
             var posterCode = data.results[i].poster_path;
             var title = data.results[i].title;
@@ -102,6 +104,12 @@ function searchMovies(nameOfMovie) {
                 image.classList.add('card-img-top', 'mt-3');
                 image.src = `https://image.tmdb.org/t/p/original/${posterCode}`
                 image.style.border = '0.1rem solid black';
+                //Checks if poster image exists from data
+                if (image.src === 'https://image.tmdb.org/t/p/original/null') {
+                    console.log('image is null');
+                    var imageNone = document.getElementById('noImage').src
+                    image.src = imageNone;
+                }
             
             //Creates Card body
             var cardBody = document.createElement('div');
@@ -128,6 +136,10 @@ function searchMovies(nameOfMovie) {
             var liDate = document.createElement('li');
                 liDate.classList.add('list-group-item');
                 liDate.innerHTML = `${date}`;
+                //Checking if date exists from data
+                if (date == '') {
+                    liDate.innerHTML = 'Currently not available'
+                }
                 
             //Rating
             var liRating = document.createElement('li');
@@ -156,7 +168,8 @@ function searchMovies(nameOfMovie) {
                 } else if (rating === 1) {
                     liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                 } else {
-                    
+                    liRating.classList.remove('text-warning');
+                    liRating.innerHTML = 'Currently not available'
                 }
                 
             //Favorites Button
@@ -180,6 +193,6 @@ function searchMovies(nameOfMovie) {
             card.appendChild(ul);
             cardsContainer.appendChild(card);
 
-        };  
+        }};  
     })
 };

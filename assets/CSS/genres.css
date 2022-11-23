@@ -25,5 +25,18 @@ h1 {
     color: #780116;
 }
 
+.searchContainer {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#name-search {
+    text-align: center;
+}
+
+#search-movies {
+    
+}
+
 
 

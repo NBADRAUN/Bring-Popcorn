@@ -232,7 +232,7 @@ function getGenreTopRated() {
                     button.classList.add('btn', 'btn-dark', 'favorites-button');
                     button.type = 'button';
                     button.id = id;
-                    button.innerHTML = 'Add to favorites';
+                    button.innerHTML = 'Add to watch list';
                     
                 //Appends information into cards
                 card.appendChild(image);
@@ -280,25 +280,7 @@ searchBtn.addEventListener('click', function(event) {
 
 });
 
-function searchMovies(nameOfMovie) {
-    var searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${nameOfMovie}%7D&page=1&include_adult=false`
-
-    fetch(searchUrl)
-    .then( function(response) {
-        return response.json();
-    })
-    .then( function(data) {
-        console.log(data);
-
-    })
-};
-
-
-
-
-
-
-
+//Button for displaying description
 // var descriptionP = document.createElement('p');
 // var descriptionBtn = document.createElement('button');
 // descriptionBtn.classList.add('btn', 'btn-primary');

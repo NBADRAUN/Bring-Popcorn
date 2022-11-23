@@ -51,14 +51,16 @@
             </nav>
 
   <!--Search movies-->
-    <form class="d-flex w-25" role="search">
+    <form class="searchContainer w-50 mt-3" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="name-search">
-        <button class="btn btn-outline-success" type="submit" id="search-movies">Search</button>
+        <button class="btn btn-outline-success my-2" type="submit" id="search-movies">Find Movies</button>
       </form>
 
     <!--Container for movie cards-->
       <div class="row d-flex justify-content-center" id="formContainer"></div>
 
+    <!--Image unavailable image-->
+    <img src="assets/images/ImageUnav.png" class="d-none" id="noImage">
       </body>
       <script src="assets/js/moviesearch.js"></script>
       </html>
