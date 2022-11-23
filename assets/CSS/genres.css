@@ -2,12 +2,28 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+};
 
 #genreToggle {
     padding-left: 3rem !important;
     padding-right: 3rem !important;
 };
+
+body {
+    background-image: url("../images/391696-1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header {
+    width: 300px;
+    margin: 0 auto;
+    
+}
+
+h1 {
+    color: #780116;
+}
 
 
 

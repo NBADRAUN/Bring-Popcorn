@@ -268,6 +268,37 @@ function getGenreTopRated() {
     })
 };
 
+var searchBtn = document.getElementById('search-movies');
+
+searchBtn.addEventListener('click', function(event) {
+    //URL Encoding search input
+    event.preventDefault();
+    var movieNameInput = document.getElementById('name-search').value;
+    var encodedName = encodeURIComponent(movieNameInput);
+    console.log(encodedName);
+    searchMovies(encodedName);
+
+});
+
+function searchMovies(nameOfMovie) {
+    var searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${nameOfMovie}%7D&page=1&include_adult=false`
+
+    fetch(searchUrl)
+    .then( function(response) {
+        return response.json();
+    })
+    .then( function(data) {
+        console.log(data);
+
+    })
+};
+
+
+
+
+
+
+
 // var descriptionP = document.createElement('p');
 // var descriptionBtn = document.createElement('button');
 // descriptionBtn.classList.add('btn', 'btn-primary');

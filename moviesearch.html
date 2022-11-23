@@ -16,7 +16,7 @@
     <h5 class="d-flex justify-content-center align-items-center">a movie search website</h5>
   </header>
 
-  <nav class="navbar navbar-expand-lg bg-light">
+  <nav class="navbar navbar-expand-lg bg-light justify-content-center">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -24,7 +24,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
           <li class="nav-item">
             <a class="nav-link active px-4" aria-current="page" href="index.html">Home</a>
           </li>
@@ -38,29 +38,26 @@
             <a class="nav-link px-4" href="theaters.html">Find a Theater Near Me</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link px-4" href="#" id="display-favorites">My Movies</a> <!--Make page just for saved movies???-->
+            <a class="nav-link px-4" href="moviesearch">Search Movies</a>
           </li>
-      </div>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+          <li class="nav-item">
+            <a class="nav-link px-4" href="mymovies.html" id="display-favorites">My Movies</a>
+          </li>
+        </div>
     </div>
     </div>
   </nav>
 
-<!--Clear movies button-->  
-    <div class="d-flex justify-content-center" id="clear-movies"></div>
-<!--Movie Cards with image, title, description, rating, date, and save button-->
-  <div class="row d-flex justify-content-center" id="formContainer">
+  <!--Search movies-->
+    <form class="d-flex w-25" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="name-search">
+        <button class="btn btn-outline-success" type="submit" id="search-movies">Search</button>
+      </form>
 
-  </div>
+    <!--Container for movie cards-->
+      <div class="row d-flex justify-content-center" id="formContainer"></div>
 
-    <!-- Bootstrap Javascript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
+      </body>
+      <script src="assets/js/moviesearch.js"></script>
+      </html>
 
-
-<!-- Custom Javascript -->
-<script src="assets/js/mymovies.js"></script>
-</html>
