@@ -40,7 +40,7 @@ function getPopular() {
           //card.style.border = '0.1rem solid black';
 
         var card = document.createElement('div');
-          card.classList.add('col-5');
+          card.classList.add('col-5', 'text-center', 'mx-2', 'my-2', 'bg-dark');
           card.style.width = '20rem';
           card.style.border = '0.1rem solid black';
 
@@ -108,10 +108,6 @@ function getPopular() {
         //card.appendChild(body);
         card.appendChild(ul);
         formContainer.appendChild(card); 
-
-        
-
-
         
     }
   });
