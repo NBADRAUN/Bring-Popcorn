@@ -10,14 +10,12 @@ var favoriteData;
 
 function init() {
     //Grabs data from localStorage via key
-    console.log(favoriteData);
     favoriteData = localStorage.getItem('favorite');
-    console.log(favoriteData);
+
     //Checks if localStorage is empty
     if (favoriteData !== null) {
         //Splits localStorage into array of numbers and saves as global variable
         favoriteStorage = favoriteData.split(",");
-        console.log(favoriteStorage);
     };
 };
 
@@ -71,7 +69,6 @@ function searchMovies(nameOfMovie) {
         }
     })
     .then( function(data) {
-        console.log(data);
 
     //Selects the card collection body
     var cardsContainer = document.getElementById('formContainer');
@@ -106,7 +103,6 @@ function searchMovies(nameOfMovie) {
                 image.style.border = '0.1rem solid black';
                 //Checks if poster image exists from data
                 if (image.src === 'https://image.tmdb.org/t/p/original/null') {
-                    console.log('image is null');
                     var imageNone = document.getElementById('noImage').src
                     image.src = imageNone;
                 }

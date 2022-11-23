@@ -23,14 +23,12 @@ if (event.target.classList.contains('remove-button')) {
 //Grabs localStorage information
 function init() {
     //Grabs data from localStorage via key
-    console.log(favoriteData);
     favoriteData = localStorage.getItem('favorite');
-    console.log(favoriteData);
+
     //Checks if localStorage is empty
     if (favoriteData !== null) {
         //Splits localStorage into array of numbers and saves as global variable
         favoriteStorage = favoriteData.split(",");
-        console.log(favoriteStorage);
         getFavorites();
     };
 };
@@ -46,7 +44,6 @@ function getFavorites() {
             cardsContainer.removeChild(cardsContainer.firstChild);
           }
         };
-        console.log(favoriteStorage);
     for (i=0; i<favoriteStorage.length; i++) {
 
         //Grabs movie id from localStorage and inserts into url

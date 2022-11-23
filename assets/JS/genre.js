@@ -27,14 +27,13 @@ var page = 1;
 //Calls function to collect favorites from localStorage
 function init() {
     //Grabs data from localStorage via key
-    console.log(favoriteData);
     favoriteData = localStorage.getItem('favorite');
-    console.log(favoriteData);
+
     //Checks if localStorage is empty
     if (favoriteData !== null) {
         //Splits localStorage into array of numbers and saves as global variable
         favoriteStorage = favoriteData.split(",");
-        console.log(favoriteStorage);
+
     };
 };
 
@@ -144,7 +143,6 @@ function getGenreTopRated() {
         
         }) //Requests the data from the API
         .then(function (data) {
-            console.log(data);
 
             //Grabs information and builds cards for each movie
             for (i=0; i<data.results.length; i++) {
@@ -182,7 +180,7 @@ function getGenreTopRated() {
                 var cardDescription = document.createElement('p');
                     cardDescription.classList.add('card-text');
                     cardDescription.innerHTML = description;
-                    cardDescription.style.fontSize = '0.8rem';
+                    cardDescription.style.fontSize = '1rem';
                     
                 //Creates list form
                 var ul = document.createElement('ul');
@@ -268,18 +266,6 @@ function getGenreTopRated() {
     })
 };
 
-var searchBtn = document.getElementById('search-movies');
-
-searchBtn.addEventListener('click', function(event) {
-    //URL Encoding search input
-    event.preventDefault();
-    var movieNameInput = document.getElementById('name-search').value;
-    var encodedName = encodeURIComponent(movieNameInput);
-    console.log(encodedName);
-    searchMovies(encodedName);
-
-});
-
 //Button for displaying description
 // var descriptionP = document.createElement('p');
 // var descriptionBtn = document.createElement('button');
@@ -299,7 +285,7 @@ searchBtn.addEventListener('click', function(event) {
 // descriptionText.classList.add('card', 'card-body');
 // descriptionText.innerHTML(description);
 
-// descriptionP.appendChild(descriptionBtn);
+// .appendChild(descriptionBtn);
 // descriptionBox.appendChild(descriptionText);
 // cardBody.appendChild(descriptionP);
 // cardBody.appendChild(descriptionBox);
