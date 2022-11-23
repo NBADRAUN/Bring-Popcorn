@@ -179,7 +179,7 @@ function searchMovies(nameOfMovie) {
                 button.classList.add('btn', 'btn-dark', 'favorites-button');
                 button.type = 'button';
                 button.id = id;
-                button.innerHTML = 'Add to favorites';
+                button.innerHTML = 'Add to Watchlist';
                 
             //Appends information into cards
             card.appendChild(image);

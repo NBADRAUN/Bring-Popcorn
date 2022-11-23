@@ -28,15 +28,46 @@ h1 {
 .searchContainer {
     margin: 0 auto;
     text-align: center;
+    margin-bottom: 3rem;
 }
 
 #name-search {
     text-align: center;
 }
 
-#search-movies {
-    
+.searchInput {
+    border: 0.1rem solid black;
+    text-align: center;
+    border-radius: 1rem;
 }
 
+.searchInput:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: black;
+}
+.card {
+    box-shadow: 1rem 1rem 1rem black;
+    background-color: #f6e2b9;
+    opacity: 0.8;
+    border-radius: 1rem;
+}
 
+.card:hover {
+    margin: 1rem;
+    opacity: 1;
+}
+
+.btn {
+    background-color: #F7B538;
+    box-shadow: 0.2rem 0.2rem 0.2rem black;
+}
+.btn:hover {
+   font-weight:bold;
+}
+
+.btn:focus {
+    outline: none !important;
+    box-shadow: none;
+}
 
