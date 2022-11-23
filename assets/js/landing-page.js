@@ -3,12 +3,6 @@
 // API Key 
 var apiKey = '95a7e5127d0a488c78d9f99eed7a76bd';
 
-// query URL
-var landingpURL = 'https://api.themoviedb.org/3/movie/list?api_key=${apiKey}&language=en-US'
-
-
-
-
 
 function getPopular() {
   var mostPopURL = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
@@ -35,6 +29,7 @@ function getPopular() {
       var movieId = data.results[i].id;
       var movieDescr = data.results[i].overview;
       var movieRating = Math.floor(data.results[i].vote_average); 
+      var movieDate = data.results[i].release_date;
     
 
         // create container
@@ -59,11 +54,7 @@ function getPopular() {
         title.classList.add('card-title');
         title.innerHTML = movieTitle;
 
-        // create description 
-        var description = document.createElement('p');
-        description.classList.add('card-text');
-        description.innerHTML = movieDescr;
-        description.style.fontSize = '0.8rem';
+        
 
 
         // create rating 
@@ -75,10 +66,29 @@ function getPopular() {
         var ul = document.createElement('ul');
         ul.classList.add('list-group', 'list-group-flush', 'mb-2');
 
+        // create date
+        var date = document.createElement('li');
+        date.classList.add('list-group-item');
+        date.innerHTML = `${movieDate}`;
+
+        // create favorites button
+        var movieBtn = document.createElement('li');
+        movieBtn.classList.add('list-group-item');
+        var button = document.createElement('button');
+        button.classList.add('btn', 'btn-dark', 'favorites-button');
+        button.type = 'button';
+        button.id = movieId;
+        button.innerHTML = 'Add to favorites';
+
+
         card.appendChild(image);
         card.appendChild(title);
-        body.appendChild(rating);
+        ul.appendChild(date);
+        ul.appendChild(rating);
+        movieBtn.appendChild(button);
+        ul.appendChild(movieBtn);
         card.appendChild(body);
+        card.appendChild(ul);
         formContainer.appendChild(card);
         
     }
