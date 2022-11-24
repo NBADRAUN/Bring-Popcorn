@@ -27,14 +27,13 @@ var page = 1;
 //Calls function to collect favorites from localStorage
 function init() {
     //Grabs data from localStorage via key
-    console.log(favoriteData);
     favoriteData = localStorage.getItem('favorite');
-    console.log(favoriteData);
+
     //Checks if localStorage is empty
     if (favoriteData !== null) {
         //Splits localStorage into array of numbers and saves as global variable
         favoriteStorage = favoriteData.split(",");
-        console.log(favoriteStorage);
+
     };
 };
 
@@ -144,7 +143,6 @@ function getGenreTopRated() {
         
         }) //Requests the data from the API
         .then(function (data) {
-            console.log(data);
 
             //Grabs information and builds cards for each movie
             for (i=0; i<data.results.length; i++) {
@@ -182,7 +180,7 @@ function getGenreTopRated() {
                 var cardDescription = document.createElement('p');
                     cardDescription.classList.add('card-text');
                     cardDescription.innerHTML = description;
-                    cardDescription.style.fontSize = '0.8rem';
+                    cardDescription.style.fontSize = '1rem';
                     
                 //Creates list form
                 var ul = document.createElement('ul');
@@ -193,11 +191,11 @@ function getGenreTopRated() {
                 //Creates list elements
                 var liDate = document.createElement('li');
                     liDate.classList.add('list-group-item');
-                    liDate.innerHTML = `${date}`;
+                    liDate.innerHTML = `Release Date: ${date}`;
                     
                 //Rating
                 var liRating = document.createElement('li');
-                    liRating.classList.add('list-group-item', 'text-warning');
+                    liRating.classList.add('list-group-item');
                     // liRating.innerHTML = `Rating: ${rating}/10`;
 
                     //Stars, Stars, Stars!
@@ -222,7 +220,7 @@ function getGenreTopRated() {
                     } else if (rating === 1) {
                         liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else {
-                        
+                        liRating.innerHTML = 'Currently not available'
                     }
                     
                 //Favorites Button
@@ -232,7 +230,7 @@ function getGenreTopRated() {
                     button.classList.add('btn', 'btn-dark', 'favorites-button');
                     button.type = 'button';
                     button.id = id;
-                    button.innerHTML = 'Add to favorites';
+                    button.innerHTML = 'Add to watch list';
                     
                 //Appends information into cards
                 card.appendChild(image);
@@ -267,57 +265,3 @@ function getGenreTopRated() {
 
     })
 };
-
-var searchBtn = document.getElementById('search-movies');
-
-searchBtn.addEventListener('click', function(event) {
-    //URL Encoding search input
-    event.preventDefault();
-    var movieNameInput = document.getElementById('name-search').value;
-    var encodedName = encodeURIComponent(movieNameInput);
-    console.log(encodedName);
-    searchMovies(encodedName);
-
-});
-
-function searchMovies(nameOfMovie) {
-    var searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${nameOfMovie}%7D&page=1&include_adult=false`
-
-    fetch(searchUrl)
-    .then( function(response) {
-        return response.json();
-    })
-    .then( function(data) {
-        console.log(data);
-
-    })
-};
-
-
-
-
-
-
-
-// var descriptionP = document.createElement('p');
-// var descriptionBtn = document.createElement('button');
-// descriptionBtn.classList.add('btn', 'btn-primary');
-// descriptionBtn.type = 'button';
-// descriptionBtn.setAttribute('data-bs-toggle', 'collapse');
-// descriptionBtn.setAttribute('data-bs-target', '#collapseExample');
-// descriptionBtn.setAttribute('aria-expanded', 'false');
-// descriptionBtn.setAttribute('aria-controls', 'collapseExample');
-// descriptionBtn.innerHTML = 'Description';
-
-// var descriptionBox = document.createElement('div');
-// descriptionBox.classList.add('collapse');
-// descriptionBox.id = 'collapseExample';
-
-// var descriptionText = document.createElement('div');
-// descriptionText.classList.add('card', 'card-body');
-// descriptionText.innerHTML(description);
-
-// descriptionP.appendChild(descriptionBtn);
-// descriptionBox.appendChild(descriptionText);
-// cardBody.appendChild(descriptionP);
-// cardBody.appendChild(descriptionBox);
