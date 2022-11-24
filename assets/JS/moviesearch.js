@@ -16,9 +16,11 @@ function init() {
     if (favoriteData !== null) {
         //Splits localStorage into array of numbers and saves as global variable
         favoriteStorage = favoriteData.split(",");
+        console.log(favoriteStorage);
     };
 };
 
+init();
 //Search button event listener 
 searchBtn.addEventListener('click', function(event) {
     //URL Encoding search input
@@ -42,16 +44,15 @@ document.addEventListener('click', function(event) {
 
     } else if (event.target.classList.contains('favorites-button')) {
         //Checks if movie is already in favorites
-    if (!favoriteStorage.includes(event.target.id)) {
+    if (favoriteStorage.includes(event.target.id)) {
+        event.target.classList.add('bg-danger')
+        event.target.innerHTML = 'Already saved!'
+    } else {
         favoriteStorage.push(event.target.id);
+        console.log(favoriteStorage);
         localStorage.setItem('favorite', favoriteStorage);
         event.target.classList.add('bg-success');
         event.target.innerHTML = 'Saved!'
-
-    } else {
-        event.target.classList.add('bg-danger')
-        event.target.innerHTML = 'Already saved!'
-        return;
     };
 }
     
@@ -131,7 +132,7 @@ function searchMovies(nameOfMovie) {
             //Creates list elements
             var liDate = document.createElement('li');
                 liDate.classList.add('list-group-item');
-                liDate.innerHTML = `${date}`;
+                liDate.innerHTML = `Release Date: ${date}`;
                 //Checking if date exists from data
                 if (date == '') {
                     liDate.innerHTML = 'Currently not available'
@@ -139,7 +140,7 @@ function searchMovies(nameOfMovie) {
                 
             //Rating
             var liRating = document.createElement('li');
-                liRating.classList.add('list-group-item', 'text-warning');
+                liRating.classList.add('list-group-item');
                 // liRating.innerHTML = `Rating: ${rating}/10`;
 
                 //Stars, Stars, Stars!
@@ -164,7 +165,6 @@ function searchMovies(nameOfMovie) {
                 } else if (rating === 1) {
                     liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                 } else {
-                    liRating.classList.remove('text-warning');
                     liRating.innerHTML = 'Currently not available'
                 }
                 

@@ -99,11 +99,11 @@ function getFavorites() {
                 //Creates list elements
                 var liDate = document.createElement('li');
                     liDate.classList.add('list-group-item');
-                    liDate.innerHTML = `${date}`;
+                    liDate.innerHTML = `Release Date: ${date}`;
                                 
                 //Rating
                 var liRating = document.createElement('li');
-                    liRating.classList.add('list-group-item', 'text-warning');
+                    liRating.classList.add('list-group-item');
                     
                     //Stars, Stars, Stars!
                     if (rating === 10) {
@@ -127,8 +127,8 @@ function getFavorites() {
                     } else if (rating === 1) {
                         liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else {
-                        return;
-                    }
+                        liRating.innerHTML = 'Currently not available'
+                    };
                                 
                 //Appends information into cards
                 card.appendChild(image);

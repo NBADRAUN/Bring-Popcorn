@@ -191,11 +191,11 @@ function getGenreTopRated() {
                 //Creates list elements
                 var liDate = document.createElement('li');
                     liDate.classList.add('list-group-item');
-                    liDate.innerHTML = `${date}`;
+                    liDate.innerHTML = `Release Date: ${date}`;
                     
                 //Rating
                 var liRating = document.createElement('li');
-                    liRating.classList.add('list-group-item', 'text-warning');
+                    liRating.classList.add('list-group-item');
                     // liRating.innerHTML = `Rating: ${rating}/10`;
 
                     //Stars, Stars, Stars!
@@ -220,7 +220,7 @@ function getGenreTopRated() {
                     } else if (rating === 1) {
                         liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else {
-                        
+                        liRating.innerHTML = 'Currently not available'
                     }
                     
                 //Favorites Button
@@ -265,27 +265,3 @@ function getGenreTopRated() {
 
     })
 };
-
-//Button for displaying description
-// var descriptionP = document.createElement('p');
-// var descriptionBtn = document.createElement('button');
-// descriptionBtn.classList.add('btn', 'btn-primary');
-// descriptionBtn.type = 'button';
-// descriptionBtn.setAttribute('data-bs-toggle', 'collapse');
-// descriptionBtn.setAttribute('data-bs-target', '#collapseExample');
-// descriptionBtn.setAttribute('aria-expanded', 'false');
-// descriptionBtn.setAttribute('aria-controls', 'collapseExample');
-// descriptionBtn.innerHTML = 'Description';
-
-// var descriptionBox = document.createElement('div');
-// descriptionBox.classList.add('collapse');
-// descriptionBox.id = 'collapseExample';
-
-// var descriptionText = document.createElement('div');
-// descriptionText.classList.add('card', 'card-body');
-// descriptionText.innerHTML(description);
-
-// .appendChild(descriptionBtn);
-// descriptionBox.appendChild(descriptionText);
-// cardBody.appendChild(descriptionP);
-// cardBody.appendChild(descriptionBox);
