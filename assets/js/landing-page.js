@@ -46,7 +46,7 @@ function getPopular() {
   var mostPopURL = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
 
   var formContainer = document.getElementById('form-container');
-  formContainer.classList.add('mx-4', 'mx-4');
+  formContainer.classList.add('mx-4', 'my-4');
   
   fetch(mostPopURL)
   .then(function(response){
