@@ -34,7 +34,7 @@ document.addEventListener('click', function(event) {
 
   } else {
     event.target.classList.add('bg-danger');
-    //event.target.innerHTML = 'Already saved!'
+    event.target.innerHTML = 'Already saved!'
     console.log('saved');
 
   };  
@@ -46,7 +46,7 @@ function getPopular() {
   var mostPopURL = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
 
   var formContainer = document.getElementById('form-container');
-  formContainer.classList.add('mx-4', 'mx-4');
+  formContainer.classList.add('mx-4', 'my-4');
   
   fetch(mostPopURL)
   .then(function(response){
@@ -93,14 +93,16 @@ function getPopular() {
         title.classList.add('card-title');
         title.innerHTML = movieTitle;
 
+        // creates unordered list
+        var ul = document.createElement('ul');
+        ul.classList.add('list-group', 'list-group-flush', 'mb-2');
+
         // create rating 
         var rating = document.createElement('li');
         rating.classList.add('list-group-item');
         rating.innerHTML = `Rating: ${movieRating}/10`;
 
-        // creates unordered list
-        var ul = document.createElement('ul');
-        ul.classList.add('list-group', 'list-group-flush', 'mb-2');
+        
 
         // create date
         var date = document.createElement('li');

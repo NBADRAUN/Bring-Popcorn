@@ -3,13 +3,30 @@ body {
 	background-image: url("../images/exploding-popcorn.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+	font-family: 'Work Sans', sans-serif;
     
    
     
 }
 
+header {
+	height: 20px;
+}
+
+nav {
+	height: 20px;
+}
+
+h1 {
+	color: #F6AA1C;
+}
+
 h4 {
     color: #780116;
+}
+
+.nav-link {
+	color: #FAF3D2;
 }
 
 h5 {
@@ -30,9 +47,15 @@ h5 {
 	border-radius: 24px;
 }
 
-.movie-title {
+.section-title {
 	color: white;
+	margin-left: 30px;
+	margin-top: 50px;
+	
+}
 
+#form-container3 {
+	padding-left: 32px;
 }
 
 	

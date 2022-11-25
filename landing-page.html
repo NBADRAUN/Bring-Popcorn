@@ -7,19 +7,23 @@
     <title>Bring Popcorn</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="./assets/css/landing-page.css">
     
   </head>
 
   <body>
 
-  <div class="header p-5 text-center bg-light">
+  <div class="header p-5 text-center bg-dark">
     <h1 class="mb-3">Bring Popcorn!</h1>
     <h4 class="mb-3">A Movie Search Website</h4>
   </div>
 
     <!-- nav bar-->
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg bg-dark">
           <div class="container d-flex justify-content-center align-items-center">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -29,7 +33,7 @@
             <div>
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link active px-4" aria-current="page" href="#">Home</a>
+                  <a class="nav-link px-4" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link px-4" href="genre.html">Genres</a>
@@ -57,70 +61,165 @@
       <!-- movie cards -->
       
         <!-- most popular section -->
-        <h4 class="px-2 movie-title">Most Popular</h4>
+        <h4 class="px-2 section-title">Most Popular</h4>
 
         <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2" id="form-container">
         </div> 
 
         <!-- upcoming section -->
-        <h4 class="px-2 movie-title">Upcoming</h4>
+        <h4 class="px-2 section-title">Upcoming</h4>
 
         <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2" id="form-container2">
         </div>
 
         <!-- dev favorites -->
-        <h4 class="px-2 movie-title">Dev Favorites</h4>
+
+        
+        <h4 class="px-2 section-title">Dev Favorites</h4>
 
         <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2" id="form-container3">
 
           
 
             <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
-              <img src="./assets/images/family-man.jpeg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+              <img src="./assets/images/family-man.jpeg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="Family Man movie cover">
               <h5 class="card-title">Family Man</h5>
-              <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+              <ul class="list-group list-group-flush mb-2 bg-light">
+                <li class="list-group-item">2000-12-22</li>
+                <li class="list-group-item">7/10</li>
+                <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+              </ul>
+              
             </div>
 
               <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
-                <img src="./assets/images/big.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+                <img src="./assets/images/big.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="Big movie cover">
                 <h5 class="card-title">Big</h5>
-                <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+                <ul class="list-group list-group-flush mb-2 bg-light">
+                  <li class="list-group-item">1988-06-03</li>
+                  <li class="list-group-item">7/10</li>
+                  <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+                </ul>
+                
               </div>
 
               <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
-                <img src="./assets/images/money-pit.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+                <img src="./assets/images/money-pit.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="The Money Pit movie cover">
                 <h5 class="card-title">The Money Pit</h5>
-                <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+                <ul class="list-group list-group-flush mb-2 bg-light">
+                  <li class="list-group-item">1986-03-26</li>
+                  <li class="list-group-item">6/10</li>
+                  <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+                </ul>
               </div>
 
               <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
-                <img src="./assets/images/super-troopers.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+                <img src="./assets/images/super-troopers.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="Super Troopers movie cover">
                 <h5 class="card-title">Super Troopers</h5>
-                <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+                <ul class="list-group list-group-flush mb-2 bg-light">
+                  <li class="list-group-item">2002-02-15</li>
+                  <li class="list-group-item">7/10</li>
+                  <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+                </ul>
               </div>
 
               <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
-                <img src="./assets/images/space-balls.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+                <img src="./assets/images/space-balls.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="Space Balls movie cover">
                 <h5 class="card-title">Space Balls</h5>
-                <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+                <ul class="list-group list-group-flush mb-2 bg-light">
+                  <li class="list-group-item">1987-06-24</li>
+                  <li class="list-group-item">7/10</li>
+                  <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+                </ul>
               </div>
 
               <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
-                <img src="./assets/images/interstellar.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+                <img src="./assets/images/interstellar.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="Interstellar movie cover">
                 <h5 class="card-title">Interstellar</h5>
-                <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+                <ul class="list-group list-group-flush mb-2 bg-light">
+                  <li class="list-group-item">2014-10-26</li>
+                  <li class="list-group-item">9/10</li>
+                  <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+                </ul>
               </div>
 
               <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
-                <img src="./assets/images/practical-magic.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+                <img src="./assets/images/practical-magic.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="Practical Magic movie cover">
                 <h5 class="card-title">Practical Magic</h5>
-                <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+                <ul class="list-group list-group-flush mb-2 bg-light">
+                  <li class="list-group-item">1998-10-16</li>
+                  <li class="list-group-item">6/10</li>
+                  <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+                </ul>
               </div>
+
+              <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+                <img src="./assets/images/seven-pounds.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="Seven Pounds movie cover">
+                <h5 class="card-title">Seven Pounds</h5>
+                <ul class="list-group list-group-flush mb-2 bg-light">
+                  <li class="list-group-item">2008-12-19</li>
+                  <li class="list-group-item">8/10</li>
+                  <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+                </ul>
+              </div>
+
+              <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+                <img src="./assets/images/titanic.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="Titanic movie cover">
+                <h5 class="card-title">Titanic</h5>
+                <ul class="list-group list-group-flush mb-2 bg-light">
+                  <li class="list-group-item">1997-12-19</li>
+                  <li class="list-group-item">8/10</li>
+                  <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+                </ul>
+              </div>
+
+              <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+                <img src="./assets/images/cuckoos.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="One Flew Over the Cuckoo's Nest cover">
+                <h5 class="card-title">One Flew Over the Cuckoo's Nest</h5>
+                <ul class="list-group list-group-flush mb-2 bg-light">
+                  <li class="list-group-item">1975-11-19</li>
+                  <li class="list-group-item">9/10</li>
+                  <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+                </ul>
+              </div>
+
+              <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+                <img src="./assets/images/Bronson.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="Bronson cover">
+                <h5 class="card-title">Bronson</h5>
+                <ul class="list-group list-group-flush mb-2 bg-light">
+                  <li class="list-group-item">2009-10-09</li>
+                  <li class="list-group-item">7/10</li>
+                  <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+                </ul>
+              </div>
+
+              <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+                <img src="./assets/images/tombstone.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="Tombstone cover">
+                <h5 class="card-title">Tombstone</h5>
+                <ul class="list-group list-group-flush mb-2 bg-light">
+                  <li class="list-group-item">1993-12-24</li>
+                  <li class="list-group-item">8/10</li>
+                  <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+                </ul>
+              </div>
+
+              <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+                <img src="./assets/images/full-metal.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="Full Metal Jacket cover">
+                <h5 class="card-title">Full Metal Jacket</h5>
+                <ul class="list-group list-group-flush mb-2 bg-light">
+                  <li class="list-group-item">1987-06-26</li>
+                  <li class="list-group-item">8/10</li>
+                  <li class="list-group-item"><a href="#" class="btn btn-dark mt-2 favorites-button" type="button">Add to favorites</a></li>
+                </ul>
+              </div>
+
 
               
 
           
         </div>
+
+        
 
             
 
