@@ -23,14 +23,12 @@ if (event.target.classList.contains('remove-button')) {
 //Grabs localStorage information
 function init() {
     //Grabs data from localStorage via key
-    console.log(favoriteData);
     favoriteData = localStorage.getItem('favorite');
-    console.log(favoriteData);
+
     //Checks if localStorage is empty
     if (favoriteData !== null) {
         //Splits localStorage into array of numbers and saves as global variable
         favoriteStorage = favoriteData.split(",");
-        console.log(favoriteStorage);
         getFavorites();
     };
 };
@@ -46,7 +44,6 @@ function getFavorites() {
             cardsContainer.removeChild(cardsContainer.firstChild);
           }
         };
-        console.log(favoriteStorage);
     for (i=0; i<favoriteStorage.length; i++) {
 
         //Grabs movie id from localStorage and inserts into url
@@ -102,11 +99,11 @@ function getFavorites() {
                 //Creates list elements
                 var liDate = document.createElement('li');
                     liDate.classList.add('list-group-item');
-                    liDate.innerHTML = `${date}`;
+                    liDate.innerHTML = `Release Date: ${date}`;
                                 
                 //Rating
                 var liRating = document.createElement('li');
-                    liRating.classList.add('list-group-item', 'text-warning');
+                    liRating.classList.add('list-group-item');
                     
                     //Stars, Stars, Stars!
                     if (rating === 10) {
@@ -130,8 +127,8 @@ function getFavorites() {
                     } else if (rating === 1) {
                         liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else {
-                        return;
-                    }
+                        liRating.innerHTML = 'Currently not available'
+                    };
                                 
                 //Appends information into cards
                 card.appendChild(image);

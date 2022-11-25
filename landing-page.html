@@ -12,20 +12,12 @@
   </head>
 
   <body>
-  <!--
-  <header>
-    <h1 class="d-flex justify-content-center align-items-center">Bring Popcorn!</h1>
-    <h5 class="d-flex justify-content-center align-items-center">a movie search website</h5>
-  </header>
-  -->
 
   <div class="header p-5 text-center bg-light">
     <h1 class="mb-3">Bring Popcorn!</h1>
-    <h5 class="mb-3">A Movie Search Website</h4>
+    <h4 class="mb-3">A Movie Search Website</h4>
   </div>
 
-  
-  
     <!-- nav bar-->
         <nav class="navbar navbar-expand-lg bg-light">
           <div class="container d-flex justify-content-center align-items-center">
@@ -40,37 +32,107 @@
                   <a class="nav-link active px-4" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link px-4" href="#">Genres</a>
+                  <a class="nav-link px-4" href="genre.html">Genres</a>
                 </li>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link px-4" href="#">Movie Search</a>
+                  <a class="nav-link px-4" href="moviesearch.html">Movie Search</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link px-4" href="#">Trailers</a>
+                  <a class="nav-link px-4" href="trailer.html">Trailers</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link px-4" href="#">Find a Theater Near Me</a>
+                  <a class="nav-link px-4" href="theaters.html"> Theaters</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link px-4" href="#">Favorites</a>
+                  <a class="nav-link px-4" href="#">♥ Favorites</a>
                 </li>
               </div>
-          </div>
+            </div>
           </div>
         </nav>
 
     <main>
-  
+
+      <!-- movie cards -->
+      
+        <!-- most popular section -->
+        <h4 class="px-2 movie-title">Most Popular</h4>
+
+        <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2" id="form-container">
+        </div> 
+
+        <!-- upcoming section -->
+        <h4 class="px-2 movie-title">Upcoming</h4>
+
+        <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2" id="form-container2">
+        </div>
+
+        <!-- dev favorites -->
+        <h4 class="px-2 movie-title">Dev Favorites</h4>
+
+        <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2" id="form-container3">
+
+          
+
+            <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+              <img src="./assets/images/family-man.jpeg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+              <h5 class="card-title">Family Man</h5>
+              <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+            </div>
+
+              <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+                <img src="./assets/images/big.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+                <h5 class="card-title">Big</h5>
+                <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+              </div>
+
+              <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+                <img src="./assets/images/money-pit.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+                <h5 class="card-title">The Money Pit</h5>
+                <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+              </div>
+
+              <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+                <img src="./assets/images/super-troopers.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+                <h5 class="card-title">Super Troopers</h5>
+                <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+              </div>
+
+              <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+                <img src="./assets/images/space-balls.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+                <h5 class="card-title">Space Balls</h5>
+                <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+              </div>
+
+              <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+                <img src="./assets/images/interstellar.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+                <h5 class="card-title">Interstellar</h5>
+                <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+              </div>
+
+              <div class="col-5 text-center mx-2 my-2 bg-dark" style="width: 20rem; border: 0.1rem solid black">
+                <img src="./assets/images/practical-magic.jpg" class="card-img-top mt-3" style="border: 0.1rem solid black" alt="...">
+                <h5 class="card-title">Practical Magic</h5>
+                <a href="#" class="btn btn-primary mt-2">Add to favorites</a>
+              </div>
+
+              
+
+          
+        </div>
+
+            
+
+          </div>
+
+        </div>
     
 
-      <div class="row d-flex justify-content-center" id="form-container">
-
-      </div>
-
-
-      
+  
+      <!-- javescript links -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     </main>
   </body>
 

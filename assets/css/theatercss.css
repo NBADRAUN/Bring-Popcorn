@@ -1,3 +1,14 @@
 
 
-/* adding theater css  */
+/* adds background image to page  */
+
+body {
+    background-image: url("../images/391696-1.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+/*adds color to H1 tag*/
+h1 {
+    color: #780116;
+}

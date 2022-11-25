@@ -17,13 +17,73 @@ body {
 
 header {
     width: 300px;
-    margin: 0 auto;
-    
+    margin: 0 auto;   
 }
 
 h1 {
     color: #780116;
 }
 
+.searchContainer {
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 3rem;
+}
 
+#name-search {
+    text-align: center;
+}
 
+.searchInput {
+    border: 0.1rem solid black;
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.searchInput:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: black;
+}
+.card {
+    box-shadow: 1rem 1rem 1rem black;
+    background-image: url(../images/paper.webp);
+    background-repeat: repeat;
+    opacity: 0.8;
+    border-radius: 1rem;
+}
+
+.card:hover {
+    opacity: 1;
+    box-shadow: 0.2rem 0.2rem 0.2rem black;
+}
+
+.btn {
+    background-color: #F7B538;
+    box-shadow: 0.2rem 0.2rem 0.2rem black;
+}
+.btn:hover {
+   font-weight:bold;
+}
+
+.btn:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.list-group {
+    border-radius: 0.3rem;
+}
+.list-group-item {
+    border: 0.1rem solid black;
+    box-shadow: 0.1rem 0.1rem 0.1rem black, -0.1rem -0.1rem 0.1rem black;
+    background-color: #f0ead6;
+}
+
+.card-title {
+    text-decoration: underline;
+}
+
+.card-img-top {
+    box-shadow: 0.1rem 0.1rem 0.1rem black;
+}

@@ -1,15 +1,38 @@
 body {
-    background-image: url("../images/391696-1.jpg");
+    
+	background-image: url("../images/exploding-popcorn.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-header {
-    width: 300px;
-    margin: 0 auto;
+    
+   
     
 }
 
-h1 {
+h4 {
     color: #780116;
 }
+
+h5 {
+	color: white;
+}
+
+.scrolling-wrapper{
+	overflow-x: auto;
+}
+
+.card-block{
+	height: 300px;
+	color: white;
+	border: none;
+	background-position: center;
+	background-size: cover;
+	transition: all 0.2s ease-in-out !important;
+	border-radius: 24px;
+}
+
+.movie-title {
+	color: white;
+
+}
+
+	

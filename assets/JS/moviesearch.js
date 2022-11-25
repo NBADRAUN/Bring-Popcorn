@@ -10,9 +10,8 @@ var favoriteData;
 
 function init() {
     //Grabs data from localStorage via key
-    console.log(favoriteData);
     favoriteData = localStorage.getItem('favorite');
-    console.log(favoriteData);
+
     //Checks if localStorage is empty
     if (favoriteData !== null) {
         //Splits localStorage into array of numbers and saves as global variable
@@ -21,13 +20,13 @@ function init() {
     };
 };
 
+init();
 //Search button event listener 
 searchBtn.addEventListener('click', function(event) {
     //URL Encoding search input
     event.preventDefault();
     var movieNameInput = document.getElementById('name-search').value;
     var encodedName = encodeURIComponent(movieNameInput);
-    console.log(movieNameInput);
     if (movieNameInput !== '') {
         searchMovies(encodedName);
     }
@@ -39,23 +38,21 @@ document.addEventListener('click', function(event) {
         event.preventDefault();
         var movieNameInput = document.getElementById('name-search').value;
         var encodedName = encodeURIComponent(movieNameInput);
-        console.log(movieNameInput);
         if (movieNameInput !== '') {
         searchMovies(encodedName);
     }
 
     } else if (event.target.classList.contains('favorites-button')) {
         //Checks if movie is already in favorites
-    if (!favoriteStorage.includes(event.target.id)) {
+    if (favoriteStorage.includes(event.target.id)) {
+        event.target.classList.add('bg-danger')
+        event.target.innerHTML = 'Already saved!'
+    } else {
         favoriteStorage.push(event.target.id);
+        console.log(favoriteStorage);
         localStorage.setItem('favorite', favoriteStorage);
         event.target.classList.add('bg-success');
         event.target.innerHTML = 'Saved!'
-
-    } else {
-        event.target.classList.add('bg-danger')
-        event.target.innerHTML = 'Already saved!'
-        return;
     };
 }
     
@@ -66,15 +63,18 @@ function searchMovies(nameOfMovie) {
 
     fetch(searchUrl)
     .then( function(response) {
+        if (response.ok) {
         return response.json();
+        } else {
+            window.location.href = 'Name of 404 html file'
+        }
     })
     .then( function(data) {
-        console.log(data);
-        
+
     //Selects the card collection body
     var cardsContainer = document.getElementById('formContainer');
     cardsContainer.classList.add('mx-2');
-    
+
     //Gets rid of previous cards when selecting new genre
     if (cardsContainer.hasChildNodes()) {
     while (cardsContainer.firstChild) {
@@ -82,7 +82,7 @@ function searchMovies(nameOfMovie) {
       }
     };
         for (i=0; i<data.results.length; i++) {
-
+            if (posterCode !== null) {
             //Creates information variables to plug into cards
             var posterCode = data.results[i].poster_path;
             var title = data.results[i].title;
@@ -102,6 +102,11 @@ function searchMovies(nameOfMovie) {
                 image.classList.add('card-img-top', 'mt-3');
                 image.src = `https://image.tmdb.org/t/p/original/${posterCode}`
                 image.style.border = '0.1rem solid black';
+                //Checks if poster image exists from data
+                if (image.src === 'https://image.tmdb.org/t/p/original/null') {
+                    var imageNone = document.getElementById('noImage').src
+                    image.src = imageNone;
+                }
             
             //Creates Card body
             var cardBody = document.createElement('div');
@@ -127,11 +132,15 @@ function searchMovies(nameOfMovie) {
             //Creates list elements
             var liDate = document.createElement('li');
                 liDate.classList.add('list-group-item');
-                liDate.innerHTML = `${date}`;
+                liDate.innerHTML = `Release Date: ${date}`;
+                //Checking if date exists from data
+                if (date == '') {
+                    liDate.innerHTML = 'Currently not available'
+                }
                 
             //Rating
             var liRating = document.createElement('li');
-                liRating.classList.add('list-group-item', 'text-warning');
+                liRating.classList.add('list-group-item');
                 // liRating.innerHTML = `Rating: ${rating}/10`;
 
                 //Stars, Stars, Stars!
@@ -156,7 +165,7 @@ function searchMovies(nameOfMovie) {
                 } else if (rating === 1) {
                     liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                 } else {
-                    
+                    liRating.innerHTML = 'Currently not available'
                 }
                 
             //Favorites Button
@@ -166,7 +175,7 @@ function searchMovies(nameOfMovie) {
                 button.classList.add('btn', 'btn-dark', 'favorites-button');
                 button.type = 'button';
                 button.id = id;
-                button.innerHTML = 'Add to favorites';
+                button.innerHTML = 'Add to Watchlist';
                 
             //Appends information into cards
             card.appendChild(image);
@@ -180,6 +189,6 @@ function searchMovies(nameOfMovie) {
             card.appendChild(ul);
             cardsContainer.appendChild(card);
 
-        };  
+        }};  
     })
 };
