@@ -8,8 +8,24 @@ body {
     
 }
 
+header {
+	height: 20px;
+}
+
+nav {
+	height: 20px;
+}
+
+h1 {
+	color: #F6AA1C;
+}
+
 h4 {
     color: #780116;
+}
+
+.nav-link {
+	color: #FAF3D2;
 }
 
 h5 {
@@ -32,7 +48,14 @@ h5 {
 
 .movie-title {
 	color: white;
+	background-color: #F6AA1C;
+	margin-left: 10px;
+	margin-right: 90%;
 
+}
+
+#form-container3 {
+	padding-left: 32px;
 }
 
 	
