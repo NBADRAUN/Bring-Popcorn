@@ -17,7 +17,6 @@ if (event.target.classList.contains('remove-button')) {
             cardsContainer.removeChild(cardsContainer.firstChild);
           }
         };
-
     }});
 
 //Grabs localStorage information
