@@ -2,7 +2,8 @@
 
 // API Key 
 var apiKey = '95a7e5127d0a488c78d9f99eed7a76bd';
-// global variables 
+
+// set 'favorites' variables 
 var favStorage = [];
 var favData;
 
@@ -55,7 +56,7 @@ function getPopular() {
    .then(function(data){
         console.log(data)
       
-    // loop   
+    // loop for get popular data
       for (i=0; i<data.results.length; i++) {
         var posterCode = data.results[i].poster_path;
         var movieTitle = data.results[i].title;
@@ -63,15 +64,10 @@ function getPopular() {
         var movieRating = Math.floor(data.results[i].vote_average); 
         var movieDate = data.results[i].release_date;
 
-        // create container
-        //var card = document.createElement('div');
-          //card.classList.add('card', 'text-center', 'mx-2', 'my-2');
-          //card.style.width = '20rem';
-          //card.style.border = '0.1rem solid black';
-
         var card = document.createElement('div');
           card.classList.add('col-5', 'text-center', 'mx-2', 'my-2', 'bg-dark');
           card.style.width = '20rem';
+
           card.style.border = '0.1rem solid black';
 
         
@@ -80,13 +76,6 @@ function getPopular() {
         image.classList.add('card-img-top', 'mt-3');
         image.src = `https://image.tmdb.org/t/p/original/${posterCode}`;
         image.style.border = '0.1rem solid black';
-
-        // create card body
-        //var body = document.createElement('div');
-        //body.classList.add('card-body');
-
-        //var body = document.createElement('div');
-        //body.classList.add('card','card-block');
 
         // create title 
         var title = document.createElement('h5');
@@ -109,14 +98,6 @@ function getPopular() {
         date.classList.add('list-group-item');
         date.innerHTML = `${movieDate}`;
 
-        // create favorites button
-        //var movieBtn = document.createElement('li');
-        //movieBtn.classList.add('list-group-item');
-        //var button = document.createElement('button');
-        //button.classList.add('btn', 'btn-dark', 'favorites-button');
-        //button.type = 'button';
-        //button.id = movieId;
-       // button.innerHTML = 'Add to favorites';
 
        // create favorites button
        var listBtn = document.createElement('li');
@@ -135,7 +116,6 @@ function getPopular() {
         ul.appendChild(rating);
         listBtn.appendChild(button);
         ul.appendChild(listBtn);
-        //card.appendChild(body);
         card.appendChild(ul);
         formContainer.appendChild(card); 
         
@@ -169,11 +149,6 @@ function getUpcoming() {
         var movieDate = data.results[i].release_date;
 
         // create container
-        //var card = document.createElement('div');
-          //card.classList.add('card', 'text-center', 'mx-2', 'my-2');
-          //card.style.width = '20rem';
-          //card.style.border = '0.1rem solid black';
-
         var card = document.createElement('div');
           card.classList.add('col-5', 'text-center', 'mx-2', 'my-2', 'bg-dark');
           card.style.width = '20rem';
@@ -219,7 +194,7 @@ function getUpcoming() {
        var button = document.createElement('button');
        button.classList.add('btn', 'btn-dark', 'favorites-button');
        button.type = 'button';
-       button.id = devFavs[i];
+       button.id = movieId;
        button.innerHTML = 'Add to favorites';
 
 
@@ -243,8 +218,8 @@ getUpcoming();
 
 
 
-// dev favorites movie id array 
-var devFavs = [5994, 274931, 10466, 39939,957, 157336, 6435, 11321, 597, 510, 11969]; 
+// dev favorites movie id array 18533
+var devFavs = [11969, 2280, 5994, 18533, 10466, 39939,957, 157336, 6435, 11321, 597, 510]; 
 
 // get dev favorites 
 function getDevFav () {
@@ -310,7 +285,7 @@ function getDevFav () {
        var button = document.createElement('button');
        button.classList.add('btn', 'btn-dark', 'favorites-button');
        button.type = 'button';
-       button.id = movieId;
+       button.id = devFavs[i];
        button.innerHTML = 'Add to favorites';
 
 
