@@ -1,4 +1,7 @@
-
+:root {
+    --butter: #F7B538;
+    --navColor: #F6AA1C;
+}
 body {
 	background-image: linear-gradient(#F6AA1C, #BC3908, #941B0C, #621708, #220901); 
     background-repeat: no-repeat;
@@ -15,7 +18,7 @@ body {
 }
 
 #nav-title {
-	color: #F6AA1C;
+	color: var(--navColor);
 	font-size: 40px;
 }
 
@@ -35,11 +38,11 @@ h1 {
 }
 
 .nav-link:hover {
-    color:#F6AA1C;
+    color:var(--navColor);
 }
 
 #currentTab {
-    color: #F6AA1C;
+    color: var(--navColor);
 }
 
 /* Genre Toggle Box */
@@ -58,7 +61,7 @@ h1 {
 }
 
 .dropdown-item:hover {
-    background: #F7B538;
+    background: var(--butter);
 }
 
 /* Search Container - movieSearch.html */
@@ -85,7 +88,6 @@ h1 {
 
 /* Card Containers */
 .card {
-    box-shadow: 1rem 1rem 1rem black;
     background-color: #343a40;
     background-repeat: repeat;
     border-radius: 1rem;
@@ -93,7 +95,7 @@ h1 {
 }
 
 .btn {
-    background-color: #F7B538;
+    background-color: var(--butter);
     box-shadow: 0.2rem 0.2rem 0.2rem black;
     color:black;
 }
@@ -111,14 +113,14 @@ h1 {
 }
 
 .list-group-item {
-    box-shadow: 0.1rem 0.1rem 0.1rem #F7B538, -0.1rem -0.1rem 0.1rem #F7B538;
+    box-shadow: 0.1rem 0.1rem 0.1rem var(--butter), -0.1rem -0.1rem 0.1rem var(--butter);
     background-color: #212529;
     color: white;
 }
 
 .card-title {
     text-decoration: underline;
-    color: #F7B538;
+    color: var(--butter);
 }
 
 .card-img-top {
