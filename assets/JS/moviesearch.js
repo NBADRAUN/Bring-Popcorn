@@ -7,6 +7,7 @@ var searchBtn = document.getElementById('search-movies');
 //Favorites Storage
 var favoriteStorage = [];
 var favoriteData;
+var modal = document.getElementById('modalBox');
 
 function init() {
     //Grabs data from localStorage via key
@@ -54,6 +55,9 @@ document.addEventListener('click', function(event) {
         event.target.classList.add('bg-success');
         event.target.innerHTML = 'Saved!'
     };
+    //If modal is visible this is close button
+}  else if (event.target.id == 'closeBtn') {
+    modal.classList.remove('alert');
 }
     
 })
@@ -62,13 +66,15 @@ function searchMovies(nameOfMovie) {
     var searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${nameOfMovie}%7D&page=1&include_adult=false`
 
     fetch(searchUrl)
-    .then( function(response) {
-        if (response.ok) {
-        return response.json();
-        } else {
-            window.location.href = 'Name of 404 html file'
-        }
-    })
+        //Checks the response of the request
+        .then(function (response) {
+            if (response.ok) {
+            return response.json();//Reformats API request response
+            } else {
+                //Creates a modal if the fetch request is malfunctioning
+                modal.classList.add('alert');
+            }
+        }) //Requests the data from the API
     .then( function(data) {
 
     //Selects the card collection body

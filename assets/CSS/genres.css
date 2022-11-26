@@ -103,3 +103,8 @@ h1 {
 .card-img-top {
     box-shadow: 0.1rem 0.1rem 0.1rem black;
 }
+
+.alert {
+    display: block !important;
+    top: 50% !important;
+}

@@ -23,6 +23,7 @@ var favoriteData;
 //Event Listener for genre selection
 var genreSelection = '';
 var page = 1;
+var modal = document.getElementById('modalBox');
 
 //Calls function to collect favorites from localStorage
 function init() {
@@ -108,7 +109,11 @@ document.addEventListener('click', function(event) {
         moreButton.remove();
         event.target.remove();
         getGenreTopRated();
-    } 
+
+        //If modal is visible and closed button is clicked
+    } else if (event.target.id == 'closeBtn') {
+        modal.classList.remove('alert');
+    }
 });
 
 /* ------Top-rated movies by genre------*/
@@ -139,8 +144,12 @@ function getGenreTopRated() {
     
         //Checks the response of the request
         .then(function (response) {
+            if (response.ok) {
             return response.json();//Reformats API request response
-        
+            } else {
+                //Creates a modal if the fetch request is malfunctioning
+                modal.classList.add('alert');
+            }
         }) //Requests the data from the API
         .then(function (data) {
 
