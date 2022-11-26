@@ -59,6 +59,8 @@ document.addEventListener('click', function(event) {
     } else if (event.target.classList.contains('dropdown-item')) { //Genre selection button
         page = 1;
         genreSelection = event.target.id;
+        var genreBtn = document.getElementById('genreToggle');
+        genreBtn.innerHTML = event.target.innerHTML;
         var more = document.getElementById('more-button');
         var back = document.getElementById('back-button');
         if (more != null && back != null) {
@@ -200,8 +202,12 @@ function getGenreTopRated() {
                 //Creates list elements
                 var liDate = document.createElement('li');
                     liDate.classList.add('list-group-item');
-                    liDate.innerHTML = `Release Date: ${date}`;
+                    liDate.innerHTML = `- Release Date- <br> ${date}`;
                     
+                    if (date == '') {
+                        liDate.innerHTML = 'Currently not available'
+                    };
+
                 //Rating
                 var liRating = document.createElement('li');
                     liRating.classList.add('list-group-item');
@@ -209,28 +215,28 @@ function getGenreTopRated() {
 
                     //Stars, Stars, Stars!
                     if (rating === 10) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
                     } else if (rating === 9) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
                     } else if (rating === 8) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
                     } else if (rating === 7) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
                     } else if (rating === 6) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 5) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 4) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 3) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 2) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 1) {
-                        liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else {
                         liRating.innerHTML = 'Currently not available'
-                    }
+                    };
                     
                 //Favorites Button
                 var liButton = document.createElement('li');
