@@ -1,16 +1,42 @@
 
-body {
-    
+/*background image for entire body of the page */
+body { 
 	background-image: url("../images/exploding-popcorn.jpg");
-   /* background-repeat: no-repeat; */
-    background-size: cover;
+    background-repeat: repeat-y;
+	background-size: 100%; 
+	font-family: 'Work Sans', sans-serif;
 }
 
-
-h4 {
-    color: #780116;
+.header {
+	margin-left: 5px;
+}
+/*Page title style */
+#nav-title {
+	color: #F6AA1C;
+	font-size: 40px;
 }
 
-h3 {
-	color: whitesmoke;
+#nav-description {
+	font-size: 16px;
+	color: #FBF3CA;
+	text-align: center;
+	
+}
+ /*Nav bar link style */
+.nav-link {
+	color: #FAF3D2;
+	font-size: 16x;
+}
+
+/*movie description style*/
+ p {
+	color: #FAF3D2;
+    font-family: 'Work Sans', sans-serif;
+}
+
+/*movie name style*/
+h3{
+	color: #F6AA1C;
+	font-family: 'Work Sans', sans-serif;
+	background-color: rgb(49, 49, 49);
 }
