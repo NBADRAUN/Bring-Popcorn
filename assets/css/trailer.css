@@ -1,0 +1,16 @@
+
+body {
+    
+	background-image: url("../images/exploding-popcorn.jpg");
+   /* background-repeat: no-repeat; */
+    background-size: cover;
+}
+
+
+h4 {
+    color: #780116;
+}
+
+h3 {
+	color: whitesmoke;
+}

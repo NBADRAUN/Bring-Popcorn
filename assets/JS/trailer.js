@@ -21,55 +21,55 @@ var getTrailer = function () {
   //empty warning message 
   $("#warningMessage").text("");
   
-  // var testName = "test1";
-  // var testDescr =
-  //   " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.a new path for the kingdom of Wakanda.";
-  // var testvideo = "https://trailer.movieglu.com/297863_high_V2.mp4";
+   var testName = "test1";
+   var testDescr =
+    " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.a new path for the kingdom of Wakanda.";
+ var testvideo = "https://trailer.movieglu.com/297863_high_V2.mp4";
 
-  var getMovieUrl = {
-    url: "https://api-gate2.movieglu.com/filmsNowShowing/",
-    method: "GET",
-    timeout: 0,
-    headers: {
-      "api-version": "v200",
-      Authorization: "Basic VFhDVTp4M1p3Z05KY2s0UlE=",
-      client: "TXCU",
-      "x-api-key": "HZT05M3Wa8ak6Wphu3pK27eFET0jgxDOEvcgPhBb",
-      "device-datetime": "2022-24-22T12:07:57.296Z",
-      territory: "US",
-    },
-  };
+  // var getMovieUrl = {
+  //   url: "https://api-gate2.movieglu.com/filmsNowShowing/",
+  //   method: "GET",
+  //   timeout: 0,
+  //   headers: {
+  //     "api-version": "v200",
+  //     Authorization: "Basic VFhDVTp4M1p3Z05KY2s0UlE=",
+  //     client: "TXCU",
+  //     "x-api-key": "HZT05M3Wa8ak6Wphu3pK27eFET0jgxDOEvcgPhBb",
+  //     "device-datetime": "2022-24-22T12:07:57.296Z",
+  //     territory: "US",
+  //   },
+  // };
 
-  $.ajax(getMovieUrl).done(function (response) {
-    console.log(response);
+  // $.ajax(getMovieUrl).done(function (response) {
+  //   console.log(response);
 
-    for (let i = 0; i < response.films.length; i++) {
-      // for (let i = 0; i < 75; i++) {
+    //for (let i = 0; i < response.films.length; i++) {
+       for (let i = 0; i < 75; i++) {
       // movies.push(testName[i]);
       // console.log(movies);
       //console.log(response.films[i].film_name);
 
-      matchMovie = response.films[i].film_name;
+      //matchMovie = response.films[i].film_name;
       //add all movie names into movie array we will use for autocomplete
-      movies.push(matchMovie);
+     // movies.push(matchMovie);
 
-      movieTrailer = response.films[i].film_trailer;
-      movieDescr = response.films[i].synopsis_long;
+      // movieTrailer = response.films[i].film_trailer;
+      // movieDescr = response.films[i].synopsis_long;
 
       //Creates video elements
       var trailerVideo = $("<video>");
       trailerVideo.addClass(["col", "mt-3", "w-5"]);
-      trailerVideo.attr("src", movieTrailer); //(movieTrailer)testvideo
+      trailerVideo.attr("src", testvideo); //(movieTrailer)testvideo
       trailerVideo.attr("type", "video/mp4");
       trailerVideo.attr("controls", "autoplay");
 
       //Creates element title for each trailer and style
-      var descrTitle = $("<h5>").addClass(" text-center");
-      descrTitle.text(matchMovie); // (matchMovie);testName
+      var descrTitle = $("<h3>").addClass(" text-center bg-dark rounded");
+      descrTitle.text(testName); // (matchMovie);testName
       var liDescr = $("<p>").addClass(
-        "rounded shadow-lg p-3 mb-5 bg-body rounded"
+        "rounded shadow-lg p-3 mb-5 text-light bg-dark rounded"
       );
-      liDescr.text(movieDescr); //(movieDescr)testDescr)
+      liDescr.text(testDescr); //(movieDescr)testDescr)
       var divRow = $("<div>").addClass("row");
       var divCon = $("<div>").addClass("container");
       var trailerContainer = $("<div>").addClass("col pt-3");
@@ -86,29 +86,30 @@ var getTrailer = function () {
       var wrap = $("#wrapper");
       wrap.append(divCon);
     }
-  });
-};
+  }//);
+//};
 getTrailer();
 
 var searchTrailer = function () {
   var getMovieUrl = {
-    url: "https://api-gate2.movieglu.com/filmsNowShowing/",
-    method: "GET",
-    timeout: 0,
-    headers: {
-      "api-version": "v200",
-      Authorization: "Basic VFhDVTp4M1p3Z05KY2s0UlE=",
-      client: "TXCU",
-      "x-api-key": "HZT05M3Wa8ak6Wphu3pK27eFET0jgxDOEvcgPhBb",
-      "device-datetime": "2022-11-24T12:07:57.296Z",
-      territory: "US",
-    },
+    // url: "https://api-gate2.movieglu.com/filmsNowShowing/",
+    // method: "GET",
+    // timeout: 0,
+    // headers: {
+    //   "api-version": "v200",
+    //   Authorization: "Basic VFhDVTp4M1p3Z05KY2s0UlE=",
+    //   client: "TXCU",
+    //   "x-api-key": "HZT05M3Wa8ak6Wphu3pK27eFET0jgxDOEvcgPhBb",
+    //   "device-datetime": "2022-11-24T12:07:57.296Z",
+    //   territory: "US",
+    // },
   };
 
-  $.ajax(getMovieUrl).done(function (response) {
-    console.log(response);
+  // $.ajax(getMovieUrl).done(function (response) {
+  //   console.log(response);
 
-    for (let i = 0; i < response.films.length; i++) {
+    //for (let i = 0; i < response.films.length; i++) {
+      for (let i = 0; i < 75; i++) {
       //**If movie of interest is in database we will grab trailer**/
       if (movieSelection === response.films[i].film_name) {
 
@@ -156,17 +157,17 @@ var searchTrailer = function () {
         //empty existing trailers from starting trailer page
        
       }
-      if (movieSelection !== movies) {
-       message();
+    //  else (movieSelection !== movies.contains(movieSelection)) {
+    //    message();
         
-        console.log("no trailer available");
-        return;
-      }
+    //     console.log("no trailer available");
+    //     return;
+    //   }
 
     }
 
     console.log(movies);
-  });
+  //});
 };
 
 //on click of the search for trailers button display searched trailer
