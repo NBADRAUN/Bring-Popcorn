@@ -279,4 +279,11 @@ function getGenreTopRated() {
                 pageNumContainer.appendChild(moreMovies);
 
     })
+    topFunction();
 };
+
+//Scrolls back to top of webpage
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
