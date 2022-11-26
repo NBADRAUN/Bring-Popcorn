@@ -55,7 +55,6 @@ function getFavorites() {
             return response.json();
         })
         .then(function (data) {
-
                 //Creates information variables to plug into cards
                 var posterCode = data.poster_path;
                 var title = data.title;

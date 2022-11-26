@@ -90,7 +90,7 @@ function searchMovies(nameOfMovie) {
             var date = data.results[i].release_date;
             var rating = Math.floor(data.results[i].vote_average);
             var id = data.results[i].id;
-
+            console.log(id);
             //Creates Card form container
             var card = document.createElement('div');
                 card.classList.add('card', 'text-center', 'mx-2', 'my-2');

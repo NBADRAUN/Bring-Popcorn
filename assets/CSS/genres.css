@@ -7,12 +7,13 @@
 #genreToggle {
     padding-left: 3rem !important;
     padding-right: 3rem !important;
-};
+}
 
-body {
-    background-image: url("../images/391696-1.jpg");
+.body {  
+	background-image: url("../images/exploding-popcorn.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+	font-family: 'Work Sans', sans-serif;   
 }
 
 header {
@@ -45,6 +46,7 @@ h1 {
     box-shadow: none !important;
     border-color: black;
 }
+
 .card {
     box-shadow: 1rem 1rem 1rem black;
     background-image: url(../images/paper.webp);
