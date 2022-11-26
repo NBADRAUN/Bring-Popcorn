@@ -1,19 +1,38 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-};
-
-#genreToggle {
-    padding-left: 3rem !important;
-    padding-right: 3rem !important;
-}
-
-.body {  
+body {
+    
 	background-image: url("../images/exploding-popcorn.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-	font-family: 'Work Sans', sans-serif;   
+	font-family: 'Work Sans', sans-serif;
+    
+   
+    
+}
+
+.header {
+	margin-left: 5px;
+}
+#nav-title {
+	color: #F6AA1C;
+	font-size: 40px;
+}
+
+#nav-description {
+	font-size: 16px;
+	color: #FBF3CA;
+	text-align: center;
+	
+}
+
+
+
+.nav-link {
+	color: #FAF3D2;
+	font-size: 16x;
+}
+#genreToggle {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
 }
 
 header {
@@ -49,15 +68,10 @@ h1 {
 
 .card {
     box-shadow: 1rem 1rem 1rem black;
-    background-image: url(../images/paper.webp);
+    background-color: #343a40;
     background-repeat: repeat;
-    opacity: 0.8;
     border-radius: 1rem;
-}
-
-.card:hover {
-    opacity: 1;
-    box-shadow: 0.2rem 0.2rem 0.2rem black;
+    color: white;
 }
 
 .btn {
@@ -79,7 +93,7 @@ h1 {
 .list-group-item {
     border: 0.1rem solid black;
     box-shadow: 0.1rem 0.1rem 0.1rem black, -0.1rem -0.1rem 0.1rem black;
-    background-color: #f0ead6;
+    background-color: white;
 }
 
 .card-title {

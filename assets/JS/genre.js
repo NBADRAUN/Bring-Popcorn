@@ -180,7 +180,7 @@ function getGenreTopRated() {
                 var cardDescription = document.createElement('p');
                     cardDescription.classList.add('card-text');
                     cardDescription.innerHTML = description;
-                    cardDescription.style.fontSize = '1rem';
+                    cardDescription.style.fontSize = '0.8rem'
                     
                 //Creates list form
                 var ul = document.createElement('ul');
