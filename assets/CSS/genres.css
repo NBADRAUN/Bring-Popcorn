@@ -66,6 +66,25 @@ h1 {
     border-color: black;
 }
 
+.nav-link:hover {
+    color:#F6AA1C;
+}
+
+#currentTab {
+    color: #F6AA1C;
+}
+.dropdown-menu {
+    min-width: 15rem;
+}
+
+.dropdown-item {
+    border-bottom: 0.1rem solid black;
+}
+
+.dropdown-item:hover {
+    background: #F7B538;
+}
+
 .card {
     box-shadow: 1rem 1rem 1rem black;
     background-color: #343a40;
@@ -93,7 +112,8 @@ h1 {
 .list-group-item {
     border: 0.1rem solid black;
     box-shadow: 0.1rem 0.1rem 0.1rem black, -0.1rem -0.1rem 0.1rem black;
-    background-color: white;
+    background-color: black;
+    color: white;
 }
 
 .card-title {
