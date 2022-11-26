@@ -23,6 +23,7 @@ var favoriteData;
 //Event Listener for genre selection
 var genreSelection = '';
 var page = 1;
+var modal = document.getElementById('modalBox');
 
 //Calls function to collect favorites from localStorage
 function init() {
@@ -108,7 +109,11 @@ document.addEventListener('click', function(event) {
         moreButton.remove();
         event.target.remove();
         getGenreTopRated();
-    } 
+
+        //If modal is visible and closed button is clicked
+    } else if (event.target.id == 'closeBtn') {
+        modal.classList.remove('alert');
+    }
 });
 
 /* ------Top-rated movies by genre------*/
@@ -139,8 +144,12 @@ function getGenreTopRated() {
     
         //Checks the response of the request
         .then(function (response) {
+            if (response.ok) {
             return response.json();//Reformats API request response
-        
+            } else {
+                //Creates a modal if the fetch request is malfunctioning
+                modal.classList.add('alert');
+            }
         }) //Requests the data from the API
         .then(function (data) {
 
@@ -180,7 +189,7 @@ function getGenreTopRated() {
                 var cardDescription = document.createElement('p');
                     cardDescription.classList.add('card-text');
                     cardDescription.innerHTML = description;
-                    cardDescription.style.fontSize = '1rem';
+                    cardDescription.style.fontSize = '0.8rem'
                     
                 //Creates list form
                 var ul = document.createElement('ul');
@@ -230,7 +239,7 @@ function getGenreTopRated() {
                     button.classList.add('btn', 'btn-dark', 'favorites-button');
                     button.type = 'button';
                     button.id = id;
-                    button.innerHTML = 'Add to watch list';
+                    button.innerHTML = 'Add to Favorites';
                     
                 //Appends information into cards
                 card.appendChild(image);

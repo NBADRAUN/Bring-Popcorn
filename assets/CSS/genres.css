@@ -1,29 +1,64 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-};
-
-#genreToggle {
-    padding-left: 3rem !important;
-    padding-right: 3rem !important;
-};
-
 body {
-    background-image: url("../images/391696-1.jpg");
+    
+	background-image: url("../images/exploding-popcorn.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+	font-family: 'Work Sans', sans-serif; 
 }
 
-header {
+/* Navigation Bar */
+.header {
+	margin-left: 5px;
     width: 300px;
-    margin: 0 auto;   
+    margin: 0 auto;
+}
+#nav-title {
+	color: #F6AA1C;
+	font-size: 40px;
+}
+
+#nav-description {
+	font-size: 16px;
+	color: #FBF3CA;
+	text-align: center;
+}
+
+.nav-link {
+	color: #FAF3D2;
+	font-size: 16x;
 }
 
 h1 {
     color: #780116;
 }
 
+.nav-link:hover {
+    color:#F6AA1C;
+}
+
+#currentTab {
+    color: #F6AA1C;
+}
+
+/* Genre Toggle Box */
+#genreToggle {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+}
+
+.dropdown-menu {
+    min-width: 15rem;
+}
+
+.dropdown-item {
+    border-bottom: 0.1rem solid black;
+}
+
+.dropdown-item:hover {
+    background: #F7B538;
+}
+
+/* Search Container - movieSearch.html */
 .searchContainer {
     margin: 0 auto;
     text-align: center;
@@ -45,17 +80,14 @@ h1 {
     box-shadow: none !important;
     border-color: black;
 }
+
+/* Card Containers */
 .card {
     box-shadow: 1rem 1rem 1rem black;
-    background-image: url(../images/paper.webp);
+    background-color: #343a40;
     background-repeat: repeat;
-    opacity: 0.8;
     border-radius: 1rem;
-}
-
-.card:hover {
-    opacity: 1;
-    box-shadow: 0.2rem 0.2rem 0.2rem black;
+    color: white;
 }
 
 .btn {
@@ -77,7 +109,8 @@ h1 {
 .list-group-item {
     border: 0.1rem solid black;
     box-shadow: 0.1rem 0.1rem 0.1rem black, -0.1rem -0.1rem 0.1rem black;
-    background-color: #f0ead6;
+    background-color: black;
+    color: white;
 }
 
 .card-title {
@@ -86,4 +119,10 @@ h1 {
 
 .card-img-top {
     box-shadow: 0.1rem 0.1rem 0.1rem black;
+}
+
+/* Bad API fetch Modal Alert */
+.alert {
+    display: block !important;
+    top: 50% !important;
 }
