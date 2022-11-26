@@ -9,25 +9,32 @@ body {
     
 }
 
-header {
-	height: 20px;
+.header {
+	margin-left: 5px;
 }
-
-nav {
-	height: 20px;
-}
-
-h1 {
+#nav-title {
 	color: #F6AA1C;
+	font-size: 40px;
 }
 
-h4 {
-    color: #780116;
+#nav-description {
+	font-size: 16px;
+	color: #FBF3CA;
+	text-align: center;
+	
 }
+
+
 
 .nav-link {
 	color: #FAF3D2;
+	font-size: 16x;
 }
+
+
+
+
+
 
 h5 {
 	color: white;
@@ -54,8 +61,6 @@ h5 {
 	
 }
 
-#form-container3 {
-	padding-left: 32px;
-}
+
 
 	
