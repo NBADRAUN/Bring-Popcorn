@@ -33,7 +33,12 @@ function init() {
         //Splits localStorage into array of numbers and saves as global variable
         favoriteStorage = favoriteData.split(",");
         getFavorites();
-    };
+    } else {
+        var noTitle = document.createElement('h6');
+        noTitle.innerHTML = 'You have no Favorite Movies saved!'
+        noTitle.classList.add('text-center');
+        document.body.appendChild(noTitle);
+    }
 };
 
 init();

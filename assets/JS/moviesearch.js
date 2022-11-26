@@ -17,7 +17,6 @@ function init() {
     if (favoriteData !== null) {
         //Splits localStorage into array of numbers and saves as global variable
         favoriteStorage = favoriteData.split(",");
-        console.log(favoriteStorage);
     };
 };
 
@@ -50,7 +49,6 @@ document.addEventListener('click', function(event) {
         event.target.innerHTML = 'Already saved!'
     } else {
         favoriteStorage.push(event.target.id);
-        console.log(favoriteStorage);
         localStorage.setItem('favorite', favoriteStorage);
         event.target.classList.add('bg-success');
         event.target.innerHTML = 'Saved!'
@@ -96,7 +94,6 @@ function searchMovies(nameOfMovie) {
             var date = data.results[i].release_date;
             var rating = Math.floor(data.results[i].vote_average);
             var id = data.results[i].id;
-            console.log(id);
             //Creates Card form container
             var card = document.createElement('div');
                 card.classList.add('card', 'text-center', 'mx-2', 'my-2');
