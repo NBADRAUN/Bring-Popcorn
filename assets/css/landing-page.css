@@ -1,15 +1,61 @@
 body {
-    background-image: url("../images/391696-1.jpg");
+    
+	background-image: url("../images/exploding-popcorn.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-header {
-    width: 300px;
-    margin: 0 auto;
+	font-family: 'Work Sans', sans-serif;
+    
+   
     
 }
 
+header {
+	height: 20px;
+}
+
+nav {
+	height: 20px;
+}
+
 h1 {
+	color: #F6AA1C;
+}
+
+h4 {
     color: #780116;
 }
+
+.nav-link {
+	color: #FAF3D2;
+}
+
+h5 {
+	color: white;
+}
+
+.scrolling-wrapper{
+	overflow-x: auto;
+}
+
+.card-block{
+	height: 300px;
+	color: white;
+	border: none;
+	background-position: center;
+	background-size: cover;
+	transition: all 0.2s ease-in-out !important;
+	border-radius: 24px;
+}
+
+.section-title {
+	color: white;
+	margin-left: 30px;
+	margin-top: 50px;
+	
+}
+
+#form-container3 {
+	padding-left: 32px;
+}
+
+	
