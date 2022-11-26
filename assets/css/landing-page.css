@@ -1,17 +1,17 @@
 body {
     
-	background-image: url("../images/exploding-popcorn.jpg");
+	/*background-image: url("../images/exploding-popcorn.jpg"); */
+	background-image: linear-gradient(#F6AA1C, #BC3908, #941B0C, #621708, #220901);
     background-repeat: no-repeat;
     background-size: cover;
-	font-family: 'Work Sans', sans-serif;
-    
-   
-    
+	font-family: 'Work Sans', sans-serif;   
+	
 }
 
 .header {
 	margin-left: 5px;
 }
+
 #nav-title {
 	color: #F6AA1C;
 	font-size: 40px;
@@ -24,42 +24,31 @@ body {
 	
 }
 
-
-
 .nav-link {
 	color: #FAF3D2;
 	font-size: 16x;
 }
 
 
-
-
-
-
-h5 {
-	color: white;
-}
-
 .scrolling-wrapper{
 	overflow-x: auto;
-}
-
-.card-block{
-	height: 300px;
 	color: white;
-	border: none;
-	background-position: center;
-	background-size: cover;
-	transition: all 0.2s ease-in-out !important;
-	border-radius: 24px;
 }
 
 .section-title {
 	color: white;
-	margin-left: 30px;
+	margin-left: 33px;
 	margin-top: 50px;
+	margin-bottom: 0;
+	
 	
 }
+
+h4 span {
+	background-color: #292b2c;
+	box-shadow: 5px 5px 5px #220901;
+}
+
 
 
 
