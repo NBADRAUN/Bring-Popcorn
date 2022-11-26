@@ -3,14 +3,14 @@ body {
 	background-image: url("../images/exploding-popcorn.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-	font-family: 'Work Sans', sans-serif;
-    
-   
-    
+	font-family: 'Work Sans', sans-serif; 
 }
 
+/* Navigation Bar */
 .header {
 	margin-left: 5px;
+    width: 300px;
+    margin: 0 auto;
 }
 #nav-title {
 	color: #F6AA1C;
@@ -21,29 +21,44 @@ body {
 	font-size: 16px;
 	color: #FBF3CA;
 	text-align: center;
-	
 }
-
-
 
 .nav-link {
 	color: #FAF3D2;
 	font-size: 16x;
-}
-#genreToggle {
-    padding-left: 3rem !important;
-    padding-right: 3rem !important;
-}
-
-header {
-    width: 300px;
-    margin: 0 auto;   
 }
 
 h1 {
     color: #780116;
 }
 
+.nav-link:hover {
+    color:#F6AA1C;
+}
+
+#currentTab {
+    color: #F6AA1C;
+}
+
+/* Genre Toggle Box */
+#genreToggle {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+}
+
+.dropdown-menu {
+    min-width: 15rem;
+}
+
+.dropdown-item {
+    border-bottom: 0.1rem solid black;
+}
+
+.dropdown-item:hover {
+    background: #F7B538;
+}
+
+/* Search Container - movieSearch.html */
 .searchContainer {
     margin: 0 auto;
     text-align: center;
@@ -66,25 +81,7 @@ h1 {
     border-color: black;
 }
 
-.nav-link:hover {
-    color:#F6AA1C;
-}
-
-#currentTab {
-    color: #F6AA1C;
-}
-.dropdown-menu {
-    min-width: 15rem;
-}
-
-.dropdown-item {
-    border-bottom: 0.1rem solid black;
-}
-
-.dropdown-item:hover {
-    background: #F7B538;
-}
-
+/* Card Containers */
 .card {
     box-shadow: 1rem 1rem 1rem black;
     background-color: #343a40;
@@ -124,6 +121,7 @@ h1 {
     box-shadow: 0.1rem 0.1rem 0.1rem black;
 }
 
+/* Bad API fetch Modal Alert */
 .alert {
     display: block !important;
     top: 50% !important;
