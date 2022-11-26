@@ -212,14 +212,6 @@ function getUpcoming() {
         date.classList.add('list-group-item');
         date.innerHTML = `${movieDate}`;
 
-        // create favorites button
-        //var movieBtn = document.createElement('li');
-        //movieBtn.classList.add('list-group-item');
-        //var button = document.createElement('button');
-        //button.classList.add('btn', 'btn-dark', 'favorites-button');
-        //button.type = 'button';
-        //button.id = movieId;
-       // button.innerHTML = 'Add to favorites';
 
        // create favorites button
        var listBtn = document.createElement('li');
@@ -250,16 +242,15 @@ function getUpcoming() {
 getUpcoming();
 
 
+
+// dev favorites movie id array 
 var devFavs = [5994, 274931, 10466, 39939,957, 157336, 6435, 11321, 597, 510, 11969]; 
 
+// get dev favorites 
 function getDevFav () {
-
-  
 
   var formContainer = document.getElementById('form-container3');
   formContainer.classList.add('mx-4', 'mx-4');
-
-  
       
     // loop   
       for (i=0; i<devFavs.length; i++) {
@@ -330,7 +321,6 @@ function getDevFav () {
         ul.appendChild(rating);
         listBtn.appendChild(button);
         ul.appendChild(listBtn);
-        //card.appendChild(body);
         card.appendChild(ul);
         formContainer.appendChild(card); 
         
