@@ -4,6 +4,7 @@ var apiKey = 'd31ccc62253ac4e1f5fdf6fba2c7305e';
 //Favorites Storage
 var favoriteStorage = [];
 var favoriteData;
+var modal = document.getElementById('modalBox');
 
 //Clear Button event Listener
 document.addEventListener('click', function(event) {
@@ -17,8 +18,10 @@ if (event.target.classList.contains('remove-button')) {
             cardsContainer.removeChild(cardsContainer.firstChild);
           }
         };
-
-    }});
+    }    //If modal is visible this is close button
+        else if (event.target.id == 'closeBtn') {
+            modal.classList.remove('alert');
+}});
 
 //Grabs localStorage information
 function init() {
@@ -30,7 +33,12 @@ function init() {
         //Splits localStorage into array of numbers and saves as global variable
         favoriteStorage = favoriteData.split(",");
         getFavorites();
-    };
+    } else {
+        var noTitle = document.createElement('h6');
+        noTitle.innerHTML = 'You have no Favorite Movies saved!'
+        noTitle.classList.add('text-center');
+        document.body.appendChild(noTitle);
+    }
 };
 
 init();
@@ -52,11 +60,16 @@ function getFavorites() {
         
         //Fetches data from url
         fetch(movieSearchUrl)
+        //Checks the response of the request
         .then(function (response) {
-            return response.json();
-        })
+            if (response.ok) {
+            return response.json();//Reformats API request response
+            } else {
+                //Creates a modal if the fetch request is malfunctioning
+                modal.classList.add('alert');
+            }
+        }) //Requests the data from the API
         .then(function (data) {
-
                 //Creates information variables to plug into cards
                 var posterCode = data.poster_path;
                 var title = data.title;
@@ -99,7 +112,11 @@ function getFavorites() {
                 //Creates list elements
                 var liDate = document.createElement('li');
                     liDate.classList.add('list-group-item');
-                    liDate.innerHTML = `Release Date: ${date}`;
+                    liDate.innerHTML = `- Release Date- <br> ${date}`;
+                    //Checking if release date exists
+                    if (date == '') {
+                        liDate.innerHTML = 'Currently not available'
+                    }
                                 
                 //Rating
                 var liRating = document.createElement('li');
@@ -107,25 +124,25 @@ function getFavorites() {
                     
                     //Stars, Stars, Stars!
                     if (rating === 10) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
                     } else if (rating === 9) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
                     } else if (rating === 8) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
                     } else if (rating === 7) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
                     } else if (rating === 6) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 5) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 4) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 3) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 2) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 1) {
-                        liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else {
                         liRating.innerHTML = 'Currently not available'
                     };

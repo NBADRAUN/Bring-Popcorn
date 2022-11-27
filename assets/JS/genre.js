@@ -23,6 +23,7 @@ var favoriteData;
 //Event Listener for genre selection
 var genreSelection = '';
 var page = 1;
+var modal = document.getElementById('modalBox');
 
 //Calls function to collect favorites from localStorage
 function init() {
@@ -58,6 +59,8 @@ document.addEventListener('click', function(event) {
     } else if (event.target.classList.contains('dropdown-item')) { //Genre selection button
         page = 1;
         genreSelection = event.target.id;
+        var genreBtn = document.getElementById('genreToggle');
+        genreBtn.innerHTML = event.target.innerHTML;
         var more = document.getElementById('more-button');
         var back = document.getElementById('back-button');
         if (more != null && back != null) {
@@ -108,7 +111,11 @@ document.addEventListener('click', function(event) {
         moreButton.remove();
         event.target.remove();
         getGenreTopRated();
-    } 
+
+        //If modal is visible and closed button is clicked
+    } else if (event.target.id == 'closeBtn') {
+        modal.classList.remove('alert');
+    }
 });
 
 /* ------Top-rated movies by genre------*/
@@ -139,8 +146,12 @@ function getGenreTopRated() {
     
         //Checks the response of the request
         .then(function (response) {
+            if (response.ok) {
             return response.json();//Reformats API request response
-        
+            } else {
+                //Creates a modal if the fetch request is malfunctioning
+                modal.classList.add('alert');
+            }
         }) //Requests the data from the API
         .then(function (data) {
 
@@ -180,7 +191,7 @@ function getGenreTopRated() {
                 var cardDescription = document.createElement('p');
                     cardDescription.classList.add('card-text');
                     cardDescription.innerHTML = description;
-                    cardDescription.style.fontSize = '1rem';
+                    cardDescription.style.fontSize = '0.8rem'
                     
                 //Creates list form
                 var ul = document.createElement('ul');
@@ -191,8 +202,12 @@ function getGenreTopRated() {
                 //Creates list elements
                 var liDate = document.createElement('li');
                     liDate.classList.add('list-group-item');
-                    liDate.innerHTML = `Release Date: ${date}`;
+                    liDate.innerHTML = `- Release Date- <br> ${date}`;
                     
+                    if (date == '') {
+                        liDate.innerHTML = 'Currently not available'
+                    };
+
                 //Rating
                 var liRating = document.createElement('li');
                     liRating.classList.add('list-group-item');
@@ -200,28 +215,28 @@ function getGenreTopRated() {
 
                     //Stars, Stars, Stars!
                     if (rating === 10) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
                     } else if (rating === 9) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
                     } else if (rating === 8) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
                     } else if (rating === 7) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
                     } else if (rating === 6) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 5) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 4) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 3) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 2) {
-                        liRating.innerHTML = '&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else if (rating === 1) {
-                        liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
                     } else {
                         liRating.innerHTML = 'Currently not available'
-                    }
+                    };
                     
                 //Favorites Button
                 var liButton = document.createElement('li');
@@ -230,7 +245,7 @@ function getGenreTopRated() {
                     button.classList.add('btn', 'btn-dark', 'favorites-button');
                     button.type = 'button';
                     button.id = id;
-                    button.innerHTML = 'Add to watch list';
+                    button.innerHTML = 'Add to Favorites';
                     
                 //Appends information into cards
                 card.appendChild(image);
@@ -264,4 +279,11 @@ function getGenreTopRated() {
                 pageNumContainer.appendChild(moreMovies);
 
     })
+    topFunction();
 };
+
+//Scrolls back to top of webpage
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
