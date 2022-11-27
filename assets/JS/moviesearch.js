@@ -17,7 +17,6 @@ function init() {
     if (favoriteData !== null) {
         //Splits localStorage into array of numbers and saves as global variable
         favoriteStorage = favoriteData.split(",");
-        console.log(favoriteStorage);
     };
 };
 
@@ -50,7 +49,6 @@ document.addEventListener('click', function(event) {
         event.target.innerHTML = 'Already saved!'
     } else {
         favoriteStorage.push(event.target.id);
-        console.log(favoriteStorage);
         localStorage.setItem('favorite', favoriteStorage);
         event.target.classList.add('bg-success');
         event.target.innerHTML = 'Saved!'
@@ -96,7 +94,6 @@ function searchMovies(nameOfMovie) {
             var date = data.results[i].release_date;
             var rating = Math.floor(data.results[i].vote_average);
             var id = data.results[i].id;
-            console.log(id);
             //Creates Card form container
             var card = document.createElement('div');
                 card.classList.add('card', 'text-center', 'mx-2', 'my-2');
@@ -110,7 +107,7 @@ function searchMovies(nameOfMovie) {
                 image.style.border = '0.1rem solid black';
                 //Checks if poster image exists from data
                 if (image.src === 'https://image.tmdb.org/t/p/original/null') {
-                    var imageNone = document.getElementById('noImage').src
+                    var imageNone = document.getElementById('noImage').src;
                     image.src = imageNone;
                 }
             
@@ -138,7 +135,7 @@ function searchMovies(nameOfMovie) {
             //Creates list elements
             var liDate = document.createElement('li');
                 liDate.classList.add('list-group-item');
-                liDate.innerHTML = `Release Date: ${date}`;
+                liDate.innerHTML = `- Release Date- <br> ${date}`;
                 //Checking if date exists from data
                 if (date == '') {
                     liDate.innerHTML = 'Currently not available'
@@ -149,30 +146,30 @@ function searchMovies(nameOfMovie) {
                 liRating.classList.add('list-group-item');
                 // liRating.innerHTML = `Rating: ${rating}/10`;
 
-                //Stars, Stars, Stars!
-                if (rating === 10) {
-                    liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
-                } else if (rating === 9) {
-                    liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
-                } else if (rating === 8) {
-                    liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
-                } else if (rating === 7) {
-                    liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
-                } else if (rating === 6) {
-                    liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
-                } else if (rating === 5) {
-                    liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                } else if (rating === 4) {
-                    liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                } else if (rating === 3) {
-                    liRating.innerHTML = '&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                } else if (rating === 2) {
-                    liRating.innerHTML = '&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                } else if (rating === 1) {
-                    liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                } else {
-                    liRating.innerHTML = 'Currently not available'
-                }
+                    //Stars, Stars, Stars!
+                    if (rating === 10) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
+                    } else if (rating === 9) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
+                    } else if (rating === 8) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
+                    } else if (rating === 7) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
+                    } else if (rating === 6) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 5) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 4) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 3) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 2) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 1) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else {
+                        liRating.innerHTML = 'Currently not available'
+                    };
                 
             //Favorites Button
             var liButton = document.createElement('li');

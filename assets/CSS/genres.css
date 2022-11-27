@@ -1,9 +1,13 @@
+:root {
+    --butter: #F7B538;
+    --navColor: #F6AA1C;
+}
 body {
-    
-	background-image: url("../images/exploding-popcorn.jpg");
+	background-image: linear-gradient(#F6AA1C, #BC3908, #941B0C, #621708, #220901); 
     background-repeat: no-repeat;
-    background-size: cover;
-	font-family: 'Work Sans', sans-serif; 
+    background-size: 100% 100%;
+	font-family: 'Work Sans', sans-serif;   
+	min-height: 115vh;
 }
 
 /* Navigation Bar */
@@ -12,8 +16,9 @@ body {
     width: 300px;
     margin: 0 auto;
 }
+
 #nav-title {
-	color: #F6AA1C;
+	color: var(--navColor);
 	font-size: 40px;
 }
 
@@ -33,11 +38,11 @@ h1 {
 }
 
 .nav-link:hover {
-    color:#F6AA1C;
+    color:var(--navColor);
 }
 
 #currentTab {
-    color: #F6AA1C;
+    color: var(--navColor);
 }
 
 /* Genre Toggle Box */
@@ -48,6 +53,7 @@ h1 {
 
 .dropdown-menu {
     min-width: 15rem;
+    background-color: #FAF9F6;
 }
 
 .dropdown-item {
@@ -55,14 +61,13 @@ h1 {
 }
 
 .dropdown-item:hover {
-    background: #F7B538;
+    background: var(--butter);
 }
 
 /* Search Container - movieSearch.html */
 .searchContainer {
     margin: 0 auto;
     text-align: center;
-    margin-bottom: 3rem;
 }
 
 #name-search {
@@ -83,7 +88,6 @@ h1 {
 
 /* Card Containers */
 .card {
-    box-shadow: 1rem 1rem 1rem black;
     background-color: #343a40;
     background-repeat: repeat;
     border-radius: 1rem;
@@ -91,8 +95,9 @@ h1 {
 }
 
 .btn {
-    background-color: #F7B538;
+    background-color: var(--butter);
     box-shadow: 0.2rem 0.2rem 0.2rem black;
+    color:black;
 }
 .btn:hover {
    font-weight:bold;
@@ -106,15 +111,16 @@ h1 {
 .list-group {
     border-radius: 0.3rem;
 }
+
 .list-group-item {
-    border: 0.1rem solid black;
-    box-shadow: 0.1rem 0.1rem 0.1rem black, -0.1rem -0.1rem 0.1rem black;
-    background-color: black;
+    box-shadow: 0.1rem 0.1rem 0.1rem var(--butter), -0.1rem -0.1rem 0.1rem var(--butter);
+    background-color: #212529;
     color: white;
 }
 
 .card-title {
     text-decoration: underline;
+    color: var(--butter);
 }
 
 .card-img-top {
@@ -126,3 +132,4 @@ h1 {
     display: block !important;
     top: 50% !important;
 }
+
