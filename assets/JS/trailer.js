@@ -1,31 +1,20 @@
 var fetchButton = $("#searchButton");
 var screenHolder = $("#holderForTrailer");
 var movies = [];
+var warningMessage = $("#warningMessage"); 
+
 
 var formHandler = function (event) {
   event.preventDefault();
-  pickMovie();
-  searchTrailer();
-
-  // getTrailer();
-};
-
-//**User can search for movie of interest**//
-var pickMovie = function () {
   movieSelection = trailerSelection.value.trim();
-  console.log(movieSelection);
+  searchTrailer();
 };
+
 
 var getTrailer = function () {
-
   //empty warning message 
-  $("#warningMessage").text("");
+  warningMessage.text("");
   
-   var testName = "test1";
-   var testDescr =
-    " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.a new path for the kingdom of Wakanda.";
-    var testvideo = "https://trailer.movieglu.com/297863_high_V2.mp4";
-
   var getMovieUrl = {
     url: "https://api-gate2.movieglu.com/filmsNowShowing/",
     method: "GET",
@@ -44,10 +33,6 @@ var getTrailer = function () {
     console.log(response);
 
    for (let i = 0; i < response.films.length; i++) {
-       //for (let i = 0; i < 75; i++) {
-      // movies.push(testName[i]);
-      // console.log(movies);
-      //console.log(response.films[i].film_name);
 
       matchMovie = response.films[i].film_name;
       //add all movie names into movie array we will use for autocomplete
@@ -133,7 +118,8 @@ var searchTrailer = function () {
         var movieName = $("<h3>");
         movieName.addClass("card-title text-center bg-dark rounded");
         movieName.text(matchMovie);
-        var exitButton = $("<button>").addClass('text-center bg-dark rounded"');
+        
+        var exitButton = $("<button>").addClass(' text-center bg-dark rounded text-warning ');
         exitButton.text("Exit");
 
         var movieDescription = $("<p>");
@@ -142,11 +128,13 @@ var searchTrailer = function () {
         var outputBody = $("<div>");
         outputBody.addClass("card-body");
         var trailerVideo = $("<video>");
-        trailerVideo.addClass("autoplay");
+        trailerVideo.addClass(["col", "w-5"]);
         var source = $("<src>");
         trailerVideo.attr("src", movieTrailer);
         trailerVideo.attr("type", "video/mp4");
         trailerVideo.attr("controls", "autoplay");
+        var exitButton = $("<button>").addClass(' [video content text-center bg-dark rounded text-warning ');
+        exitButton.text("Exit");
 
         console.log(source);
        //append to html in order ti display data
@@ -157,6 +145,7 @@ var searchTrailer = function () {
         trailerWrapper.append(outputBody);
         screenHolder.append(trailerWrapper);
 
+        //empty existing trailers from starting trailer page
         $("#wrapper").empty();
         exitButton.on('click',function(){
         screenHolder.empty(); 
@@ -164,7 +153,7 @@ var searchTrailer = function () {
         getTrailer();
 
         });
-        //empty existing trailers from starting trailer page
+        
        
       }
   
@@ -187,7 +176,7 @@ $(function () {
 
 
 var message = function(){
-$("#warningMessage").text(
-  "Movie you are searching for is not in our database"
-);
+  
+  warningMessage.text( "Movie you are searching for is not in our database, please try again.");
+  
 }
