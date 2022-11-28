@@ -4,7 +4,7 @@
 
 body {
     background-image: url("../images/exploding-popcorn.jpg");
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
     font-family: 'Work Sans', sans-serif;
 }
@@ -12,8 +12,25 @@ body {
 /*adds color to H1 tag*/
 
 
+
+header {
+	height: 20px;
+}
+
+nav {
+	height: 20px;
+}
+
+h1 {
+	color: #F6AA1C;
+}
+
 h4 {
     color: #780116;
+}
+
+.nav-link {
+	color: #FAF3D2;
 }
 
 h5 {

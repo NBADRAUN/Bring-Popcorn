@@ -30,7 +30,7 @@ async function getlatlon() {
   var latlondata = await response.json(); 
   lat = latlondata.results[0].locations[0].displayLatLng.lat; 
   lon = latlondata.results[0].locations[0].displayLatLng.lng; 
-// gettheaters(); 
+gettheaters(); 
 }
 
 // /movieglu api to get the 3 closest theaters of the users input///
@@ -42,9 +42,9 @@ var settings = {
   "headers": {
   "api-version": "v200",
   "geolocation":lat+";"+lon,
-  "Authorization": "Basic VU5JVl82Mzo2aWluWVhtY0tLaUw=",
-  "client": "UNIV_63",
-  // "x-api-key": "aoj8JUwxgza93mOqPhI125rbZZ0HcsBI7fnGyGGq",
+  "Authorization": "Basic U1RVRF8yNDk6b3hTMmFFQXF6ckw1=",
+  "client": "STUD_249",
+  "x-api-key": "mnUk7hyiLC8q75pSZvq97aLh5rMLLFZW1m7PdJGX",
   "device-datetime": isodate,
   "territory": "US",
   },
@@ -60,28 +60,6 @@ var settings = {
     theaterstatetext = response.cinemas[i].state; 
     theaterziptext = response.cinemas[i].postcode; 
     theaterdistancetext = response.cinemas[i].distance; 
-
-  
-    /////////START OF TEST DATA/////////////////
-// var gettestdata = function(){
-
-//     for (let i = 0; i <3; i++) {  
-//     var cinema_name = ['AMC Dine-in Theatres Southlands 16 Featuring Red Kitchen','AMC Arapahoe Crossing 16','Movie Tavern Aurora Cinema']; 
-//     var address = ['23955 East Plaza Avenue','6696 South Parker Road','18605 East Hampden Avenue']; 
-//     var city = ['Aurora','Aurora','Aurora']; 
-//     var state = ['CO','CO','CO']; 
-//     var zip = ['80016','80016','80013']; 
-//     var distance = ['0.97','5.3','5.5']; 
-//     var theaterdistancerounded = ['0.97','5.3','5.5']; 
-       
-//     theaternametext = cinema_name[i]; 
-//     theateraddresstext = address[i]; 
-//     theatercitytext = city[i]; 
-//     theaterstatetext = state[i]; 
-//     theaterziptext = zip[i]; 
-//     theaterdistancetext = distance[i]; 
-    ////////////END OF TEST DATA///////////////
-
 
     ///create theater card ////
     var theatercard = $("<div>");
