@@ -2,7 +2,8 @@
 
 // API Key 
 var apiKey = '95a7e5127d0a488c78d9f99eed7a76bd';
-// global variables 
+
+// set 'favorites' variables 
 var favStorage = [];
 var favData;
 
@@ -24,10 +25,9 @@ init();
 document.addEventListener('click', function(event) {
 
   if (event.target.classList.contains('favorites-button')) {
-    return;
 
-  } else if (!favStorage.includes(event.target.movieId)) {
-    favStorage.push(event.target.movieId);
+  if (!favStorage.includes(event.target.id)) {
+    favStorage.push(event.target.id);
     localStorage.setItem('favorite', favStorage);
     event.target.classList.add('bg-success');
     event.target.innerHTML = 'Saved!'
@@ -38,7 +38,8 @@ document.addEventListener('click', function(event) {
     console.log('saved');
 
   };  
-  });
+  }
+});
 
 // get popular 
 
@@ -55,7 +56,7 @@ function getPopular() {
    .then(function(data){
         console.log(data)
       
-    // loop   
+    // loop for get popular data
       for (i=0; i<data.results.length; i++) {
         var posterCode = data.results[i].poster_path;
         var movieTitle = data.results[i].title;
@@ -63,15 +64,10 @@ function getPopular() {
         var movieRating = Math.floor(data.results[i].vote_average); 
         var movieDate = data.results[i].release_date;
 
-        // create container
-        //var card = document.createElement('div');
-          //card.classList.add('card', 'text-center', 'mx-2', 'my-2');
-          //card.style.width = '20rem';
-          //card.style.border = '0.1rem solid black';
-
         var card = document.createElement('div');
           card.classList.add('col-5', 'text-center', 'mx-2', 'my-2', 'bg-dark');
           card.style.width = '20rem';
+
           card.style.border = '0.1rem solid black';
 
         
@@ -80,13 +76,6 @@ function getPopular() {
         image.classList.add('card-img-top', 'mt-3');
         image.src = `https://image.tmdb.org/t/p/original/${posterCode}`;
         image.style.border = '0.1rem solid black';
-
-        // create card body
-        //var body = document.createElement('div');
-        //body.classList.add('card-body');
-
-        //var body = document.createElement('div');
-        //body.classList.add('card','card-block');
 
         // create title 
         var title = document.createElement('h5');
@@ -109,14 +98,6 @@ function getPopular() {
         date.classList.add('list-group-item');
         date.innerHTML = `${movieDate}`;
 
-        // create favorites button
-        //var movieBtn = document.createElement('li');
-        //movieBtn.classList.add('list-group-item');
-        //var button = document.createElement('button');
-        //button.classList.add('btn', 'btn-dark', 'favorites-button');
-        //button.type = 'button';
-        //button.id = movieId;
-       // button.innerHTML = 'Add to favorites';
 
        // create favorites button
        var listBtn = document.createElement('li');
@@ -135,7 +116,6 @@ function getPopular() {
         ul.appendChild(rating);
         listBtn.appendChild(button);
         ul.appendChild(listBtn);
-        //card.appendChild(body);
         card.appendChild(ul);
         formContainer.appendChild(card); 
         
@@ -169,11 +149,6 @@ function getUpcoming() {
         var movieDate = data.results[i].release_date;
 
         // create container
-        //var card = document.createElement('div');
-          //card.classList.add('card', 'text-center', 'mx-2', 'my-2');
-          //card.style.width = '20rem';
-          //card.style.border = '0.1rem solid black';
-
         var card = document.createElement('div');
           card.classList.add('col-5', 'text-center', 'mx-2', 'my-2', 'bg-dark');
           card.style.width = '20rem';
@@ -212,14 +187,6 @@ function getUpcoming() {
         date.classList.add('list-group-item');
         date.innerHTML = `${movieDate}`;
 
-        // create favorites button
-        //var movieBtn = document.createElement('li');
-        //movieBtn.classList.add('list-group-item');
-        //var button = document.createElement('button');
-        //button.classList.add('btn', 'btn-dark', 'favorites-button');
-        //button.type = 'button';
-        //button.id = movieId;
-       // button.innerHTML = 'Add to favorites';
 
        // create favorites button
        var listBtn = document.createElement('li');
@@ -248,6 +215,98 @@ function getUpcoming() {
 };
 };
 getUpcoming();
+
+
+
+// dev favorites movie id array 18533
+var devFavs = [11969, 2280, 5994, 18533, 10466, 39939,957, 157336, 6435, 11321, 597, 510]; 
+
+// get dev favorites 
+function getDevFav () {
+
+  var formContainer = document.getElementById('form-container3');
+  formContainer.classList.add('mx-4', 'mx-4');
+      
+    // loop   
+      for (i=0; i<devFavs.length; i++) {
+
+        var devFavURL = `https://api.themoviedb.org/3/movie/${devFavs[i]}?api_key=${apiKey}&language=en-US`
+
+      fetch(devFavURL)
+      .then(function(response){
+      return response.json()})
+
+      .then(function(data){
+        console.log(data)
+      
+
+        var posterCode = data.poster_path;
+        var movieTitle = data.title;
+        var movieId = devFavs[i];
+        var movieRating = Math.floor(data.vote_average); 
+        var movieDate = data.release_date;
+
+        var card = document.createElement('div');
+          card.classList.add('col-5', 'text-center', 'mx-2', 'my-2', 'bg-dark');
+          card.style.width = '20rem';
+          card.style.border = '0.1rem solid black';
+
+        
+        // create image 
+       var image = document.createElement('img');
+        image.classList.add('card-img-top', 'mt-3');
+        image.src = `https://image.tmdb.org/t/p/original/${posterCode}`;
+        image.style.border = '0.1rem solid black';
+
+        // create title 
+        var title = document.createElement('h5');
+        title.classList.add('card-title');
+        title.innerHTML = movieTitle;
+
+        // create rating 
+        var rating = document.createElement('li');
+        rating.classList.add('list-group-item');
+        rating.innerHTML = `Rating: ${movieRating}/10`;
+
+        // creates unordered list
+        var ul = document.createElement('ul');
+        ul.classList.add('list-group', 'list-group-flush', 'mb-2');
+
+        // create date
+        var date = document.createElement('li');
+        date.classList.add('list-group-item');
+        date.innerHTML = `${movieDate}`;
+
+      
+
+       // create favorites button
+       var listBtn = document.createElement('li');
+       listBtn.classList.add('list-group-item');
+       var button = document.createElement('button');
+       button.classList.add('btn', 'btn-dark', 'favorites-button');
+       button.type = 'button';
+       button.id = devFavs[i];
+       button.innerHTML = 'Add to favorites';
+
+
+
+        card.appendChild(image);
+        card.appendChild(title);
+        ul.appendChild(date);
+        ul.appendChild(rating);
+        listBtn.appendChild(button);
+        ul.appendChild(listBtn);
+        card.appendChild(ul);
+        formContainer.appendChild(card); 
+        
+      }
+      )
+    };
+};4
+
+getDevFav ();
+
+
 
 
 
