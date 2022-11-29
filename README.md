@@ -53,16 +53,15 @@ To move to another page, utilize the nav bar at the top of the screen.
 
 To access movies by genre, select “Genres” located on the navigation bar. Then, use the dropdown menu to search for a genre. 
 
-<img width = 1421 alt="genres page screenshot" src=https://user-images.githubusercontent.com/113480175/204426344-2c4800ab-d807-40f3-993e-8eefd7221223.png>
-
-To search movies, utilize “movie search” located in the navigation bar. Enter the name of a movie to view the movie's cover, release date, and rating. 
 
 <img width = 1421 alt="movie search page screenshot" src=https://user-images.githubusercontent.com/113480175/204426508-e2dd1719-b02d-48d2-a86a-67c32870ed8a.png>
+
 
 
 To view trailers for movies that are currently being shown, select “Trailers”. 
 
 <img width = 1421 alt="movie trailers page screenshot" src=https://user-images.githubusercontent.com/113480175/204426727-4e2b90fa-6237-41ef-b8fd-1fb080b9755c.png>
+
 
 Select “Theaters” from the navigation bar search and enter your zipcode to locate nearby theaters. 
 
@@ -71,7 +70,9 @@ Select “Theaters” from the navigation bar search and enter your zipcode to l
 
 Movies can be stored as favorites by clicking the “Add to Favorites” button. To view all stored movies, click “Favorites” on the navigation bar.
 
+
 <img width = 1421 alt="favorites page screenshot" src=https://user-images.githubusercontent.com/113480175/204426078-e7756821-ef0e-4a03-9f94-4e0e05cadbbb.png>
+
 
 
 
