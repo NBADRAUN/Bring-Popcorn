@@ -66,6 +66,8 @@ To search for a movie, navigate to "movie search" and enter the name of a movie 
 
 To view trailers for movies that are currently being shown, select “Trailers”. 
 
+<img src="./assets/images/Trailerpic.png" alt="trailers page screenshot">
+
 <img src="./assets/images/Trailerpic2.png" alt="trailers page screenshot"> 
 
 Select “Theaters” from the navigation bar search and enter your zipcode to locate nearby theaters. 
@@ -89,6 +91,14 @@ Collaborators
 * Jelena Rogic - https://github.com/Jelenarog 
 * Cody Cooper - https://github.com/Ccooper9893 
 * Lauren Genzone - https://github.com/lgenzone 
+
+Third-Party APIs 
+
+* https://developer.movieglu.com/ 
+* https://www.themoviedb.org/ 
+* https://developer.mapquest.com/
+
+
 
 
 
