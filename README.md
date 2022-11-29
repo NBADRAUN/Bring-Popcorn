@@ -54,7 +54,13 @@ To move to another page, utilize the nav bar at the top of the screen.
 To access movies by genre, select “Genres” located on the navigation bar. Then, use the dropdown menu to search for a genre. 
 
 
-<img width = 1421 alt="movie search page screenshot" src=https://user-images.githubusercontent.com/113480175/204426508-e2dd1719-b02d-48d2-a86a-67c32870ed8a.png>
+<img width = 1421 alt="genres page screenshot" src=https://user-images.githubusercontent.com/113480175/204426508-e2dd1719-b02d-48d2-a86a-67c32870ed8a.png>
+
+To search for a movie, navigate to "movie search" and enter the name of a movie to view the cover, rating and release date. 
+
+<img width = 1421 alt="movie search page screenshot" src=https://user-images.githubusercontent.com/113480175/204435739-1b4592a9-9965-4377-a650-c1273936a4aa.png>
+
+
 
 
 
