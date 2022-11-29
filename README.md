@@ -46,19 +46,19 @@ Upcoming, Most Popular and Dev Favorites are located on the landing page. Users 
 
 <img width="1421" alt="landing page screenshot" src="https://user-images.githubusercontent.com/113480175/204420954-2ac95b90-e01d-4e13-9fd1-1af25179e199.png">
 
+
 To move to another page, utilize the nav bar at the top of the screen. 
 
 <img width="1438" alt="nav bar screenshot" src="https://user-images.githubusercontent.com/113480175/204421643-ef2719ea-6d67-4ed1-b280-6373c8f853be.png">
 
 
 To access movies by genre, select “Genres” located on the navigation bar. Then, use the dropdown menu to search for a genre. 
+<img src="./assets/images/genrespic.png" alt="genres page screenshot"> 
 
-
-<img width = 1421 alt="genres page screenshot" src=https://user-images.githubusercontent.com/113480175/204426508-e2dd1719-b02d-48d2-a86a-67c32870ed8a.png>
 
 To search for a movie, navigate to "movie search" and enter the name of a movie to view the cover, rating and release date. 
 
-<img width = 1421 alt="movie search page screenshot" src=https://user-images.githubusercontent.com/113480175/204435739-1b4592a9-9965-4377-a650-c1273936a4aa.png>
+<img src="./assets/images/moviesearchpic.png" alt="movie search page screenshot"> 
 
 
 
@@ -66,18 +66,16 @@ To search for a movie, navigate to "movie search" and enter the name of a movie 
 
 To view trailers for movies that are currently being shown, select “Trailers”. 
 
-<img width = 1421 alt="movie trailers page screenshot" src=https://user-images.githubusercontent.com/113480175/204426727-4e2b90fa-6237-41ef-b8fd-1fb080b9755c.png>
-
+<img src="./assets/images/Trailerpic2.png" alt="trailers page screenshot"> 
 
 Select “Theaters” from the navigation bar search and enter your zipcode to locate nearby theaters. 
 
-<img width="1421" alt="theaters page screenshot" src="https://user-images.githubusercontent.com/113480175/204425738-7e4544a4-835e-4876-b941-e768620771b5.png">
-
+<img src="./assets/images/Theaters.png" alt="theaters page screenshot"> 
 
 Movies can be stored as favorites by clicking the “Add to Favorites” button. To view all stored movies, click “Favorites” on the navigation bar.
 
 
-<img width = 1421 alt="favorites page screenshot" src=https://user-images.githubusercontent.com/113480175/204426078-e7756821-ef0e-4a03-9f94-4e0e05cadbbb.png>
+<img src="./assets/images/favoritespic.png" alt="favorites page screenshot"> 
 
 
 
