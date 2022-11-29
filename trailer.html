@@ -15,64 +15,61 @@
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
-    <link rel="stylesheet" type="text/css" hre="./assets/css/trailer.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/trailer.css" />
   </head>
-
-<body>
-  <header>
-    <h1 class="d-flex justify-content-center align-items-center">Bring Popcorn!</h1>
-    <h5 class="d-flex justify-content-center align-items-center">a movie search website</h5>
-  </header>
-  <!-- nav bar-->
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active px-4" aria-current="page" href="/landing-page.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link px-4" href="/genre.html">Genres</a>
-          </li>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link px-4" href="/moviesearch.html">Movie Search</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link px-4" href="/trailer.html">Trailers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link px-4" href="/theaters.html">Find a Theater Near Me</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link px-4" href="/mymovies.html">My Movies</a>
-          </li>
-      </div>
-      <form id="searchButton"  class="d-flex" role="search">
-        <input id="trailerSelection" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search for trailers</button>
-      </form>
+  <body>
+ <!-- nav bar -->
+ <nav class="navbar sticky-top navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <div class="header bg-dark">
+      <img src="./assets/images/bring-popcorrn-logo.png" width="275" >
     </div>
     
-  </nav>
+      <div class="d-flex justify-content-center align-items-center">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link px-4" aria-current="page" href="landing-page.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-4" href="genre.html">Genres</a>
+        </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-4" href="moviesearch.html">Movie Search</a>
+        </li>
+        <li class="nav-item">
+          <a id="currentTab" class="nav-link px-4" href="trailer.html">Trailers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-4" href="theaters.html"> Theaters</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-4" href="mymovies.html">♥ Favorites</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
+  <main>
 
-    <div class="container">
-      <p id="warningMessage" class="lead"></p>
+  <form id="searchButton"  class="container-fluid py-3" role="search">
+    <input id="trailerSelection" class=" py-2 bg-dark text-warning " type="search" aria-label="Search " placeholder="Movies Now Showing" >
+    <button class="btn btn-warning" type="submit">Search</button>
+  </form>
+
+    <div class="container text-dark">
+      <h2 id="warningMessage"></h2>
     </div>
 
 
-    <!--Movie divs with title, description, and video-->
+ <!--User selection trailer display--> 
 <div id="holderForTrailer" >
 </div>
 
+<!--Movie trailers with title, description, and video-->
 <div id="wrapper" class="container">
-
 </div>
 
   <script src="./assets/js/trailer.js"></script>
@@ -82,7 +79,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
+</main>
 </body>
 
 </html>
