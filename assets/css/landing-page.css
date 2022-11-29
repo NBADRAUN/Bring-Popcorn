@@ -44,7 +44,14 @@ body {
 	
 }
 
+#currentTab {
+    color: #F6AA1C;
+}
 
+
+.nav-link:hover {
+    color: #F6AA1C;
+}
 
 
 
