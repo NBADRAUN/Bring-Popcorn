@@ -9,14 +9,14 @@ var favData;
 
 // get favorites from local storage
 function init() {
-  console.log(favData);
+  //console.log(favData);
   favData = localStorage.getItem('favorite');
-  console.log(favData);
-  
+  //console.log(favData);
+  // checks if local storage is empty
   if (favData !== null) {
       
       favStorage = favData.split(",");
-      console.log(favStorage);
+      //console.log(favStorage);
   };
 };
 init();
@@ -35,7 +35,7 @@ document.addEventListener('click', function(event) {
   } else {
     event.target.classList.add('bg-danger');
     event.target.innerHTML = 'Already saved!'
-    console.log('saved');
+    //console.log('saved');
 
   };  
   }
@@ -53,7 +53,7 @@ function getPopular() {
     if (response.ok) {
       response.json()
    .then(function(data){
-        console.log(data)
+        //console.log(data)
 
     
       
@@ -137,7 +137,7 @@ function getUpcoming() {
     if (response.ok) {
       response.json()
    .then(function(data){
-        console.log(data)
+        //console.log(data)
       
     // loop for upcoming movies
       for (i=0; i<data.results.length; i++) {
@@ -228,7 +228,7 @@ function getDevFav () {
       return response.json()})
 
       .then(function(data){
-        console.log(data)
+        //console.log(data)
       
 
         var posterCode = data.poster_path;

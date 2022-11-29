@@ -40,7 +40,7 @@ Bring Popcorn allows users to:
 
 ## Usage 
 
-The access the Bring Popcorn webpage, click the following link: (ADD DEPLOYED URL)
+The access the Bring Popcorn webpage, click the following link: https://nbadraun.github.io/Bring-Popcorn/ 
 
 Upcoming, Most Popular and Dev Favorites are located on the landing page. Users can view each section by scrolling vertically on the page. To view additional movies within a section, scroll horizontally. 
 
