@@ -1,50 +1,56 @@
 body {
-    
-	/*background-image: url("../images/Instant_Pot_Popcorn_image.webp"); 
-	*/
-	background-image: linear-gradient(#F6AA1C, #BC3908, #941B0C, #621708, #220901); 
-    background-repeat: no-repeat;
-    background-size: cover;
-	font-family: 'Work Sans', sans-serif;   
+  /*background-image: url("../images/Instant_Pot_Popcorn_image.webp"); */
+  background-image: linear-gradient(
+    #f6aa1c,
+    #bc3908,
+    #941b0c,
+    #621708,
+    #220901
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Work Sans", sans-serif;
 }
 
+/* nav title color */
 #nav-title {
-	color: #F6AA1C;
-	font-size: 40px;
-	margin-left: 200px;
+  color: #f6aa1c;
+  font-size: 40px;
+  margin-left: 200px;
 }
-
+/* nav discription */
 #nav-description {
-	font-size: 16px;
-	color: white;
-	text-align: center;
-	
+  font-size: 16px;
+  color: white;
+  text-align: center;
 }
-
+/* Nav links */
 .nav-link {
-	color: #FAF3D2;
-	font-size: 16x;
+  color: #faf3d2;
+  font-size: 16x;
 }
-
-
-.scrolling-wrapper{
-	overflow-x: auto;
-	color: white;
+/* scrolling wrapper */
+.scrolling-wrapper {
+  overflow-x: auto;
+  color: white;
 }
-
+/* section title */
 .section-title {
-	color: white;
-	margin-left: 33px;
-	margin-top: 50px;
-	margin-bottom: 0;
+  color: white;
+  margin-left: 33px;
+  margin-top: 50px;
+  margin-bottom: 0;
 }
-
+/* search box */
 .col-4 {
-    background-color:#F6AA1C;
-    color:#941B0C; 
+  background-color: #f6aa1c;
+  color: #941b0c;
 }
-
-/* .btn {
-    background-color:#BC3908;
-    color:#FAF3D2; 
-} */
+/* current tab on nav */
+#currentTab {
+  color: #f6aa1c;
+}
+/* hover on nav */
+.nav-link:hover {
+  color: #f6aa1c;
+}
