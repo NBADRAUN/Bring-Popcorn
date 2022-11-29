@@ -49,6 +49,7 @@ h1 {
 #genreToggle {
     padding-left: 3rem !important;
     padding-right: 3rem !important;
+    box-shadow: 0.1rem 0.1rem 0.1rem black, -0.1rem -0.1rem 0.1rem black;
 }
 
 .dropdown-menu {
@@ -124,7 +125,7 @@ h1 {
 }
 
 .card-img-top {
-    box-shadow: 0.1rem 0.1rem 0.1rem black;
+    box-shadow: 0.1rem 0.1rem 0.1rem var(--butter), -0.1rem -0.1rem 0.1rem var(--butter);
 }
 
 /* Bad API fetch Modal Alert */
