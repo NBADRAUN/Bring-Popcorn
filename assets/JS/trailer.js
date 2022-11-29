@@ -1,81 +1,69 @@
 var fetchButton = $("#searchButton");
 var screenHolder = $("#holderForTrailer");
-var movies = [];
-
+var movies = [];//empty array where all trailer names are stored
+var warningMessage = $("#warningMessage"); 
+var date = new Date();  
+var apiDate = date.toISOString(); 
+//function that is run each time user clicks on search
 var formHandler = function (event) {
   event.preventDefault();
-  pickMovie();
-  searchTrailer();
-
-  // getTrailer();
-};
-
-//**User can search for movie of interest**//
-var pickMovie = function () {
   movieSelection = trailerSelection.value.trim();
-  console.log(movieSelection);
+  searchTrailer();
 };
 
+//function to display all trailers for movies currently showing
 var getTrailer = function () {
-
-  //empty warning message 
-  $("#warningMessage").text("");
+  //remove warning message 
+  warningMessage.text("");
   
-  // var testName = "test1";
-  // var testDescr =
-  //   " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.a new path for the kingdom of Wakanda.";
-  // var testvideo = "https://trailer.movieglu.com/297863_high_V2.mp4";
-
+  //fetch url that holds trailers
   var getMovieUrl = {
     url: "https://api-gate2.movieglu.com/filmsNowShowing/",
     method: "GET",
     timeout: 0,
     headers: {
       "api-version": "v200",
-      Authorization: "Basic VFhDVTp4M1p3Z05KY2s0UlE=",
-      client: "TXCU",
-      "x-api-key": "HZT05M3Wa8ak6Wphu3pK27eFET0jgxDOEvcgPhBb",
-      "device-datetime": "2022-24-22T12:07:57.296Z",
+     Authorization: "Basic U1RVRF8yNDg6ZVhDTXp5cGEzcHlS",
+      client: "STUD_248",
+      "x-api-key": "0bbivexyGQ2fvFq8bzPiV8cyWJZqykwaGHKZXfm6",
+      "device-datetime":  apiDate,
       territory: "US",
+      
     },
   };
 
   $.ajax(getMovieUrl).done(function (response) {
-    console.log(response);
+   for (let i = 0; i < response.films.length; i++) {
 
-    for (let i = 0; i < response.films.length; i++) {
-      // for (let i = 0; i < 75; i++) {
-      // movies.push(testName[i]);
-      // console.log(movies);
-      //console.log(response.films[i].film_name);
-
+    //get movie name from api
       matchMovie = response.films[i].film_name;
       //add all movie names into movie array we will use for autocomplete
       movies.push(matchMovie);
-
+      //get trailer from api
       movieTrailer = response.films[i].film_trailer;
+      //get movie description from api
       movieDescr = response.films[i].synopsis_long;
 
       //Creates video elements
       var trailerVideo = $("<video>");
-      trailerVideo.addClass(["col", "mt-3", "w-5"]);
-      trailerVideo.attr("src", movieTrailer); //(movieTrailer)testvideo
+      trailerVideo.addClass("col", "mt-3", "w-50");
+      trailerVideo.attr("src", movieTrailer); 
       trailerVideo.attr("type", "video/mp4");
       trailerVideo.attr("controls", "autoplay");
 
       //Creates element title for each trailer and style
-      var descrTitle = $("<h5>").addClass(" text-center");
-      descrTitle.text(matchMovie); // (matchMovie);testName
+      var descrTitle = $("<h3>").addClass(" text-center bg-dark rounded");
+      descrTitle.text(matchMovie); 
       var liDescr = $("<p>").addClass(
-        "rounded shadow-lg p-3 mb-5 bg-body rounded"
+        "rounded shadow-lg p-3 mb-5 bg-dark rounded"
       );
-      liDescr.text(movieDescr); //(movieDescr)testDescr)
+      liDescr.text(movieDescr); 
       var divRow = $("<div>").addClass("row");
       var divCon = $("<div>").addClass("container");
-      var trailerContainer = $("<div>").addClass("col pt-3");
+      var trailerContainer = $("<div>").addClass("col d-flex pt-3");
       var textContainer = $("<div>").addClass("col pt-5 ");
 
-      //append to HTML
+      //append to HTML to display all trailers for movies currently showing
       trailerContainer.append(trailerVideo);
       textContainer.append(trailerContainer);
       textContainer.append(descrTitle);
@@ -86,86 +74,90 @@ var getTrailer = function () {
       var wrap = $("#wrapper");
       wrap.append(divCon);
     }
-  });
+ });
 };
+
 getTrailer();
 
+//function to display only trailer of users interest 
 var searchTrailer = function () {
   var getMovieUrl = {
-    url: "https://api-gate2.movieglu.com/filmsNowShowing/",
+   url: "https://api-gate2.movieglu.com/filmsNowShowing/",
     method: "GET",
     timeout: 0,
     headers: {
       "api-version": "v200",
-      Authorization: "Basic VFhDVTp4M1p3Z05KY2s0UlE=",
-      client: "TXCU",
-      "x-api-key": "HZT05M3Wa8ak6Wphu3pK27eFET0jgxDOEvcgPhBb",
-      "device-datetime": "2022-11-24T12:07:57.296Z",
+      Authorization: "Basic U1RVRF8yNDg6ZVhDTXp5cGEzcHlS",
+      client: "STUD_248",
+      "x-api-key":"0bbivexyGQ2fvFq8bzPiV8cyWJZqykwaGHKZXfm6",
+      "device-datetime": apiDate,
       territory: "US",
+      
     },
   };
 
   $.ajax(getMovieUrl).done(function (response) {
-    console.log(response);
-
     for (let i = 0; i < response.films.length; i++) {
-      //**If movie of interest is in database we will grab trailer**/
-      if (movieSelection === response.films[i].film_name) {
+
+      //**If movie of interest is not in database display warning message**/
+     
+      if (!movies.includes(movieSelection)) {
+      
+       message();
+        return;
+     }
+
+     // if user input is in data base display trailer user picked
+      else if (movieSelection === response.films[i].film_name) {
+        $("#warningMessage").text(""); //hide warning message
 
         //fetch data for each trailer 
         matchMovie = response.films[i].film_name;
         movieTrailer = response.films[i].film_trailer;
         movieDescr = response.films[i].synopsis_long;
-        //create HTML elements
-        var trailerWrapper = $("<div>");
-        trailerWrapper.addClass("card");
-        var movieName = $("<h5>");
-        movieName.addClass("card-title");
-        movieName.text(matchMovie);
-        var exitButton = $("<button>");
-        exitButton.text("Exit");
 
+        //create HTML elements to display trailer of interest
+        var trailerWrapper = $("<div>");
+        trailerWrapper.addClass("card bg-dark ");
+        var movieName = $("<h3>");
+        movieName.addClass("card-title text-center bg-dark rounded");
+        movieName.text(matchMovie);
+        
+        var exitButton = $("<button>").addClass(' text-center bg-dark rounded text-warning ');
+        exitButton.text("Exit");
         var movieDescription = $("<p>");
-        movieDescription.addClass("card-text");
+        movieDescription.addClass("card-text text-center bg-dark rounded");
         movieDescription.text(movieDescr);
         var outputBody = $("<div>");
         outputBody.addClass("card-body");
         var trailerVideo = $("<video>");
-        trailerVideo.addClass("autoplay");
+        trailerVideo.addClass(["col", "w-5"]);
         var source = $("<src>");
         trailerVideo.attr("src", movieTrailer);
         trailerVideo.attr("type", "video/mp4");
         trailerVideo.attr("controls", "autoplay");
+        var exitButton = $("<button>").addClass(' [video content text-center bg-dark rounded text-warning ');
+        exitButton.text("Exit");
 
-        console.log(source);
-       //append to html in order ti display data
+       
+       //append to html in order t display trailer
         outputBody.append(movieName);
         outputBody.append(movieDescription);
-        trailerWrapper.append(exitButton);
         trailerWrapper.append(trailerVideo);
+        trailerWrapper.append(exitButton);
         trailerWrapper.append(outputBody);
         screenHolder.append(trailerWrapper);
 
+        //empty existing trailers from starting trailer page
         $("#wrapper").empty();
+
+        //on click on exit button exit currently playing trailer and return to all trailer page
         exitButton.on('click',function(){
         screenHolder.empty(); 
-
         getTrailer();
-
         });
-        //empty existing trailers from starting trailer page
-       
       }
-      if (movieSelection !== movies) {
-       message();
-        
-        console.log("no trailer available");
-        return;
-      }
-
     }
-
-    console.log(movies);
   });
 };
 
@@ -179,9 +171,7 @@ $(function () {
   });
 });
 
-
+//warning message that will display each time user searched for trailer that is not in data base
 var message = function(){
-$("#warningMessage").text(
-  "Movie you are searching for is not in our database"
-);
+  warningMessage.text( "Movie you are searching for is not in our database, please try again.");
 }
