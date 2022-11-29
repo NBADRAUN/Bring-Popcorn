@@ -11,6 +11,10 @@ body {
   background-size: cover;
   font-family: "Work Sans", sans-serif;
 }
+/* condenses the nav bar */
+.navbar {
+  padding: 0 !important;
+}
 
 /* nav title color */
 #nav-title {
