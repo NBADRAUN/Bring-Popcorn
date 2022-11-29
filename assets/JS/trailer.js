@@ -23,11 +23,12 @@ var getTrailer = function () {
     timeout: 0,
     headers: {
       "api-version": "v200",
-      Authorization: "Basic U1RVRF8yNDg6ZVhDTXp5cGEzcHlS",
+     Authorization: "Basic U1RVRF8yNDg6ZVhDTXp5cGEzcHlS",
       client: "STUD_248",
-      //"x-api-key": "0bbivexyGQ2fvFq8bzPiV8cyWJZqykwaGHKZXfm6",
+      "x-api-key": "0bbivexyGQ2fvFq8bzPiV8cyWJZqykwaGHKZXfm6",
       "device-datetime":  apiDate,
       territory: "US",
+      
     },
   };
 
@@ -45,7 +46,7 @@ var getTrailer = function () {
 
       //Creates video elements
       var trailerVideo = $("<video>");
-      trailerVideo.addClass(["col", "mt-3", "w-5"]);
+      trailerVideo.addClass("col", "mt-3", "w-50");
       trailerVideo.attr("src", movieTrailer); 
       trailerVideo.attr("type", "video/mp4");
       trailerVideo.attr("controls", "autoplay");
@@ -59,7 +60,7 @@ var getTrailer = function () {
       liDescr.text(movieDescr); 
       var divRow = $("<div>").addClass("row");
       var divCon = $("<div>").addClass("container");
-      var trailerContainer = $("<div>").addClass("col pt-3");
+      var trailerContainer = $("<div>").addClass("col d-flex pt-3");
       var textContainer = $("<div>").addClass("col pt-5 ");
 
       //append to HTML to display all trailers for movies currently showing
@@ -81,16 +82,17 @@ getTrailer();
 //function to display only trailer of users interest 
 var searchTrailer = function () {
   var getMovieUrl = {
-    url: "https://api-gate2.movieglu.com/filmsNowShowing/",
+   url: "https://api-gate2.movieglu.com/filmsNowShowing/",
     method: "GET",
     timeout: 0,
     headers: {
       "api-version": "v200",
       Authorization: "Basic U1RVRF8yNDg6ZVhDTXp5cGEzcHlS",
       client: "STUD_248",
-      //"x-api-key":"0bbivexyGQ2fvFq8bzPiV8cyWJZqykwaGHKZXfm6",
+      "x-api-key":"0bbivexyGQ2fvFq8bzPiV8cyWJZqykwaGHKZXfm6",
       "device-datetime": apiDate,
       territory: "US",
+      
     },
   };
 

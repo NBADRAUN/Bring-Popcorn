@@ -5,10 +5,11 @@ body {
 	background-image: linear-gradient(#F6AA1C, #BC3908, #941B0C, #621708, #220901); 
 	background-repeat: no-repeat;
 	background-size: 100%;
-	/* background-image: url("../images/exploding-popcorn.jpg");
-    background-repeat: repeat-y;
-	background-size: 100%;  */
 	font-family: 'Work Sans', sans-serif;
+}
+
+.navbar {
+    padding: 0 !important;
 }
 
 .header {
@@ -32,7 +33,7 @@ body {
  /*Nav bar link style */
 .nav-link {
 	color: #FAF3D2;
-	font-size: 16x;
+	font-size: 1rem;
 }
 
 /*movie description style*/
@@ -53,3 +54,31 @@ h3{
 input:-webkit-autofill{
     -webkit-text-fill-color: #F6AA1C ;
 }
+#currentTab {
+    color: #F6AA1C;
+}
+@media screen and (max-width: 592px) {
+    .container-fluid {
+        justify-content: center !important;
+        text-align: center !important;
+    }
+	.navbar-nav {
+		flex-direction: row;
+		flex-wrap: wrap;
+		
+	}
+	.nav-item {
+		font-size: 6px !important;
+	}
+	
+	
+
+}
+  @media screen and (max-width: 592px) {
+    video{
+      overflow: scroll  !important;
+        
+    }
+
+}   
+
