@@ -9,6 +9,12 @@ body {
 	
 }
 
+
+.navbar {
+    padding: 0 !important;
+}
+
+
 #nav-title {
 	color: #F6AA1C;
 	font-size: 40px;
@@ -61,10 +67,9 @@ body {
 	}
 	.nav-item {
 		font-size: 6px !important;
+		
 	}
 	
-	
-
 }
 
 
