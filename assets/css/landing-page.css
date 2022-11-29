@@ -26,7 +26,7 @@ body {
 
 .nav-link {
 	color: #FAF3D2;
-	font-size: 20px;
+	font-size: 1rem;
 }
 
 
@@ -58,7 +58,20 @@ body {
         justify-content: center !important;
         text-align: center !important;
     }
+	.navbar-nav {
+		flex-direction: row;
+		flex-wrap: wrap;
+		
+	}
+	.nav-item {
+		font-size: 6px !important;
+	}
+	
+	
+
 }
+
+
 
 
 
