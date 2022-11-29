@@ -19,6 +19,7 @@ body {
 	color: #F6AA1C;
 	font-size: 40px;
 }
+/*color for user input text*/
 ::placeholder{
 	color: #FAF3D2;
 }
