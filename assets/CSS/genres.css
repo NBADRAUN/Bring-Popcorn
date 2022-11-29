@@ -139,8 +139,15 @@ h1 {
         justify-content: center !important;
         text-align: center !important;
     }
+	.navbar-nav {
+		flex-direction: row;
+		flex-wrap: wrap;
+		
+	}
+	.nav-item {
+		font-size: 6px !important;
+	}
+	
+	
 
-    .nav-link {
-        padding: 0.2rem !important;
-    }
 }
