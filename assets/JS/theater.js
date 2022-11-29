@@ -2,7 +2,7 @@
 
 var date = new Date();  
 var isodate = date.toISOString(); 
-var latlonapi = 'http://api.openweathermap.org/geo/1.0/direct?q='; 
+var latlonapi = 'https://api.openweathermap.org/geo/1.0/direct?q='; 
 var latlonapikey = '&appid=c04b3b1cca89bdcac938506e9ec8708a'; 
 var city = ''; 
 var lat = ''; 
@@ -10,7 +10,7 @@ var lon = '';
 var citysubmit = document.getElementById('citysubmit'); 
 var inputcity = document.getElementById('cityinput'); 
 var theatercontainer = $("#theatercontatiner");
-var mapquestlatlonapi = 'http://www.mapquestapi.com/geocoding/v1/address?key=OGaNLZpeszyPsDAZEJPmwdAAkxymdQQg&location'; 
+var mapquestlatlonapi = 'https://www.mapquestapi.com/geocoding/v1/address?key=OGaNLZpeszyPsDAZEJPmwdAAkxymdQQg&location'; 
 
 
 
