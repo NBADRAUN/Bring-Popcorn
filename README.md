@@ -1,69 +1,97 @@
-# Bring-Popcorn
-Movie search website 
+# Bring Popcorn
+
+A movie search website. 
+
+## Description   
+
+Bring Popcorn is a movie search website that was developed with the goal of providing users with one, convenient location to discover and search for movies. By utilizing several third-party APIs, we deliver various pieces of data, eliminating the need for multiple applications to obtain movie-related information. 
+
+We not only produced an interactive and user-friendly front-end application during the development of Bring Popcorn, but also had the opportunity to demonstrate our collaborative skills and coding abilities!
+
+## User Story 
+As a user accessing the page <br>
+I want to be presented with data and information around movies
+
+## Acceptance Criteria 
+As a user I want to be presented with a landing page <br>
+As a user I want to be able to explore movies based on my interests such as genres, most popular, etc. <br>
+As a user I want to locate theaters near me <br>
+As a user I want to search movies <br>
+As a user I want to view movie release dates and ratings <br>
+As a user I want to store my own personal movies <br>
+As a user I want to know what are the developers favorite movies. <br>
 
 
-## Description
+## Installation 
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+No installation is required for this application. Users can access Bring Popcorn by clicking on the URL provided in the ‘Usage’ section. 
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+##  Features 
 
-## Table of Contents (Optional)
+Bring Popcorn allows users to:
 
-If your README is long, add a table of contents to make it easy for users to find what they need.
+* view upcoming and popular movies 
+* explore movies by selecting a genre 
+* view release dates and ratings 
+* view trailers
+* locate theaters
+* search movies
+* store movie titles as favorites 
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
+## Usage 
 
-## Installation
+The access the Bring Popcorn webpage, click the following link: (ADD DEPLOYED URL)
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+Upcoming, Most Popular and Dev Favorites are located on the landing page. Users can view each section by scrolling vertically on the page. To view additional movies within a section, scroll horizontally. 
 
-## Usage
+<img width="1421" alt="landing page screenshot" src="https://user-images.githubusercontent.com/113480175/204420954-2ac95b90-e01d-4e13-9fd1-1af25179e199.png">
 
-Provide instructions and examples for use. Include screenshots as needed.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+To move to another page, utilize the nav bar at the top of the screen. 
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+<img width="1438" alt="nav bar screenshot" src="https://user-images.githubusercontent.com/113480175/204421643-ef2719ea-6d67-4ed1-b280-6373c8f853be.png">
 
-## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
+To access movies by genre, select “Genres” located on the navigation bar. Then, use the dropdown menu to search for a genre. 
+<img src="./assets/images/genrespic.png" alt="genres page screenshot"> 
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
 
-If you followed tutorials, include links to those here as well.
+To search for a movie, navigate to "movie search" and enter the name of a movie to view the cover, rating and release date. 
 
-## License
+<img src="./assets/images/moviesearchpic.png" alt="movie search page screenshot"> 
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
 
----
 
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
 
-## Badges
 
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
+To view trailers for movies that are currently being shown, select “Trailers”. 
 
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
+<img src="./assets/images/Trailerpic2.png" alt="trailers page screenshot"> 
 
-## Features
+Select “Theaters” from the navigation bar search and enter your zipcode to locate nearby theaters. 
 
-If your project has a lot of features, list them here.
+<img src="./assets/images/Theaters.png" alt="theaters page screenshot"> 
 
-## How to Contribute
+Movies can be stored as favorites by clicking the “Add to Favorites” button. To view all stored movies, click “Favorites” on the navigation bar.
 
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
 
-## Tests
+<img src="./assets/images/favoritespic.png" alt="favorites page screenshot"> 
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+
+
+
+## Credits 
+
+
+Collaborators 
+
+* Nick Badraun - https://github.com/NBADRAUN 
+* Jelena Rogic - https://github.com/Jelenarog 
+* Cody Cooper - https://github.com/Ccooper9893 
+* Lauren Genzone - https://github.com/lgenzone 
+
+
+
+## License 
+
+N/A

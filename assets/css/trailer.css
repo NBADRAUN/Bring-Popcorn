@@ -1,0 +1,84 @@
+
+/*background image for entire body of the page */
+body { 
+
+	background-image: linear-gradient(#F6AA1C, #BC3908, #941B0C, #621708, #220901); 
+	background-repeat: no-repeat;
+	background-size: 100%;
+	font-family: 'Work Sans', sans-serif;
+}
+
+.navbar {
+    padding: 0 !important;
+}
+
+.header {
+	margin-left: 5px;
+}
+/*Page title style */
+#nav-title {
+	color: #F6AA1C;
+	font-size: 40px;
+}
+/*color for user input text*/
+::placeholder{
+	color: #FAF3D2;
+}
+#nav-description {
+	font-size: 16px;
+	color: #FBF3CA;
+	text-align: center;
+	
+}
+ /*Nav bar link style */
+.nav-link {
+	color: #FAF3D2;
+	font-size: 1rem;
+}
+
+/*movie description style*/
+ p {
+	color: #FAF3D2;
+    font-family: 'Work Sans', sans-serif;
+}
+
+/*movie name style*/
+h3{
+	color: #F6AA1C;
+	font-family: 'Work Sans', sans-serif;
+	background-color: rgb(49, 49, 49);
+	margin: 5px; 
+
+}
+
+input:-webkit-autofill{
+    -webkit-text-fill-color: #F6AA1C ;
+}
+#currentTab {
+    color: #F6AA1C;
+}
+@media screen and (max-width: 592px) {
+    .container-fluid {
+        justify-content: center !important;
+        text-align: center !important;
+    }
+	.navbar-nav {
+		flex-direction: row;
+		flex-wrap: wrap;
+		
+	}
+	.nav-item {
+		font-size: 6px !important;
+	}
+	
+	
+
+}
+  @media screen and (max-width: 592px) {
+    video{
+      overflow: scroll  !important;
+        
+    }
+
+}   
+

@@ -1,0 +1,73 @@
+body {
+  /*background-image: url("../images/Instant_Pot_Popcorn_image.webp"); */
+  background-image: linear-gradient(
+    #f6aa1c,
+    #bc3908,
+    #941b0c,
+    #621708,
+    #220901
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Work Sans", sans-serif;
+}
+/* condenses the nav bar */
+.navbar {
+  padding: 0 !important;
+}
+
+/* nav title color */
+#nav-title {
+  color: #f6aa1c;
+  font-size: 40px;
+  margin-left: 200px;
+}
+/* nav discription */
+#nav-description {
+  font-size: 16px;
+  color: white;
+  text-align: center;
+}
+/* Nav links */
+.nav-link {
+  color: #faf3d2;
+  font-size: 1rem;
+}
+/* scrolling wrapper */
+.scrolling-wrapper {
+  overflow-x: auto;
+  color: white;
+}
+/* section title */
+.section-title {
+  color: white;
+  margin-left: 33px;
+  margin-top: 50px;
+  margin-bottom: 0;
+}
+/* search box */
+.col-4 {
+  background-color: #f6aa1c;
+  color: #941b0c;
+}
+/* current tab on nav */
+#currentTab {
+  color: #f6aa1c;
+}
+/* hover on nav */
+.nav-link:hover {
+  color: #f6aa1c;
+}
+@media screen and (max-width: 592px) {
+  .container-fluid {
+      justify-content: center !important;
+      text-align: center !important;
+  }
+  .navbar-nav {
+      flex-direction: row;
+      flex-wrap: wrap;
+  }
+  .nav-item {
+      font-size: 6px !important;
+  }
+}

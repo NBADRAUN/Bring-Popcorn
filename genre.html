@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bring Popcorn Genres</title>
+    <link rel="reset" href="assets/css/reset.css"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="./assets/css/genres.css" rel="stylesheet">
+</head>
+<body>
+
+
+      <!-- nav bar -->
+      <nav class="navbar sticky-top navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+          <div class="header bg-dark">
+            <img src="./assets/images/bring-popcorrn-logo.png" width="275">
+          </div>
+          
+            <div class="d-flex justify-content-center align-items-center">
+            <ul class="navbar-nav flex-row">
+              <li class="nav-item">
+                <a class="nav-link px-4" aria-current="page" href="landing-page.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-4" href="genre.html" id="currentTab">Genres</a>
+              </li>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-4" href="moviesearch.html">Movie Search</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-4" href="trailer.html">Trailers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-4" href="theaters.html"> Theaters</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-4" href="mymovies.html">♥ Favorites</a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+
+      <div class="dropdown text-center my-3">
+        <button class="btn btn-secondary dropdown-toggle" id="genreToggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Choose a Genre
+        </button>
+        <ul class="dropdown-menu text-center">
+          <li><button class="dropdown-item" id="28" type="button">Action</button></li>
+          <li><button class="dropdown-item" id="12" type="button">Adventure</button></li>
+          <li><button class="dropdown-item" id="16" type="button">Animation</button></li>
+          <li><button class="dropdown-item" id="35" type="button">Comedy</button></li>
+          <li><button class="dropdown-item" id="80" type="button">Crime</button></li>
+          <li><button class="dropdown-item" id="99" type="button">Documentary</button></li>
+          <li><button class="dropdown-item" id="18" type="button">Drama</button></li>
+          <li><button class="dropdown-item" id="10751" type="button">Family</button></li>
+          <li><button class="dropdown-item" id="14" type="button">Fantasy</button></li>
+          <li><button class="dropdown-item" id="36" type="button">History</button></li>
+          <li><button class="dropdown-item" id="27" type="button">Horror</button></li>
+          <li><button class="dropdown-item" id="10402" type="button">Music</button></li>
+          <li><button class="dropdown-item" id="9648" type="button">Mystery</button></li>
+          <li><button class="dropdown-item" id="10749" type="button">Romance</button></li>
+          <li><button class="dropdown-item" id="878" type="button">Science Fiction</button></li>
+          <li><button class="dropdown-item" id="10770" type="button">TV Movie</button></li>
+          <li><button class="dropdown-item" id="53" type="button">Thriller</button></li>
+          <li><button class="dropdown-item" id="10752" type="button">War</button></li>
+          <li><button class="dropdown-item" id="37" type="button">Western</button></li>
+        </ul>
+      </div>
+
+      <div></div>
+<!--Movie Cards with image, title, description, rating, date, and save button-->
+  <div class="row d-flex justify-content-center" id="formContainer">
+
+  </div>
+
+<!--Back and Next buttons-->
+  <div class="d-flex justify-content-center" id="page-dir">
+  </div>
+
+  <!-- Modal for alert -->
+  <div class="modal" tabindex="1" role="dialog" id="modalBox">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Alert</h5>
+        </div>
+        <div class="modal-body">
+          <p>There has been an error! Please try again later.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeBtn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--Add API attribution credits here-->
+<!-- <footer class="d-flex justify-content-center">
+  <img src="assets/images/TMDBLogo.png" class="w-25">
+</footer> -->
+    <!-- Bootstrap Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+
+<!-- Custom Javascript -->
+<script src="assets\JS\genre.js"></script>
+</html>

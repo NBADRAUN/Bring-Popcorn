@@ -1,0 +1,151 @@
+:root {
+    --butter: #F7B538;
+    --navColor: #F6AA1C;
+}
+body {
+	background-image: linear-gradient(#F6AA1C, #BC3908, #941B0C, #621708, #220901); 
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+	font-family: 'Work Sans', sans-serif;   
+	min-height: 135vh;
+}
+
+/* Navigation Bar */
+
+.navbar {
+    padding: 0 !important;
+}
+
+#nav-title {
+	color: var(--navColor);
+	font-size: 40px;
+	margin-left: 200px;
+}
+
+#nav-description {
+	font-size: 16px;
+	color: #FBF3CA;
+	text-align: center;
+}
+
+.nav-link {
+	color: #FAF3D2;
+	font-size: 1rem;
+}
+
+h1 {
+    color: #780116;
+}
+
+.nav-link:hover {
+    color: var(--navColor);
+}
+
+#currentTab {
+    color: var(--navColor);
+}
+
+/* Genre Toggle Box */
+#genreToggle {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+    box-shadow: 0.1rem 0.1rem 0.1rem black, -0.1rem -0.1rem 0.1rem black;
+}
+
+.dropdown-menu {
+    min-width: 15rem;
+    background-color: #FAF9F6;
+}
+
+.dropdown-item {
+    border-bottom: 0.1rem solid black;
+}
+
+.dropdown-item:hover {
+    background: var(--butter);
+}
+
+/* Search Container - movieSearch.html */
+.searchContainer {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#name-search {
+    text-align: center;
+}
+
+.searchInput {
+    border: 0.1rem solid black;
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.searchInput:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: black;
+}
+
+/* Card Containers */
+.card {
+    background-color: #343a40;
+    background-repeat: repeat;
+    border-radius: 1rem;
+    color: white;
+}
+
+.btn {
+    background-color: var(--butter);
+    box-shadow: 0.2rem 0.2rem 0.2rem black;
+    color:black;
+}
+.btn:hover {
+   font-weight:bold;
+}
+
+.btn:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.list-group {
+    border-radius: 0.3rem;
+}
+
+.list-group-item {
+    box-shadow: 0.1rem 0.1rem 0.1rem var(--butter), -0.1rem -0.1rem 0.1rem var(--butter);
+    background-color: #212529;
+    color: white;
+}
+
+.card-title {
+    text-decoration: underline;
+    color: var(--butter);
+}
+
+.card-img-top {
+    box-shadow: 0.1rem 0.1rem 0.1rem var(--butter), -0.1rem -0.1rem 0.1rem var(--butter);
+}
+
+/* Bad API fetch Modal Alert */
+.alert {
+    display: block !important;
+    top: 50% !important;
+}
+
+@media screen and (max-width: 592px) {
+    .container-fluid {
+        justify-content: center !important;
+        text-align: center !important;
+    }
+	.navbar-nav {
+		flex-direction: row;
+		flex-wrap: wrap;
+		
+	}
+	.nav-item {
+		font-size: 6px !important;
+	}	
+
+}
