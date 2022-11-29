@@ -9,6 +9,9 @@ body {
 	
 }
 
+.navbar {
+    padding: 0 !important;
+}
 
 
 #nav-title {
@@ -65,10 +68,9 @@ body {
 	}
 	.nav-item {
 		font-size: 6px !important;
+		
 	}
 	
-	
-
 }
 
 

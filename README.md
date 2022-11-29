@@ -46,7 +46,6 @@ To search movies, utilize “movie search” located in the navigation bar. Ente
 
 <img width = 1421 alt="movie search page screenshot" src=(https://user-images.githubusercontent.com/113480175/204426508-e2dd1719-b02d-48d2-a86a-67c32870ed8a.png)>
 
-
 To view trailers for movies that are currently being shown, select “Trailers”. 
 
 <img width = 1421 alt="movie trailers page screenshot" src=(https://user-images.githubusercontent.com/113480175/204426727-4e2b90fa-6237-41ef-b8fd-1fb080b9755c.png)>
