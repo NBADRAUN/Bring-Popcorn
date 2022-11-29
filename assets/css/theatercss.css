@@ -1,14 +1,50 @@
-
-
-/* adds background image to page  */
-
 body {
-    background-image: url("../images/391696-1.jpg");
-    background-repeat: repeat;
+    
+	/*background-image: url("../images/Instant_Pot_Popcorn_image.webp"); 
+	*/
+	background-image: linear-gradient(#F6AA1C, #BC3908, #941B0C, #621708, #220901); 
+    background-repeat: no-repeat;
     background-size: cover;
+	font-family: 'Work Sans', sans-serif;   
 }
 
-/*adds color to H1 tag*/
-h1 {
-    color: #780116;
+#nav-title {
+	color: #F6AA1C;
+	font-size: 40px;
+	margin-left: 200px;
 }
+
+#nav-description {
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	
+}
+
+.nav-link {
+	color: #FAF3D2;
+	font-size: 16x;
+}
+
+
+.scrolling-wrapper{
+	overflow-x: auto;
+	color: white;
+}
+
+.section-title {
+	color: white;
+	margin-left: 33px;
+	margin-top: 50px;
+	margin-bottom: 0;
+}
+
+.col-4 {
+    background-color:#F6AA1C;
+    color:#941B0C; 
+}
+
+/* .btn {
+    background-color:#BC3908;
+    color:#FAF3D2; 
+} */
