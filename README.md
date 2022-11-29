@@ -10,7 +10,6 @@ We not only produced an interactive and user-friendly front-end application duri
 
 No installation is required for this application. Users can access Bring Popcorn by clicking on the URL provided in the ‘Usage’ section. 
 
-
 ##  Features 
 
 Bring Popcorn allows users to:

@@ -7,10 +7,14 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;
 	font-family: 'Work Sans', sans-serif;   
-	min-height: 115vh;
+	min-height: 135vh;
 }
 
 /* Navigation Bar */
+
+.navbar {
+    padding: 0 !important;
+}
 
 #nav-title {
 	color: var(--navColor);
@@ -26,7 +30,7 @@ body {
 
 .nav-link {
 	color: #FAF3D2;
-	font-size: 16x;
+	font-size: 1rem;
 }
 
 h1 {
@@ -135,4 +139,15 @@ h1 {
         justify-content: center !important;
         text-align: center !important;
     }
+	.navbar-nav {
+		flex-direction: row;
+		flex-wrap: wrap;
+		
+	}
+	.nav-item {
+		font-size: 6px !important;
+	}
+	
+	
+
 }
