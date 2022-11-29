@@ -57,7 +57,7 @@ Select “Theaters” from the navigation bar search and enter your zipcode to l
 
 Movies can be stored as favorites by clicking the “Add to Favorites” button. To view all stored movies, click “Favorites” on the navigation bar.
 
-<img width = 1421 alt="favorites page screenshot" src=(https://user-images.githubusercontent.com/113480175/204426078-e7756821-ef0e-4a03-9f94-4e0e05cadbbb.png)>
+<img width = 1421 alt="favorites page screenshot" src=https://user-images.githubusercontent.com/113480175/204426078-e7756821-ef0e-4a03-9f94-4e0e05cadbbb.png>
 
 
 
