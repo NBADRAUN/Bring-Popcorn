@@ -18,10 +18,12 @@ var genreListUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiK
 
 //Favorites Storage
 var favoriteStorage = [];
+var favoriteData;
 
 //Event Listener for genre selection
 var genreSelection = '';
 var page = 1;
+var modal = document.getElementById('modalBox');
 
 //Calls function to collect favorites from localStorage
 function init() {
@@ -32,12 +34,19 @@ function init() {
     if (favoriteData !== null) {
         //Splits localStorage into array of numbers and saves as global variable
         favoriteStorage = favoriteData.split(",");
-        console.log(favoriteStorage);
+
     };
 };
 
 //Calls function to pull localStorage
 init();
+
+// //Reloads the page
+// function pageReload() {
+//     clearBtn = document.getElementById('clear-movies');
+//     clearBtn.remove();
+//     location.reload();
+// }
 
 //Event listener for all buttons
 document.addEventListener('click', function(event) {
@@ -50,8 +59,10 @@ document.addEventListener('click', function(event) {
     } else if (event.target.classList.contains('dropdown-item')) { //Genre selection button
         page = 1;
         genreSelection = event.target.id;
+        var genreBtn = document.getElementById('genreToggle');
+        genreBtn.innerHTML = event.target.innerHTML;
         var more = document.getElementById('more-button');
-        var back = document.getElementById('back-button')
+        var back = document.getElementById('back-button');
         if (more != null && back != null) {
             more.remove();
             back.remove();
@@ -70,8 +81,12 @@ document.addEventListener('click', function(event) {
         if (!favoriteStorage.includes(event.target.id)) {
             favoriteStorage.push(event.target.id);
             localStorage.setItem('favorite', favoriteStorage);
+            event.target.classList.add('bg-success');
+            event.target.innerHTML = 'Saved!'
 
         } else {
+            event.target.classList.add('bg-danger')
+            event.target.innerHTML = 'Already saved!'
             return;
         };
 
@@ -97,31 +112,24 @@ document.addEventListener('click', function(event) {
         event.target.remove();
         getGenreTopRated();
 
-        //Display favorited movies button
-    } else if (event.target.id == 'display-favorites') {
-        page = 1;
-        var more = document.getElementById('more-button');
-        var back = document.getElementById('back-button');
-        //Checks and deletes more and back buttons
-        if (more != null && back != null) {
-            more.remove();
-            back.remove();
-            getFavorites();
-        } else if (more !=null && back == null) {
-            more.remove();
-            getFavorites();
-        } else {
-            getFavorites();
-        }
+        //If modal is visible and closed button is clicked
+    } else if (event.target.id == 'closeBtn') {
+        modal.classList.remove('alert');
     }
 });
 
 /* ------Top-rated movies by genre------*/
 function getGenreTopRated() {
 
+    //Clear remove favorites button if it exists
+    var clear = document.getElementById('clear')
+    if (clear != null) {
+        clear.remove();
+    };
+
     //Selects the card collection body
     var cardsContainer = document.getElementById('formContainer');
-    cardsContainer.classList.add('mx-2', 'mx-2');
+    cardsContainer.classList.add('mx-2');
     
     //Gets rid of previous cards when selecting new genre
     if (cardsContainer.hasChildNodes()) {
@@ -138,11 +146,14 @@ function getGenreTopRated() {
     
         //Checks the response of the request
         .then(function (response) {
+            if (response.ok) {
             return response.json();//Reformats API request response
-        
+            } else {
+                //Creates a modal if the fetch request is malfunctioning
+                modal.classList.add('alert');
+            }
         }) //Requests the data from the API
         .then(function (data) {
-            console.log(data);
 
             //Grabs information and builds cards for each movie
             for (i=0; i<data.results.length; i++) {
@@ -157,7 +168,7 @@ function getGenreTopRated() {
 
                 //Creates Card form container
                 var card = document.createElement('div');
-                    card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'rounded');
+                    card.classList.add('card', 'text-center', 'mx-2', 'my-2');
                     card.style.width = '15rem';
                     card.style.border = '0.1rem solid black';
 
@@ -169,7 +180,7 @@ function getGenreTopRated() {
                 
                 //Creates Card body
                 var cardBody = document.createElement('div');
-                    cardBody.classList.add('card-body', 'rounded');
+                    cardBody.classList.add('card-body');
 
                 //Creates title
                 var cardTitle = document.createElement('h5');
@@ -177,10 +188,10 @@ function getGenreTopRated() {
                     cardTitle.innerHTML = title;
                     
                 //Creates description
-                // var cardDescription = document.createElement('p');
-                //     cardDescription.classList.add('card-text');
-                //     cardDescription.innerHTML = description;
-                //     cardDescription.style.fontSize = '0.8rem';
+                var cardDescription = document.createElement('p');
+                    cardDescription.classList.add('card-text');
+                    cardDescription.innerHTML = description;
+                    cardDescription.style.fontSize = '0.8rem'
                     
                 //Creates list form
                 var ul = document.createElement('ul');
@@ -191,37 +202,41 @@ function getGenreTopRated() {
                 //Creates list elements
                 var liDate = document.createElement('li');
                     liDate.classList.add('list-group-item');
-                    liDate.innerHTML = `${date}`;
+                    liDate.innerHTML = `- Release Date- <br> ${date}`;
                     
+                    if (date == '') {
+                        liDate.innerHTML = 'Currently not available'
+                    };
+
                 //Rating
                 var liRating = document.createElement('li');
                     liRating.classList.add('list-group-item');
-                    liRating.innerHTML = `Rating: ${rating}/10`;
+                    // liRating.innerHTML = `Rating: ${rating}/10`;
 
                     //Stars, Stars, Stars!
-                    // if (rating === 10) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
-                    // } else if (rating === 9) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
-                    // } else if (rating === 8) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
-                    // } else if (rating === 7) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
-                    // } else if (rating === 6) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
-                    // } else if (rating === 5) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    // } else if (rating === 4) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    // } else if (rating === 3) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    // } else if (rating === 2) {
-                    //     liRating.innerHTML = '&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    // } else if (rating === 1) {
-                    //     liRating.innerHTML = '&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
-                    // } else {
-                    //     return;
-                    // }
+                    if (rating === 10) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;'
+                    } else if (rating === 9) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;'
+                    } else if (rating === 8) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;'
+                    } else if (rating === 7) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;'
+                    } else if (rating === 6) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 5) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 4) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 3) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 2) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else if (rating === 1) {
+                        liRating.innerHTML = '- Rating - <br> &#9733;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;'
+                    } else {
+                        liRating.innerHTML = 'Currently not available'
+                    };
                     
                 //Favorites Button
                 var liButton = document.createElement('li');
@@ -230,12 +245,12 @@ function getGenreTopRated() {
                     button.classList.add('btn', 'btn-dark', 'favorites-button');
                     button.type = 'button';
                     button.id = id;
-                    button.innerHTML = 'Add to favorites';
+                    button.innerHTML = 'Add to Favorites';
                     
                 //Appends information into cards
                 card.appendChild(image);
                 cardBody.appendChild(cardTitle);
-                // cardBody.appendChild(cardDescription);
+                cardBody.appendChild(cardDescription);
                 ul.appendChild(liDate);
                 ul.appendChild(liRating);
                 liButton.appendChild(button);
@@ -250,7 +265,7 @@ function getGenreTopRated() {
 
             if (page > 1) {
                 var previousMovies = document.createElement('button');
-                previousMovies.classList.add('btn', 'btn-danger')
+                previousMovies.classList.add('btn', 'btn-danger', 'mx-3', 'my-3', 'w-25');
                 previousMovies.id = 'back-button';
                 previousMovies.innerHTML = 'Back';
                 pageNumContainer.appendChild(previousMovies);
@@ -258,131 +273,17 @@ function getGenreTopRated() {
 
                 //More movies button
                 var moreMovies = document.createElement('button');
-                moreMovies.classList.add('btn', 'btn-danger');
+                moreMovies.classList.add('btn', 'btn-success', 'mx-3', 'my-3', 'w-25');
                 moreMovies.id = 'more-button';
                 moreMovies.innerHTML = 'More';
                 pageNumContainer.appendChild(moreMovies);
 
     })
+    topFunction();
 };
 
-function getFavorites() {
-
-    var cardsContainer = document.getElementById('formContainer');
-    cardsContainer.classList.add('mx-2', 'mx-2');
-        if (cardsContainer.hasChildNodes()) {
-        while (cardsContainer.firstChild) {
-            cardsContainer.removeChild(cardsContainer.firstChild);
-          }
-        };
-        console.log(favoriteStorage);
-    for (i=0; i<favoriteStorage.length; i++) {
-
-        movieId = favoriteStorage[i];
-        var movieSearchUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`;
-        
-        fetch(movieSearchUrl)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-
-            
-                //Creates information variables to plug into cards
-                var posterCode = data.poster_path;
-                var title = data.title;
-                var description = data.overview;
-                var date = data.release_date;
-                var rating = Math.floor(data.vote_average);
-                var id = data.id;
-            
-                //Creates Card form container
-                var card = document.createElement('div');
-                    card.classList.add('card', 'text-center', 'mx-2', 'my-2', 'cardBox');
-                    card.style.width = '15rem';
-                    card.style.border = '0.1rem solid black';
-
-                //Creates Image element
-                var image = document.createElement('img');
-                    image.classList.add('card-img-top', 'mt-3');
-                    image.src = `https://image.tmdb.org/t/p/original/${posterCode}`;
-                    image.style.border = '0.1rem solid black';
-                            
-                //Creates Card body
-                var cardBody = document.createElement('div');
-                    cardBody.classList.add('card-body');
-            
-                //Creates title
-                var cardTitle = document.createElement('h5');
-                    cardTitle.classList.add('card-title');
-                    cardTitle.innerHTML = title;
-                                
-                //Creates description
-                // var cardDescription = document.createElement('p');
-                //     cardDescription.classList.add('card-text');
-                //     cardDescription.innerHTML = description;
-                //     cardDescription.style.fontSize = '0.8rem'
-                                
-                //Creates list form
-                var ul = document.createElement('ul');
-                    ul.classList.add('list-group', 'list-group-flush', 'mb-2', 'bg-light');
-            
-                //Creates list elements
-                var liDate = document.createElement('li');
-                    liDate.classList.add('list-group-item');
-                    liDate.innerHTML = `${date}`;
-                                
-                //Rating
-                var liRating = document.createElement('li');
-                    liRating.classList.add('list-group-item');
-                    liRating.innerHTML = `Rating: ${rating}/10`;
-                                
-                //Favorites Button
-                var liButton = document.createElement('li');
-                    liButton.classList.add('list-group-item');
-                var button = document.createElement('button');
-                    button.classList.add('btn', 'btn-dark', 'favorites-button');
-                    button.type = 'button';
-                    button.id = id;
-                    button.innerHTML = 'Add to favorites';
-                                
-                //Appends information into cards
-                card.appendChild(image);
-                cardBody.appendChild(cardTitle);
-                // cardBody.appendChild(cardDescription);
-                ul.appendChild(liDate);
-                ul.appendChild(liRating);
-                liButton.appendChild(button);
-                ul.appendChild(liButton);
-                card.appendChild(cardBody);
-                card.appendChild(ul);
-                cardsContainer.appendChild(card);
-
-        })
-    }
-};
-
-
-
-// var descriptionP = document.createElement('p');
-// var descriptionBtn = document.createElement('button');
-// descriptionBtn.classList.add('btn', 'btn-primary');
-// descriptionBtn.type = 'button';
-// descriptionBtn.setAttribute('data-bs-toggle', 'collapse');
-// descriptionBtn.setAttribute('data-bs-target', '#collapseExample');
-// descriptionBtn.setAttribute('aria-expanded', 'false');
-// descriptionBtn.setAttribute('aria-controls', 'collapseExample');
-// descriptionBtn.innerHTML = 'Description';
-
-// var descriptionBox = document.createElement('div');
-// descriptionBox.classList.add('collapse');
-// descriptionBox.id = 'collapseExample';
-
-// var descriptionText = document.createElement('div');
-// descriptionText.classList.add('card', 'card-body');
-// descriptionText.innerHTML(description);
-
-// descriptionP.appendChild(descriptionBtn);
-// descriptionBox.appendChild(descriptionText);
-// cardBody.appendChild(descriptionP);
-// cardBody.appendChild(descriptionBox)
+//Scrolls back to top of webpage
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
