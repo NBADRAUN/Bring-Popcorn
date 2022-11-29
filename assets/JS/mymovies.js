@@ -67,7 +67,7 @@ function getFavorites() {
             } else {
                 //Creates a modal if the fetch request is malfunctioning
                 modal.classList.add('alert');
-            }
+            };
         }) //Requests the data from the API
         .then(function (data) {
                 //Creates information variables to plug into cards
