@@ -63,12 +63,15 @@ var settings = {
 
     ///create theater card ////
     var theatercard = $("<div>");
-    theatercard.addClass("border border-dark bg-light"); 
+    theatercard.addClass("border border-dark"); 
+    $(theatercard).css("background","#F6AA1C"); 
+
       
     ///create name of theater card///
     var theatername = $("<h5>"); 
     theatername.text(theaternametext); 
-    theatername.addClass("theatername bg-danger text-white");
+    theatername.addClass("theatername text-white");
+    $(theatername).css("background","#941B0C"); 
   
     ///create address of theater ///
     var theateraddress = $("<div>")
