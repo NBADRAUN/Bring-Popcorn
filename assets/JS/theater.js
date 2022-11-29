@@ -13,6 +13,7 @@ var theatercontainer = $("#theatercontatiner");
 var mapquestlatlonapi = 'http://www.mapquestapi.com/geocoding/v1/address?key=OGaNLZpeszyPsDAZEJPmwdAAkxymdQQg&location'; 
 
 
+
 ////event listener to search the users input/////
 citysubmit.addEventListener('click',formsubmit); 
  
@@ -42,7 +43,7 @@ var settings = {
   "headers": {
   "api-version": "v200",
   "geolocation":lat+";"+lon,
-  "Authorization": "Basic U1RVRF8yNDk6b3hTMmFFQXF6ckw1=",
+  "Authorization": "Basic U1RVRF8yNDk6b3hTMmFFQXF6ckw1",
   "client": "STUD_249",
   "x-api-key": "mnUk7hyiLC8q75pSZvq97aLh5rMLLFZW1m7PdJGX",
   "device-datetime": isodate,
@@ -52,7 +53,8 @@ var settings = {
   
   //movieglu response to build html elements////
   $.ajax(settings).done(function (response) {
-     for (let i = 0; i < response.cinemas.length; i++) {  
+
+    for (let i = 0; i < response.cinemas.length; i++) {  
     // get theater info///
     theaternametext = response.cinemas[i].cinema_name; 
     theateraddresstext = response.cinemas[i].address; 
@@ -95,5 +97,7 @@ var settings = {
     theatercard.append(theatercity); 
     theatercard.append(theaterdistance); 
     theatercontainer.append(theatercard);  
+  
+  
   }})
   };

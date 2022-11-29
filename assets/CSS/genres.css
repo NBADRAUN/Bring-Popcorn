@@ -7,19 +7,19 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;
 	font-family: 'Work Sans', sans-serif;   
-	min-height: 115vh;
+	min-height: 135vh;
 }
 
 /* Navigation Bar */
-.header {
-	margin-left: 5px;
-    width: 300px;
-    margin: 0 auto;
+
+.navbar {
+    padding: 0 !important;
 }
 
 #nav-title {
 	color: var(--navColor);
 	font-size: 40px;
+	margin-left: 200px;
 }
 
 #nav-description {
@@ -30,7 +30,7 @@ body {
 
 .nav-link {
 	color: #FAF3D2;
-	font-size: 16x;
+	font-size: 1rem;
 }
 
 h1 {
@@ -38,7 +38,7 @@ h1 {
 }
 
 .nav-link:hover {
-    color:var(--navColor);
+    color: var(--navColor);
 }
 
 #currentTab {
@@ -134,3 +134,20 @@ h1 {
     top: 50% !important;
 }
 
+@media screen and (max-width: 592px) {
+    .container-fluid {
+        justify-content: center !important;
+        text-align: center !important;
+    }
+	.navbar-nav {
+		flex-direction: row;
+		flex-wrap: wrap;
+		
+	}
+	.nav-item {
+		font-size: 6px !important;
+	}
+	
+	
+
+}
