@@ -1,12 +1,26 @@
 # Bring Popcorn
 
-A movie search webiste. 
+A movie search website. 
 
 ## Description   
 
 Bring Popcorn is a movie search website that was developed with the goal of providing users with one, convenient location to discover and search for movies. By utilizing several third-party APIs, we deliver various pieces of data, eliminating the need for multiple applications to obtain movie-related information. 
 
 We not only produced an interactive and user-friendly front-end application during the development of Bring Popcorn, but also had the opportunity to demonstrate our collaborative skills and coding abilities!
+
+## User Story 
+As a user accessing the page <br>
+I want to be presented with data and information around movies
+
+## Acceptance Criteria 
+As a user I want to be presented with a landing page <br>
+As a user I want to be able to explore movies based on my interests such as genres, most popular, etc. <br>
+As a user I want to locate theaters near me <br>
+As a user I want to search movies <br>
+As a user I want to view movie release dates and ratings <br>
+As a user I want to store my own personal movies <br>
+As a user I want to know what are the developers favorite movies. <br>
+
 
 ## Installation 
 
@@ -39,16 +53,16 @@ To move to another page, utilize the nav bar at the top of the screen.
 
 To access movies by genre, select “Genres” located on the navigation bar. Then, use the dropdown menu to search for a genre. 
 
-<img width = 1421 alt="genres page screenshot" src=(https://user-images.githubusercontent.com/113480175/204426344-2c4800ab-d807-40f3-993e-8eefd7221223.png)>
+<img width = 1421 alt="genres page screenshot" src=https://user-images.githubusercontent.com/113480175/204426344-2c4800ab-d807-40f3-993e-8eefd7221223.png>
 
 To search movies, utilize “movie search” located in the navigation bar. Enter the name of a movie to view the movie's cover, release date, and rating. 
 
-<img width = 1421 alt="movie search page screenshot" src=(https://user-images.githubusercontent.com/113480175/204426508-e2dd1719-b02d-48d2-a86a-67c32870ed8a.png)>
+<img width = 1421 alt="movie search page screenshot" src=https://user-images.githubusercontent.com/113480175/204426508-e2dd1719-b02d-48d2-a86a-67c32870ed8a.png>
 
 
 To view trailers for movies that are currently being shown, select “Trailers”. 
 
-<img width = 1421 alt="movie trailers page screenshot" src=(https://user-images.githubusercontent.com/113480175/204426727-4e2b90fa-6237-41ef-b8fd-1fb080b9755c.png)>
+<img width = 1421 alt="movie trailers page screenshot" src=https://user-images.githubusercontent.com/113480175/204426727-4e2b90fa-6237-41ef-b8fd-1fb080b9755c.png>
 
 Select “Theaters” from the navigation bar search and enter your zipcode to locate nearby theaters. 
 
@@ -57,7 +71,7 @@ Select “Theaters” from the navigation bar search and enter your zipcode to l
 
 Movies can be stored as favorites by clicking the “Add to Favorites” button. To view all stored movies, click “Favorites” on the navigation bar.
 
-<img width = 1421 alt="favorites page screenshot" src=(https://user-images.githubusercontent.com/113480175/204426078-e7756821-ef0e-4a03-9f94-4e0e05cadbbb.png)>
+<img width = 1421 alt="favorites page screenshot" src=https://user-images.githubusercontent.com/113480175/204426078-e7756821-ef0e-4a03-9f94-4e0e05cadbbb.png>
 
 
 
