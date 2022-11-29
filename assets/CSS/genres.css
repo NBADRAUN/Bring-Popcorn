@@ -11,15 +11,11 @@ body {
 }
 
 /* Navigation Bar */
-.header {
-	margin-left: 5px;
-    width: 300px;
-    margin: 0 auto;
-}
 
 #nav-title {
 	color: var(--navColor);
 	font-size: 40px;
+	margin-left: 200px;
 }
 
 #nav-description {
@@ -38,7 +34,7 @@ h1 {
 }
 
 .nav-link:hover {
-    color:var(--navColor);
+    color: var(--navColor);
 }
 
 #currentTab {
@@ -134,3 +130,9 @@ h1 {
     top: 50% !important;
 }
 
+@media screen and (max-width: 592px) {
+    .container-fluid {
+        justify-content: center !important;
+        text-align: center !important;
+    }
+}
