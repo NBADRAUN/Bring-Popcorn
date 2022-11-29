@@ -25,13 +25,13 @@ init();
 document.addEventListener('click', function(event) {
 
   if (event.target.classList.contains('favorites-button')) {
-
+    // displays 'saved' after user clicks "add to favorites"
   if (!favStorage.includes(event.target.id)) {
     favStorage.push(event.target.id);
     localStorage.setItem('favorite', favStorage);
     event.target.classList.add('bg-success');
     event.target.innerHTML = 'Saved!'
-
+    // displays 'already saved' if user attempts to add same movie more than once
   } else {
     event.target.classList.add('bg-danger');
     event.target.innerHTML = 'Already saved!'
@@ -41,20 +41,21 @@ document.addEventListener('click', function(event) {
   }
 });
 
-// get popular 
-
+// get popular movies
 function getPopular() {
   var mostPopURL = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
-
+  
   var formContainer = document.getElementById('form-container');
   formContainer.classList.add('mx-4', 'my-4');
-  
+  // get most popular data from TMDB
   fetch(mostPopURL)
   .then(function(response){
     if (response.ok) {
       response.json()
    .then(function(data){
         console.log(data)
+
+    
       
     // loop for get popular data
       for (i=0; i<data.results.length; i++) {
@@ -63,13 +64,12 @@ function getPopular() {
         var movieId = data.results[i].id;
         var movieRating = Math.floor(data.results[i].vote_average); 
         var movieDate = data.results[i].release_date;
-
+        // create container 
         var card = document.createElement('div');
           card.classList.add('col-5', 'text-center', 'mx-2', 'my-2', 'bg-dark');
           card.style.width = '20rem';
 
           card.style.border = '0.1rem solid black';
-
         
         // create image 
        var image = document.createElement('img');
@@ -109,7 +109,7 @@ function getPopular() {
        button.innerHTML = 'Add to favorites';
 
 
-
+        // append elements 
         card.appendChild(image);
         card.appendChild(title);
         ul.appendChild(date);
@@ -125,14 +125,13 @@ function getPopular() {
 };
 getPopular(); {
 
-// get upcoming 
-
+// get upcoming movies 
 function getUpcoming() {
   var upcomingURL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US`;
 
   var formContainer = document.getElementById('form-container2');
   formContainer.classList.add('mx-4', 'mx-4');
-
+// get upcoming data from TMDB
   fetch(upcomingURL)
   .then(function(response){
     if (response.ok) {
@@ -140,7 +139,7 @@ function getUpcoming() {
    .then(function(data){
         console.log(data)
       
-    // loop   
+    // loop for upcoming movies
       for (i=0; i<data.results.length; i++) {
         var posterCode = data.results[i].poster_path;
         var movieTitle = data.results[i].title;
@@ -161,13 +160,6 @@ function getUpcoming() {
         image.src = `https://image.tmdb.org/t/p/original/${posterCode}`;
         image.style.border = '0.1rem solid black';
 
-        // create card body
-        //var body = document.createElement('div');
-        //body.classList.add('card-body');
-
-        //var body = document.createElement('div');
-        //body.classList.add('card','card-block');
-
         // create title 
         var title = document.createElement('h5');
         title.classList.add('card-title');
@@ -198,14 +190,13 @@ function getUpcoming() {
        button.innerHTML = 'Add to favorites';
 
 
-
+        // append elements 
         card.appendChild(image);
         card.appendChild(title);
         ul.appendChild(date);
         ul.appendChild(rating);
         listBtn.appendChild(button);
         ul.appendChild(listBtn);
-        //card.appendChild(body);
         card.appendChild(ul);
         formContainer.appendChild(card); 
         
@@ -218,7 +209,7 @@ getUpcoming();
 
 
 
-// dev favorites movie id array 18533
+// dev favorites movie id array
 var devFavs = [11969, 2280, 5994, 18533, 10466, 39939,957, 157336, 6435, 11321, 597, 510]; 
 
 // get dev favorites 
@@ -229,9 +220,9 @@ function getDevFav () {
       
     // loop   
       for (i=0; i<devFavs.length; i++) {
-
-        var devFavURL = `https://api.themoviedb.org/3/movie/${devFavs[i]}?api_key=${apiKey}&language=en-US`
-
+      
+       var devFavURL = `https://api.themoviedb.org/3/movie/${devFavs[i]}?api_key=${apiKey}&language=en-US`
+      // get dev favorites based on movie ids array 
       fetch(devFavURL)
       .then(function(response){
       return response.json()})
@@ -245,7 +236,7 @@ function getDevFav () {
         var movieId = devFavs[i];
         var movieRating = Math.floor(data.vote_average); 
         var movieDate = data.release_date;
-
+        // create container 
         var card = document.createElement('div');
           card.classList.add('col-5', 'text-center', 'mx-2', 'my-2', 'bg-dark');
           card.style.width = '20rem';
@@ -289,7 +280,7 @@ function getDevFav () {
        button.innerHTML = 'Add to favorites';
 
 
-
+        //append elements
         card.appendChild(image);
         card.appendChild(title);
         ul.appendChild(date);

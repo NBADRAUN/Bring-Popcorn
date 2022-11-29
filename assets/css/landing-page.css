@@ -26,7 +26,7 @@ body {
 
 .nav-link {
 	color: #FAF3D2;
-	font-size: 16x;
+	font-size: 20px;
 }
 
 
@@ -53,6 +53,12 @@ body {
     color: #F6AA1C;
 }
 
+@media screen and (max-width: 592px) {
+    .container-fluid {
+        justify-content: center !important;
+        text-align: center !important;
+    }
+}
 
 
 
