@@ -14,13 +14,13 @@ No installation is required for this application. Users can access Bring Popcorn
 
 Bring Popcorn allows users to:
 
-view upcoming and popular movies 
-explore movies by selecting a genre 
-view release dates and ratings 
-view trailers
-locate theaters
-search movies
-store movie titles as favorites 
+-view upcoming and popular movies 
+-explore movies by selecting a genre 
+-view release dates and ratings 
+-view trailers
+-locate theaters
+-search movies
+-store movie titles as favorites 
 
 ## Usage 
 
@@ -28,9 +28,12 @@ The access the Bring Popcorn webpage, click the following link: (ADD DEPLOYED UR
 
 Upcoming, most popular and dev favorites are located on the landing page. Users can view each section by scrolling vertically on the page. To view additional movies within a section, scroll horizontally. 
 
+<img width="1421" alt="landing page screenshot" src="https://user-images.githubusercontent.com/113480175/204420954-2ac95b90-e01d-4e13-9fd1-1af25179e199.png">
+
 To move to another page, utilize the nav bar at the top of the screen. 
 
-(ADD NAV BAR SCREENSHOT)
+<img width="1438" alt="nav bar screenshot" src="https://user-images.githubusercontent.com/113480175/204421643-ef2719ea-6d67-4ed1-b280-6373c8f853be.png">
+
 
 To access movies by genre, select “Genres” located on the navigation bar. Then, use the dropdown menu to search for a genre. 
 
@@ -46,8 +49,8 @@ Movies can be stored as favorites by clicking the “Add to Favorites” button.
 ## Credits 
 
 
-Name of Collaborator 
-Link to GitHub Profile 
+Collaborators 
+
 Nick Badraun
 https://github.com/NBADRAUN 
 Jelena Rogic
