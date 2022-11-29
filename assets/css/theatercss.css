@@ -27,7 +27,7 @@ body {
 /* Nav links */
 .nav-link {
   color: #faf3d2;
-  font-size: 16x;
+  font-size: 1rem;
 }
 /* scrolling wrapper */
 .scrolling-wrapper {
@@ -53,4 +53,17 @@ body {
 /* hover on nav */
 .nav-link:hover {
   color: #f6aa1c;
+}
+@media screen and (max-width: 592px) {
+  .container-fluid {
+      justify-content: center !important;
+      text-align: center !important;
+  }
+  .navbar-nav {
+      flex-direction: row;
+      flex-wrap: wrap;
+  }
+  .nav-item {
+      font-size: 6px !important;
+  }
 }
